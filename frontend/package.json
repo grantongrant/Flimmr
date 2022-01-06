@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "js-cookie": "^3.0.1",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1"
+  },
+  "devDependencies": {
+    "redux-logger": "^3.0.6"
+  }
+}
