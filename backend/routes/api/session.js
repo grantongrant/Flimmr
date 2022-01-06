@@ -4,13 +4,28 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
 const { User } = require('../../db/models');
 
 const router = express.Router();
 
+// check username/email credential key and validate
+const validateLogin = [
+    check('credential')
+      .exists({ checkFalsy: true })
+      .notEmpty()
+      .withMessage('Please provide a valid email or username.'),
+    check('password')
+      .exists({ checkFalsy: true })
+      .withMessage('Please provide a password.'),
+    handleValidationErrors,
+  ];
+
 // Log in
 router.post(
     '/',
+    validateLogin,
     asyncHandler(async (req, res, next) => {
       const { credential, password } = req.body;
 
@@ -54,5 +69,7 @@ router.get(
       } else return res.json({});
     }
 );
+
+
 
 module.exports = router;
