@@ -47,11 +47,11 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
   });
-  User.protoype.toSafeObject = function() {
+  User.prototype.toSafeObject = function() {
     const { id, username, email } = this;
     return { id, username, email };
   };
-  User.protopye.validatePassword = function (password) {
+  User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
   };
   User.getCurrentUserById = async function (id) {
