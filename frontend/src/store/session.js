@@ -3,16 +3,16 @@ import { csrfFetch } from "./csrf";
 const SET_SESSION_USER = 'session/setSessionUser';
 const REMOVE_SESSION_USER = 'session/removeSessionUser';
 
-export const setSessionUser = (user) => {
+const setSessionUser = (user) => {
     return {
         type: SET_SESSION_USER,
-        user
+        payload: user,
     }
 };
-export const removeSessionUser = (user) => {
+
+const removeSessionUser = () => {
     return {
         type: REMOVE_SESSION_USER,
-        user
     }
 };
 
