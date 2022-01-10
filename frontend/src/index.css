@@ -11,6 +11,7 @@ html,body,input, textarea,button, select, a {
 body {
     margin: 0;
     width: 100%;
+    display: block;
 }
 
 * {
