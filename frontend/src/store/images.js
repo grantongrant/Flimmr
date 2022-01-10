@@ -41,18 +41,18 @@ export const createImage = (payload) => async (dispatch) => {
     return data;
   }
 
-const initialState = { images: {}, isLoading: true}
+const initialState = { entries: [] }
 
 const imageReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_IMAGES:
-            newState = {...state}
-            newState.entries = action.images.reduce((images, image) => {
-                images[image.id] = image
-                return images;
-            }, {})
-            return newState;
+            // newState = {...state}
+            // newState.entries = action.images.reduce((images, image) => {
+            //     images[image.id] = image
+            //     return images;
+            // }, {})
+            return {...state, entries: [...action.images]};
         case ADD_IMAGE:
             newState = {...state}
             newState.images = {...newState.images, [action.newImage.id]: action.newImage}

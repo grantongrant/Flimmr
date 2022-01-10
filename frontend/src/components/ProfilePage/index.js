@@ -1,16 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+// import { Route, Switch } from 'react-router-dom';
 
 import { getAllImages } from '../../store/images';
 
 const ImageList = () => {
     const dispatch = useDispatch();
 
-    const imagesObject = useSelector((state) => state.image.images)
-    console.log(imagesObject);
+    const imagesObject = useSelector((state) => state.image.entries)
+    const object = imagesObject.forEach((object, index) => object[index])
     const images = Object.values(imagesObject);
-    console.log(images)
 
     useEffect(() => {
         dispatch(getAllImages());
@@ -19,11 +18,6 @@ const ImageList = () => {
     return (
         <div>
             <h1>Hello from Profile Page</h1>
-            <ol>
-                {images.map(image => {
-                    return <li key={image.id}>{image}</li> }
-                )}
-            </ol>
         </div>
     )
 }
