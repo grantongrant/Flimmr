@@ -6,8 +6,7 @@ header {
     box-sizing: border-box;
     align-items: center;
     display: flex;
-    position: fixed;
-    z-index: 1;
+    position: flex;
     width: 100%;
 }
 
