@@ -1,21 +1,19 @@
-import image from "../../../backend/db/models/image";
-
 
 const LOAD_IMAGES = 'images/loadImages';
 const ADD_IMAGE = 'images/addImage';
 const REMOVE_IMAGE = 'images/removeImage';
 
-export const loadImages = () => {
+export const loadImages = (images) => {
     return {
         type: LOAD_IMAGES,
         images
     };
 };
 
-export const addImage = (image) => {
+export const addImage = (newImage) => {
     return {
         type: ADD_IMAGE,
-        image
+        newImage
     };
 };
 
@@ -43,7 +41,7 @@ export const createImage = (payload) => async (dispatch) => {
     return data;
   }
 
-const initialState = { images: [], isLoading: true}
+const initialState = { images: {}, isLoading: true}
 
 const imageReducer = (state = initialState, action) => {
     let newState;
