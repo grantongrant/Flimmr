@@ -26,7 +26,7 @@ export const removeImage = (imageId) => {
 }
 
 export const getAllImages = () => async (dispatch) => {
-    const response = await csrfFetch('/api/images')
+    const response = await csrfFetch('/api/images/')
     const data = await response.json()
     dispatch(loadImages(data))
 };
@@ -46,6 +46,7 @@ export const getAllImages = () => async (dispatch) => {
     const { userId, imageUrl, description } = newPhoto;
     const response = await csrfFetch ("/api/images", {
       method: "POST",
+      headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
         userId,
         imageUrl,
@@ -101,7 +102,7 @@ const imageReducer = (state = initialState, action) => {
             return newState;
         case REMOVE_IMAGE:
             newState = {...state}
-            delete newState[action.image.id]
+            delete newState[action.imageId]
             return newState;
         default:
             return state;

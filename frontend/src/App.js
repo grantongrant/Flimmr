@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Photostream from "./components/Photostream";
 import PhotoInputForm from "./components/PhotoInputForm";
+import PhotoEditForm from "./components/PhotoEditForm";
 
 function App() {
   const dispatch = useDispatch();

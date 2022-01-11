@@ -1,8 +1,11 @@
 import { useParams, Redirect } from 'react-router-dom';
 import * as imageActions from '../../store/images'
 import { useDispatch } from 'react-redux';
+import { Route, Switch } from "react-router-dom";
 
 import './SinglePhoto.css';
+import PhotoEdit from '../PhotoEdit';
+import PhotoEditForm from '../PhotoEditForm';
 
 //GOALS
 // Grab the photo id from the parameter
@@ -34,8 +37,16 @@ const SinglePhoto = ({ images }) => {
       <img src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
       {singlePhoto.description}
         <button onClick={handleDelete}>Delete</button>
-        <button onClick={handleEdit}>Edit</button>
+        <PhotoEdit singlePhoto={singlePhoto} />
+
+        <Switch>
+            <Route path="images/:id">
+                <PhotoEditForm singlePhoto={singlePhoto}/>
+            </Route>
+        </Switch>
     </div>
+
+
   );
 };
 export default SinglePhoto;

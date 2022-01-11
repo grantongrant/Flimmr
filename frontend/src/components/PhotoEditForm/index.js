@@ -1,63 +1,62 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as imageActions from '../../store/images';
+import { Redirect } from 'react-router-dom';
+import { Route, Switch } from "react-router-dom";
 
-const PhotoEditForm = ({ image }) => {
-    const [userId, setUserId] = useState(image.userId);
-    const [description, setDescription] = useState(image.description);
-    const [imageUrl, setImageUrl] = useState(image.imageUrl);
+const PhotoEditForm = ({ singlePhoto }) => {
+    const [userId, setUserId] = useState(singlePhoto.userId);
+    const [description, setDescription] = useState(singlePhoto.description);
+    const [imageUrl, setImageUrl] = useState(singlePhoto.imageUrl);
+
+    const updateUserId = (e) => setUserId(e.target.value);
+    const updateDescription = (e) => setDescription(e.target.value);
+    const updateImageUrl = (e) => setImageUrl(e.target.value);
 
     const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
+    const handleSubmit =  async (e) => {
       e.preventDefault();
 
-      const newPhoto = {
+      const updatedPhoto = {
         userId,
         imageUrl,
         description
       };
 
-      dispatch(imageActions.createImage(newPhoto));
-      reset();
+      dispatch(imageActions.updateImage(updatedPhoto));
       return <Redirect to="/photos" />;
     };
 
-    const reset = () => {
-      setUserId(0);
-      setImageUrl('');
-      setDescription('');
-    };
-
     useEffect(() => {
-      dispatch(getAllImages());
+      dispatch(imageActions.getAllImages());
   }, [handleSubmit, dispatch]);
 
     return (
-      <div className='inputBox'>
-        <h1>Upload Photo</h1>
+      <div className='editBox'>
+        <h1>Edit Photo</h1>
         <form onSubmit={handleSubmit}>
           <input
             type='number'
-            onChange={(e) => setUserId(parseInt(e.target.value, 10))}
+            placeholder={userId}
             value={userId}
-            placeholder='userId'
+            onChange={updateUserId}
             name='userId'
           />
 
           <input
             type='text'
-            onChange={(e) => setImageUrl(e.target.value)}
+            placeholder={imageUrl}
             value={imageUrl}
-            placeholder='Image URL'
+            onChange={updateImageUrl}
             name='imageUrl'
           />
 
           <textarea
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={updateDescription}
             name='description'
-            placeholder='Add a description'
+            placeholder={description}
             rows='3'
           ></textarea>
           <button type='submit'>Submit</button>
@@ -65,5 +64,5 @@ const PhotoEditForm = ({ image }) => {
       </div>
     );
   };
-  export default PhotoInputForm
-  ;
+
+  export default PhotoEditForm;
