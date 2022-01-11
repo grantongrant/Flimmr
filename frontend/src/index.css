@@ -2,11 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
 
-
-html,body,input, textarea,button, select, a {
-    font-family: 'Montserrat';
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
     text-decoration: none;
 }
+
+
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
+}
+
 
 body {
     margin: 0;
@@ -15,6 +24,65 @@ body {
     display: block;
 }
 
-* {
-    box-sizing: border-box;
+.navigation-header {
+    display: flex;
+    padding: 0 24px!important;
+    max-width: none!important;
+    background: rgba(0,0,0,.25);
+    height: 64px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: left;
+}
+
+.global-logo {
+    margin-left: 20px;
+}
+#logo-png {
+    width: 98px;
+    margin-bottom: 2px;
+}
+
+.global-search {
+    height: 33px;
+    width: 100%;
+    padding: 0px 33px;
+
+}
+.login-signup {
+    display: flex;
+    margin-right: 20px;
+    color: white;
+    width: 250px;
+    justify-content: flex-end;
+    padding: 7px;
+
+}
+
+#log-in-button #sign-up-button button {
+    height: 32px;
+    line-height: 32px;
+}
+
+#log-in-button {
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+    color: white;
+    margin-right: 16px;
+    padding: 10px 10px;
+    font-weight: 500;
+}
+
+#sign-up-button {
+    color: black;
+    background-color: white;
+    transition: color .15c ease-in-out;
+    padding: 10px 10px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 6px;
+    border:none;
+    cursor: pointer;
 }
