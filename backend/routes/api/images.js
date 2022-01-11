@@ -14,4 +14,12 @@ router.post('', validateCreate, asyncHandler(async (req, res) => {
   res.json(image);
 }));
 
+router.get('/:id', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id,10);
+    const image = await Image.findByPk(id);
+    res.json(image);
+  }));
+
+
+
 module.exports = router;

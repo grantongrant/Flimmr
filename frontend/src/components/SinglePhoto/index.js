@@ -17,19 +17,24 @@ const SinglePhoto = ({ images }) => {
   const singlePhoto = images.find((image) => image.id === +id);
   console.log('singlePhoto', singlePhoto);
 
-  const handleSubmit = (e) => {
+  const handleDelete = (e) => {
     e.preventDefault();
+    dispatch(imageActions.deleteImage(singlePhoto));
+    return <Redirect to="/photos" />;
+  };
 
-    return dispatch(imageActions.deleteImage(singlePhoto));
+  const handleEdit = (e) => {
+    e.preventDefault();
+    dispatch(imageActions.deleteImage(singlePhoto));
+    return <Redirect to="/photos" />;
   };
 
   return (
     <div className='singlePhoto'>
       <img src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
       {singlePhoto.description}
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Delete</button>
-      </form>
+        <button onClick={handleDelete}>Delete</button>
+        <button onClick={handleEdit}>Edit</button>
     </div>
   );
 };

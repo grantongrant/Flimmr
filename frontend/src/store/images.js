@@ -26,7 +26,7 @@ export const removeImage = (imageId) => {
 }
 
 export const getAllImages = () => async (dispatch) => {
-    const response = await fetch('/api/images')
+    const response = await csrfFetch('/api/images')
     const data = await response.json()
     dispatch(loadImages(data))
 };
@@ -44,7 +44,7 @@ export const getAllImages = () => async (dispatch) => {
 
   export const createImage = (newPhoto) => async (dispatch) => {
     const { userId, imageUrl, description } = newPhoto;
-    const response = await csrfFetch("/api/images", {
+    const response = await csrfFetch ("/api/images", {
       method: "POST",
       body: JSON.stringify({
         userId,
@@ -57,15 +57,30 @@ export const getAllImages = () => async (dispatch) => {
     return response;
 };
 
+export const updateImage = (photo) => async (dispatch) => {
+    const response = await fetch(`/api/images/${photo.id}`, {
+      method: 'PUT',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(photo)
+    })
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(addImage(data));
+        return data;
+      }
+    }
+
 export const deleteImage = (photo) => async (dispatch) => {
     const response = await csrfFetch(`/api/images/${photo.id}`, {
-      method: "DELETE",
-    });
+        method: "DELETE",
+      });
     const data = await response.json();
-    return dispatch(removeImage(data.photo.id));
-};
+    dispatch(removeImage(data.id));
+    return response;
+  };
 
-const initialState = { }
+const initialState = { };
 
 const imageReducer = (state = initialState, action) => {
     let newState;
@@ -86,7 +101,7 @@ const imageReducer = (state = initialState, action) => {
             return newState;
         case REMOVE_IMAGE:
             newState = {...state}
-            delete newState[action.imageId]
+            delete newState[action.image.id]
             return newState;
         default:
             return state;
