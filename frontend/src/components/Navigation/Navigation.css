@@ -6,8 +6,9 @@ header {
     box-sizing: border-box;
     align-items: center;
     display: flex;
-    position: flex;
+    position: fixed;
     width: 100%;
+    z-index: 20;
 }
 
 .navigation {

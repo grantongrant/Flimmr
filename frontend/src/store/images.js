@@ -41,18 +41,21 @@ export const createImage = (payload) => async (dispatch) => {
     return data;
   }
 
-const initialState = { entries: [] }
+const initialState = { }
 
 const imageReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_IMAGES:
             // newState = {...state}
-            // newState.entries = action.images.reduce((images, image) => {
+            // newState.images = action.images.reduce((images, image) => {
             //     images[image.id] = image
             //     return images;
             // }, {})
-            return {...state, entries: [...action.images]};
+            return {...action.images};
+            // newState = Object.assign({}, state);
+            // newState.user = action.payload;
+            // return newState;
         case ADD_IMAGE:
             newState = {...state}
             newState.images = {...newState.images, [action.newImage.id]: action.newImage}
