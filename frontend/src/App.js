@@ -6,7 +6,9 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
-import ProfilePage from "./components/ProfilePage";
+import Photostream from "./components/Photostream";
+import PhotoInputForm from "./components/PhotoInputForm";
+import PhotoEditForm from "./components/PhotoEditForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,8 +32,12 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/images">
-            <ProfilePage />
+          <Route path="/photos">
+            <Photostream />
+            <PhotoInputForm />
+          </Route>
+          <Route path="/photos/:id/edit">
+              <PhotoEditForm />
           </Route>
         </Switch>
       )}

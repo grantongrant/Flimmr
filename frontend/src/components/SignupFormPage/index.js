@@ -15,7 +15,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/photos" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +31,7 @@ function SignupFormPage() {
   };
 
   return (
+    <div className="form-container">
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -82,6 +83,7 @@ function SignupFormPage() {
       </label>
       <button type="submit">Sign Up</button>
     </form>
+    </div>
   );
 }
 
