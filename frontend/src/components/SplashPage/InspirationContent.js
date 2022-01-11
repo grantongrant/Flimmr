@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './SplashPage.css';
+import '../../../src/index.css';
 
 const InspirationContent = () => {
 

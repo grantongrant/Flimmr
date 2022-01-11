@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import InspirationContent from './InspirationContent';
-import './SplashPage.css';
+import '../../../src/index.css'
 
 const SplashPage = () => {
 
