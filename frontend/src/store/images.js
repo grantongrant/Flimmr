@@ -57,6 +57,14 @@ export const getAllImages = () => async (dispatch) => {
     return response;
 };
 
+export const deleteImage = (photo) => async (dispatch) => {
+    const response = await csrfFetch(`/api/images/${photo.id}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    return dispatch(removeImage(data.photo.id));
+};
+
 const initialState = { }
 
 const imageReducer = (state = initialState, action) => {

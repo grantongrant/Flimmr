@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import './PhotoInputForm.css';
 import { Redirect } from "react-router-dom";
+import { getAllImages } from '../../store/images';
 
 import * as imageActions from "../../store/images";
 
@@ -19,19 +21,6 @@ const PhotoInputForm = () => {
   const [imageUrl, setImageUrl] = useState('');
 
   const dispatch = useDispatch();
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (password === confirmPassword) {
-//       setErrors([]);
-//       return dispatch(sessionActions.signup({ name, email, username, password }))
-//         .catch(async (res) => {
-//           const data = await res.json();
-//           if (data && data.errors) setErrors(data.errors);
-//         });
-//     }
-//     return setErrors(['Confirm Password field must be the same as the Password field']);
-//   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,6 +41,10 @@ const PhotoInputForm = () => {
     setImageUrl('');
     setDescription('');
   };
+
+  useEffect(() => {
+    dispatch(getAllImages());
+}, [handleSubmit, dispatch]);
 
   return (
     <div className='inputBox'>
