@@ -2,9 +2,8 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import './PhotoInputForm.css';
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getAllImages } from '../../store/images';
-
 import * as imageActions from "../../store/images";
 
 // When only one component cares about the state, use local state, not Redux
@@ -21,8 +20,9 @@ const PhotoInputForm = () => {
   const [imageUrl, setImageUrl] = useState('');
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newPhoto = {
@@ -31,9 +31,11 @@ const PhotoInputForm = () => {
       description
     };
 
-    dispatch(imageActions.createImage(newPhoto));
-    reset();
-    return <Redirect to="/photos" />;
+    let createdPhoto = await dispatch(imageActions.createImage(newPhoto))
+    if (createdPhoto) {
+        history.push("/photos")
+        reset();
+    }
   };
 
   const reset = () => {

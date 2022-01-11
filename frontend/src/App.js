@@ -36,6 +36,9 @@ function App() {
             <Photostream />
             <PhotoInputForm />
           </Route>
+          <Route path="/photos/:id/edit">
+              <PhotoEditForm />
+          </Route>
         </Switch>
       )}
       </main>

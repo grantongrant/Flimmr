@@ -11,7 +11,7 @@ router.get('', asyncHandler(async (req, res) => {
 
 router.post('', validateCreate, asyncHandler(async (req, res) => {
   const image = await Image.create(req.body);
-  res.json(image);
+  return res.json(image);
 }));
 
 router.get('/:id', asyncHandler(async (req, res) => {
@@ -20,6 +20,11 @@ router.get('/:id', asyncHandler(async (req, res) => {
     res.json(image);
   }));
 
-
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id,10);
+    const image = await Image.findByPk(id);
+    await image.destroy();
+    return res.json(image);
+  }));
 
 module.exports = router;

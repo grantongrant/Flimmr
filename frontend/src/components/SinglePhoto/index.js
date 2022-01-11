@@ -1,20 +1,20 @@
 import { useParams, Redirect } from 'react-router-dom';
 import * as imageActions from '../../store/images'
 import { useDispatch } from 'react-redux';
-import { Route, Switch } from "react-router-dom";
-
+import { Route, Switch, useHistory } from "react-router-dom";
 import './SinglePhoto.css';
 import PhotoEdit from '../PhotoEdit';
 import PhotoEditForm from '../PhotoEditForm';
 
 //GOALS
 // Grab the photo id from the parameter
-// Find the correct photo from within the arrray of all articles
-// Programmatically render the actual article
+// Find the correct photo from within the arrray of all photos
+// Programmatically render the actual photos
 
 const SinglePhoto = ({ images }) => {
 
   const dispatch = useDispatch();
+  const history = useHistory();
   const { id } = useParams();
 
   const singlePhoto = images.find((image) => image.id === +id);
@@ -23,7 +23,7 @@ const SinglePhoto = ({ images }) => {
   const handleDelete = (e) => {
     e.preventDefault();
     dispatch(imageActions.deleteImage(singlePhoto));
-    return <Redirect to="/photos" />;
+    history.push("/photos");
   };
 
   const handleEdit = (e) => {
@@ -40,12 +40,11 @@ const SinglePhoto = ({ images }) => {
         <PhotoEdit singlePhoto={singlePhoto} />
 
         <Switch>
-            <Route path="images/:id">
+            <Route path="photos/:id/edit">
                 <PhotoEditForm singlePhoto={singlePhoto}/>
             </Route>
         </Switch>
     </div>
-
 
   );
 };

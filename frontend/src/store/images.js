@@ -97,8 +97,7 @@ const imageReducer = (state = initialState, action) => {
             // newState.user = action.payload;
             // return newState;
         case ADD_IMAGE:
-            newState = {...state}
-            newState.images = {...newState.images, [action.newPhoto.id]: action.newImage}
+            newState = {...state, [action.newImage.id]: action.newImage}
             return newState;
         case REMOVE_IMAGE:
             newState = {...state}
