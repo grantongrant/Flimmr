@@ -1,3 +1,4 @@
+import { csrfFetch } from "./csrf";
 
 const LOAD_IMAGES = 'images/loadImages';
 const ADD_IMAGE = 'images/addImage';
@@ -30,16 +31,31 @@ export const getAllImages = () => async (dispatch) => {
     dispatch(loadImages(data))
 };
 
-export const createImage = (payload) => async (dispatch) => {
-    const response = await fetch('/api/images', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(payload)
-    })
+// export const createImage = (payload) => async (dispatch) => {
+//     const response = await fetch('/api/images', {
+//       method: 'POST',
+//       headers: {'Content-Type':'application/json'},
+//       body: JSON.stringify(payload)
+//     })
+//     const data = await response.json();
+//     dispatch(addImage(data));
+//     return data;
+//   }
+
+  export const createImage = (newPhoto) => async (dispatch) => {
+    const { userId, imageUrl, description } = newPhoto;
+    const response = await csrfFetch("/api/images", {
+      method: "POST",
+      body: JSON.stringify({
+        userId,
+        imageUrl,
+        description,
+      }),
+    });
     const data = await response.json();
-    dispatch(addImage(data));
-    return data;
-  }
+    dispatch(addImage(data.photo));
+    return response;
+};
 
 const initialState = { }
 
@@ -58,7 +74,7 @@ const imageReducer = (state = initialState, action) => {
             // return newState;
         case ADD_IMAGE:
             newState = {...state}
-            newState.images = {...newState.images, [action.newImage.id]: action.newImage}
+            newState.images = {...newState.images, [action.newPhoto.id]: action.newImage}
             return newState;
         case REMOVE_IMAGE:
             newState = {...state}

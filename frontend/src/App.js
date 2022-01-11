@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Photostream from "./components/Photostream";
+import PhotoInputForm from "./components/PhotoInputForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
           </Route>
           <Route path="/photos">
             <Photostream />
+            <PhotoInputForm />
           </Route>
         </Switch>
       )}

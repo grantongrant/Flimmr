@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
 
 import { getAllImages } from '../../store/images';
@@ -13,6 +12,7 @@ const ImageList = () => {
 
     const imagesObject = useSelector((state) => state.image)
     const images = Object.values(imagesObject);
+    console.log(images)
 
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const ImageList = () => {
                 ))}
             </main>
             </div>
-
+            
             <Switch>
                 <Route path='/photos/:id'>
                     <SinglePhoto images={images} />
