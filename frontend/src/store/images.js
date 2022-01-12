@@ -55,7 +55,7 @@ export const getAllImages = () => async (dispatch) => {
     });
     const data = await response.json();
     dispatch(addImage(data.photo));
-    return response;
+    // return response;
 };
 
 export const updateImage = (photo) => async (dispatch) => {
@@ -97,7 +97,7 @@ const imageReducer = (state = initialState, action) => {
             // newState.user = action.payload;
             // return newState;
         case ADD_IMAGE:
-            newState = {...state, [action.newImage.id]: action.newImage}
+            newState = {...state, ...action.newImage}
             return newState;
         case REMOVE_IMAGE:
             newState = {...state}
