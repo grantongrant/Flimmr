@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as imageActions from '../../store/images';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+import React from 'react';
 
 const PhotoEditForm = ({ singlePhoto }) => {
     const [userId, setUserId] = useState(singlePhoto.userId);
@@ -25,7 +26,7 @@ const PhotoEditForm = ({ singlePhoto }) => {
         description
       };
 
-      await dispatch(imageActions.updateImage(updatedPhoto)).then(history.push("/photos"))
+      await dispatch(imageActions.updateImage(updatedPhoto)).then(history.push(`/photos/${singlePhoto.id}`))
     };
 
 //     useEffect(() => {
@@ -36,13 +37,13 @@ const PhotoEditForm = ({ singlePhoto }) => {
       <div className='editBox'>
         <h1>Edit Photo</h1>
         <form onSubmit={handleSubmit}>
-          <input
+          {/* <input
             type='number'
             placeholder={userId}
             value={userId}
             onChange={updateUserId}
             name='userId'
-          />
+          /> */}
 
           <input
             type='text'

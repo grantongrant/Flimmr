@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 // import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './PhotoInputForm.css';
 import { useHistory, NavLink } from "react-router-dom";
 // import { getAllImages } from '../../store/images';
