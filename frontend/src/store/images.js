@@ -11,10 +11,10 @@ export const loadImages = (images) => {
     };
 };
 
-export const addImage = (newImage) => {
+export const addImage = (image) => {
     return {
         type: ADD_IMAGE,
-        newImage
+        image
     };
 };
 
@@ -59,7 +59,7 @@ export const getAllImages = () => async (dispatch) => {
 };
 
 export const updateImage = (photo) => async (dispatch) => {
-    const response = await fetch(`/api/images/${photo.id}`, {
+    const response = await csrfFetch(`/api/images/${photo.id}`, {
       method: 'PUT',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(photo)
@@ -97,7 +97,11 @@ const imageReducer = (state = initialState, action) => {
             // newState.user = action.payload;
             // return newState;
         case ADD_IMAGE:
-            newState = {...state, ...action.newImage}
+            if (!state[action.image.id]) {
+              newState = {...state, ...action.image}
+            } else {
+              newState = {...state, [action.image.id]: action.image}
+            }
             return newState;
         case REMOVE_IMAGE:
             newState = {...state}

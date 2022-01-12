@@ -1,57 +1,57 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import * as imageActions from '../../store/images'
-import { useHistory, NavLink, Route } from 'react-router-dom';
-import PhotoEditForm from "../PhotoEditForm";
+// import React, { useState, useEffect } from "react";
+// import { useDispatch } from 'react-redux';
+// import * as imageActions from '../../store/images'
+// import { useHistory, NavLink, Route } from 'react-router-dom';
+// import PhotoEditForm from "../PhotoEditForm";
 
-function EditButton ({ singlePhoto }) {
+// function EditButton ({ singlePhoto }) {
 
-  const history = useHistory();
+//   const history = useHistory();
 
-  const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
+//   const dispatch = useDispatch();
+//   const [showMenu, setShowMenu] = useState(false);
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+//   const openCloseMenu = () => {
+//     if (showMenu) setShowMenu(false);
+//     else setShowMenu(true);
+//   };
 
-  useEffect(() => {
-    if (!showMenu) return;
+//   // useEffect(() => {
+//   //   if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
+//   //   const closeMenu = () => {
+//   //     setShowMenu(false);
+//   //   };
 
-    const editMenu = document.getElementById("edit-button");
+//   //   const editMenu = document.getElementById("edit-button");
 
-    editMenu.addEventListener('click', closeMenu);
+//   //   editMenu.addEventListener('click', closeMenu);
 
-    return () => editMenu.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+//   //   return () => editMenu.removeEventListener("click", closeMenu);
+//   // }, [showMenu]);
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    await dispatch(imageActions.deleteImage(singlePhoto)).then(() => history.push("/photos"))
-  };
+//   const handleDelete = async (e) => {
+//     e.preventDefault();
+//     await dispatch(imageActions.deleteImage(singlePhoto)).then(() => history.push("/photos"))
+//   };
 
-  return (
-    <>
-      <button id="edit-button" onClick={openMenu}>
-        <i className="fas fa-camera-retro" />
-      </button>
-      {showMenu && (
-        <div className="photo-edit-delete-form">
-            <PhotoEditForm singlePhoto={singlePhoto}/>
-            <button><NavLink to={`/photos/${singlePhoto.id}/edit`}>Edit</NavLink></button>
-            <button onClick={handleDelete}>Delete</button>
-        </div>
-      )}
-         <Route path="photos/:id/edit">
-            <PhotoEditForm singlePhoto={singlePhoto}/>
-        </Route>
-    </>
-  );
-}
+//   return (
+//     <>
+//       {/* <button id="edit-button" onClick={openCloseMenu}>
+//         <i className="fas fa-camera-retro" />
+//       </button> */}
+//       {showMenu && (
+//         <div className="photo-edit-delete-form">
+//             <PhotoEditForm singlePhoto={singlePhoto}/>
+//             <button><NavLink to={`/photos/${singlePhoto.id}/edit`}>Edit</NavLink></button>
+//             <button onClick={handleDelete}>Delete</button>
+//         </div>
+//       )}
+//          <Route path="photos/:id/edit">
+//             <PhotoEditForm singlePhoto={singlePhoto}/>
+//         </Route>
+//     </>
+//   );
+// }
 
-export default EditButton;
+// export default EditButton;
