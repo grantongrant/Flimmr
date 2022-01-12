@@ -31,12 +31,9 @@ const PhotoInputForm = () => {
       description
     };
 
-    let createdPhoto = await dispatch(imageActions.createImage(newPhoto))
-    if (createdPhoto) {
-        history.push("/photos")
-        reset();
-    }
-  };
+    await dispatch(imageActions.createImage(newPhoto)).then(history.push("/photos"))
+    reset();
+    };
 
   const reset = () => {
     setUserId(0);
@@ -44,9 +41,9 @@ const PhotoInputForm = () => {
     setDescription('');
   };
 
-  useEffect(() => {
-    dispatch(getAllImages());
-}, [handleSubmit, dispatch]);
+//   useEffect(() => {
+//     dispatch(getAllImages());
+// }, [handleSubmit, dispatch]);
 
   return (
     <div className='inputBox'>

@@ -20,7 +20,7 @@ const ImageList = () => {
     }, [dispatch]);
 
     return (
-        <div className="container">
+        <div className="photo-page">
             <div className="photo-gallery">
              <main className="photo">
                 {/* {images?.map((image) => {
@@ -31,7 +31,7 @@ const ImageList = () => {
                 ))}
             </main>
             </div>
-            
+
             <Switch>
                 <Route path='/photos/:id'>
                     <SinglePhoto images={images} />

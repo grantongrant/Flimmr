@@ -1,4 +1,4 @@
-.splash-content {
+/* .splash-content {
     padding-bottom: 592px;
     display: block;
 }
@@ -14,7 +14,7 @@
     color: #fff;
     position: absolute;
     top: 0;
-}
+} */
 
 
 /* .inspiration-content {
@@ -30,7 +30,7 @@ color: #fff;
 position: absolute;
 } */
 
-.splash-inspiration{
+/* .splash-inspiration{
     margin-bottom: -593px;
     opacity: 1!important;
     height: 100%;
@@ -40,9 +40,9 @@ position: absolute;
     overflow-y: hidden;
     position: relative;
     display: block;
-}
+} */
 
-.inspiration-content {
+/* .inspiration-content {
     background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1641762893/Flimmr/john-o-nolan-6f_ANCcbj3o-unsplash_aqeewk.jpg);
     display: flex;
     align-items: center;
@@ -58,4 +58,4 @@ position: absolute;
     display: flex;
     flex-direction: column;
 
-}
+} */
