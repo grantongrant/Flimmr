@@ -1,6 +1,6 @@
 import { useParams, Redirect } from 'react-router-dom';
 import * as imageActions from '../../store/images'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useHistory } from "react-router-dom";
 import './SinglePhoto.css';
 import PhotoEdit from '../PhotoEdit';
@@ -11,7 +11,10 @@ import PhotoEditForm from '../PhotoEditForm';
 // Find the correct photo from within the arrray of all photos
 // Programmatically render the actual photos
 
-const SinglePhoto = ({ images }) => {
+const SinglePhoto = () => {
+
+    const imagesObject = useSelector((state) => state.image)
+    const images = Object.values(imagesObject);
 
   const dispatch = useDispatch();
   const history = useHistory();
