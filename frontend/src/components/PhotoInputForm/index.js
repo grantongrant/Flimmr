@@ -37,14 +37,14 @@ const PhotoInputForm = () => {
     //     reset();
     // }
     await dispatch(imageActions.createImage(newPhoto)).then(() => history.push("/photos"));
-    reset();
+    // reset();
     };
 
-  const reset = () => {
-    setUserId(1);
-    setImageUrl('');
-    setDescription('');
-  };
+//   const reset = () => {
+//     setUserId(1);
+//     setImageUrl('');
+//     setDescription('');
+//   };
 
 //   useEffect(() => {
 //     dispatch(getAllImages());
