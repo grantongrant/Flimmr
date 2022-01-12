@@ -27,12 +27,12 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     return res.json(image);
   }));
 
-router.put('/:id', validateCreate, asyncHandler(async (req, res) => {
+router.put('/:id', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10);
     const image = await Image.findByPk(id);
-    const updatedImage = await Image.update(req.body);
-    await updatedImage.save();
-    return res.json(updatedImage);
+    await image.update(req.body);
+    await image.save();
+    return res.json(image);
 }));
 
 module.exports = router;

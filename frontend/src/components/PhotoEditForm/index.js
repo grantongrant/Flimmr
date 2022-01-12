@@ -26,8 +26,7 @@ const PhotoEditForm = ({ singlePhoto }) => {
         description
       };
 
-      await dispatch(imageActions.updateImage(updatedPhoto))
-      .then(() => history.push(`/photos/${singlePhoto.id}`))
+      await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push(`/photos/${singlePhoto.id}`))
     };
 
 //     useEffect(() => {
