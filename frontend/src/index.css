@@ -285,7 +285,7 @@ form h1 {
     padding: 0 60px;
 }
 
-main div img {
+main .photo div img {
     position: relative;
     flex-direction: row;
     height: 300px;
