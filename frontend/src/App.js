@@ -8,7 +8,8 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Photostream from "./components/Photostream";
 import PhotoInputForm from "./components/PhotoInputForm";
-import PhotoEditForm from "./components/PhotoEditForm";
+import SinglePhoto from "./components/SinglePhoto";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -32,12 +33,17 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/photos">
+          <Route exact path="/photos">
             <Photostream />
+          </Route>
+          <Route exact path="/photos/upload">
             <PhotoInputForm />
           </Route>
-          <Route path="/photos/:id/edit">
-              <PhotoEditForm />
+          <Route exact path="/photos/:id">
+            <SinglePhoto />
+          </Route>
+          <Route>
+            404: Not Found
           </Route>
         </Switch>
       )}

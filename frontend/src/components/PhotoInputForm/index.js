@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useState } from 'react';
 import './PhotoInputForm.css';
-import { useHistory } from "react-router-dom";
-import { getAllImages } from '../../store/images';
+import { useHistory, NavLink } from "react-router-dom";
+// import { getAllImages } from '../../store/images';
 import * as imageActions from "../../store/images";
 
 // When only one component cares about the state, use local state, not Redux
@@ -15,7 +15,7 @@ import * as imageActions from "../../store/images";
 // dispatch the new article to the Redux store
 
 const PhotoInputForm = () => {
-  const [userId, setUserId] = useState(0);
+  const [userId, setUserId] = useState(1);
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
 
@@ -31,12 +31,17 @@ const PhotoInputForm = () => {
       description
     };
 
-    await dispatch(imageActions.createImage(newPhoto)).then(history.push("/photos"))
+    // let createdPhoto = await dispatch(imageActions.createImage(newPhoto));
+    // if (createdPhoto) {
+    //     history.push("/photos");
+    //     reset();
+    // }
+    await dispatch(imageActions.createImage(newPhoto)).then(() => history.push("/photos"));
     reset();
     };
 
   const reset = () => {
-    setUserId(0);
+    setUserId(1);
     setImageUrl('');
     setDescription('');
   };
@@ -46,16 +51,18 @@ const PhotoInputForm = () => {
 // }, [handleSubmit, dispatch]);
 
   return (
-    <div className='inputBox'>
-      <h1>Upload Photo</h1>
+    <div className="upload-page">
+    <div className='upload-container'>
       <form onSubmit={handleSubmit}>
-        <input
+      <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"}/></div>
+        <h1>Upload Photo</h1>
+        {/* <input
           type='number'
           onChange={(e) => setUserId(parseInt(e.target.value, 10))}
           value={userId}
           placeholder='userId'
           name='userId'
-        />
+        /> */}
 
         <input
           type='text'
@@ -72,8 +79,11 @@ const PhotoInputForm = () => {
           placeholder='Add a description'
           rows='3'
         ></textarea>
-        <button type='submit'>Submit</button>
+        <button id="upload-submit-button" type='submit'>Submit</button>
+        <p className="login-signup-link">Not a Flimmr member?
+        <NavLink id="login-signup-link-link"to="/signup"> Sign up here.</NavLink></p>
       </form>
+    </div>
     </div>
   );
 };

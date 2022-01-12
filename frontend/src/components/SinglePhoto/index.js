@@ -26,11 +26,11 @@ const SinglePhoto = ({ images }) => {
   };
 
 
-  const handleEdit = (e) => {
-    e.preventDefault();
-    dispatch(imageActions.deleteImage(singlePhoto));
-    return <Redirect to="/photos" />;
-  };
+//   const handleEdit = (e) => {
+//     e.preventDefault();
+//     dispatch(imageActions.deleteImage(singlePhoto));
+//     return <Redirect to="/photos" />;
+//   };
 
   return (
     <div className='singlePhoto'>

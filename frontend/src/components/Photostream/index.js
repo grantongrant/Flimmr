@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { getAllImages } from '../../store/images';
 import PhotoDetail from '../PhotoDetail';
+import PhotoInputForm from '../PhotoInputForm';
 import SinglePhoto from "../SinglePhoto";
 import './Photostream.css'
 
@@ -12,7 +13,7 @@ const ImageList = () => {
 
     const imagesObject = useSelector((state) => state.image)
     const images = Object.values(imagesObject);
-    console.log(images)
+    // console.log(images)
 
 
     useEffect(() => {
@@ -32,11 +33,13 @@ const ImageList = () => {
             </main>
             </div>
 
-            <Switch>
-                <Route path='/photos/:id'>
+
+                <Route path='photos/:id'>
                     <SinglePhoto images={images} />
                 </Route>
-            </Switch>
+                <Route path='/upload'>
+                    <PhotoInputForm />
+                </Route>
         </div>
     )
 }

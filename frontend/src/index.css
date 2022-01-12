@@ -169,7 +169,7 @@ body {
     flex-direction: row;
 }
 
-.signup-form-page, .login-form-page {
+.signup-form-page, .login-form-page, .upload-page {
     background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1641762893/Flimmr/damir-spanic-DRzpEt8deC4-unsplash_d0ywwq.jpg);
     display: flex;
     align-items: center;
@@ -182,7 +182,7 @@ body {
     background-size: cover;
 }
 
-.signup-form-container, .login-form-container {
+.signup-form-container, .login-form-container, .upload-container {
     justify-content: center;
     align-items: center;
     display: flex;
@@ -207,7 +207,7 @@ body {
     align-items: center;
 }
 
-.login-form-container form {
+.login-form-container form, .upload-container form {
     width: 354px;
     height: 428px;
     position: relative;
@@ -220,7 +220,7 @@ body {
     align-items: center;
 }
 
-input {
+input, textarea {
     padding: 16px;
     margin: 10px;
     height: 55px;
@@ -232,7 +232,7 @@ input {
     background-color: transparent;
 }
 
-#signup-submit-button, #login-submit-button, .demo-button {
+#signup-submit-button, #login-submit-button, .demo-button, #upload-submit-button {
     color: white;
     background-color: #128fdc;
     transition: color .15c ease-in-out;
@@ -275,7 +275,7 @@ form h1 {
     color: #006dac;
 }
 
-.photo-page{
+/* .photo-page{
     display: flex;
     align-items: center;
     min-height: 800px;
@@ -290,4 +290,4 @@ main .photo div img {
     flex-direction: row;
     height: 300px;
     width: auto;
-}
+} */
