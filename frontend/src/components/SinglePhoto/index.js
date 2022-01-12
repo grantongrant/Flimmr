@@ -20,11 +20,11 @@ const SinglePhoto = ({ images }) => {
   const singlePhoto = images.find((image) => image.id === +id);
   console.log('singlePhoto', singlePhoto);
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     e.preventDefault();
-    dispatch(imageActions.deleteImage(singlePhoto));
-    history.push("/photos");
+    await dispatch(imageActions.deleteImage(singlePhoto)).then(history.push("/photos"))
   };
+
 
   const handleEdit = (e) => {
     e.preventDefault();

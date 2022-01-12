@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as imageActions from '../../store/images';
 import { Redirect } from 'react-router-dom';
-import { Route, Switch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const PhotoEditForm = ({ singlePhoto }) => {
     const [userId, setUserId] = useState(singlePhoto.userId);
@@ -13,6 +13,7 @@ const PhotoEditForm = ({ singlePhoto }) => {
     const updateDescription = (e) => setDescription(e.target.value);
     const updateImageUrl = (e) => setImageUrl(e.target.value);
 
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const handleSubmit =  async (e) => {
@@ -24,13 +25,12 @@ const PhotoEditForm = ({ singlePhoto }) => {
         description
       };
 
-      dispatch(imageActions.updateImage(updatedPhoto));
-      return <Redirect to="/photos" />;
+      await dispatch(imageActions.updateImage(updatedPhoto)).then(history.push("/photos"))
     };
 
-    useEffect(() => {
-      dispatch(imageActions.getAllImages());
-  }, [handleSubmit, dispatch]);
+//     useEffect(() => {
+//       dispatch(imageActions.getAllImages());
+//   }, [handleSubmit, dispatch]);
 
     return (
       <div className='editBox'>

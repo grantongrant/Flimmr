@@ -31,7 +31,7 @@ const ImageList = () => {
                 ))}
             </main>
             </div>
-            
+
             <Switch>
                 <Route path='/photos/:id'>
                     <SinglePhoto images={images} />

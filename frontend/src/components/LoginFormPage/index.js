@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 
 import './LoginForm.css';
 
@@ -39,31 +39,39 @@ function LoginFormPage() {
   )
 
   return (
+    <div className="login-form-page">
+    <div className="login-form-container">
     <form onSubmit={handleSubmit}>
+    <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"}/></div>
+    <h1>Log in to flimmr</h1>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
-        Username or Email
         <input
           type="text"
+          placeholder="Username or Email address"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
       </label>
       <label>
-        Password
         <input
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button id="login-submit-button" type="submit">Log In</button>
       {demoLogin()}
+      <p className="login-signup-link">Not a Flimmr member?
+      <NavLink id="login-signup-link-link"to="/signup"> Sign up here.</NavLink></p>
     </form>
+    </div>
+    </div>
   );
 }
 

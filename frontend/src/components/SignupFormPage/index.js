@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
 import '../../../src/index.css';
@@ -87,6 +87,8 @@ function SignupFormPage() {
       <label>
         <button id="signup-submit-button" type="submit">Sign Up</button>
       </label>
+      <p className="signup-login-link">Already a Flimmr member?
+      <NavLink id="signup-login-link-link"to="/login"> Log in here.</NavLink></p>
     </form>
     </div>
     </div>
