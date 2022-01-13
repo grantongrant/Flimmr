@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 // import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './PhotoInputForm.css';
 import { useHistory, NavLink } from "react-router-dom";
 // import { getAllImages } from '../../store/images';
@@ -37,14 +37,14 @@ const PhotoInputForm = () => {
     //     reset();
     // }
     await dispatch(imageActions.createImage(newPhoto)).then(() => history.push("/photos"));
-    reset();
+    // reset();
     };
 
-  const reset = () => {
-    setUserId(1);
-    setImageUrl('');
-    setDescription('');
-  };
+//   const reset = () => {
+//     setUserId(1);
+//     setImageUrl('');
+//     setDescription('');
+//   };
 
 //   useEffect(() => {
 //     dispatch(getAllImages());

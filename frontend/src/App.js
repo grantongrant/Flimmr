@@ -9,6 +9,7 @@ import SplashPage from "./components/SplashPage";
 import Photostream from "./components/Photostream";
 import PhotoInputForm from "./components/PhotoInputForm";
 import SinglePhoto from "./components/SinglePhoto";
+import PhotoEditForm from "./components/PhotoEditForm";
 
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route exact path="/photos/:id">
             <SinglePhoto />
+          </Route>
+          <Route exact path="photos/:id/edit">
+              <PhotoEditForm />
           </Route>
           <Route>
             404: Not Found

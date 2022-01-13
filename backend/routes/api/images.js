@@ -27,4 +27,19 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     return res.json(image);
   }));
 
+router.put('/:id', asyncHandler(async (req, res) => {
+    console.log(req.body)
+    const id = parseInt(req.params.id, 10);
+    const image = await Image.findByPk(id);
+    console.log(image);
+    await image.update({
+      id: req.body.photo.id,
+      userId: req.body.photo.userId,
+      imageUrl: req.body.photo.imageUrl,
+      description: req.body.photo.description
+    });
+    await image.save();
+    return res.json(image);
+}));
+
 module.exports = router;
