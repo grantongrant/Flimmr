@@ -26,9 +26,9 @@ const SplashPage = () => {
                     {/* </ul> */}
                 </div>
                 <div className="about-footer">
-                        <li>GrantRussell+Flimmr. Connecting people to Norway through photography.</li>
-                        <li><a href="https://github.com/grantongrant">Github</a></li>
-                        <li><a href="www.linkedin.com/in/grant-russell-625bbb228">LinkedIn</a></li>
+                        <li>GrantRussell + Flimmr. Connecting people to Norway through photography.</li>
+                        <li><a href="https://github.com/grantongrant" target="_blank"><img id="github-logo" src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1642108288/Flimmr/github-png-icon_gxrxey.png"}/></a></li>
+                        <li><a href="https://linkedin.com/in/grant-russell-625bbb228" target="_blank"><img id="linkedin-logo" src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1642108435/Flimmr/linkedin-icon-png_c47nla.png"}/></a></li>
 
                 </div>
                     {/* <ul className="grant-info">
