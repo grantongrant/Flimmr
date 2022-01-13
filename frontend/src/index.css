@@ -125,7 +125,25 @@ body {
 .profile-dropdown {
     position: absolute;
     margin-top: 60px;
+    background-color: white;
+    justify-content: center;
 }
+
+.profile-dropdown li {
+    padding: 3px;
+}
+
+#profile-logout-button {
+    width: 100%;
+    color: white;
+    background-color: #128fdc;
+    border-radius: 6px;
+    border:none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* .splash-inspiration{
     opacity: 1!important;
@@ -194,14 +212,38 @@ body {
     color: hsla(0,0%,100%,.6);
     position: absolute;
     bottom: 0;
+    left: 0;
     line-height: 1.2em;
     text-align: center;
-    height: 68px;
+    padding-top: 10px;
+    height: 80px;
     width: 100%;
     display: flex;
-    margin: 0 24px!important;
     justify-content: space-around;
     flex-direction: row;
+    font-size: 14px;
+    letter-spacing: .5px;
+}
+
+
+.about-footer {
+    background-color: black;
+    color: hsla(0,0%,100%,.6);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    line-height: 1.2em;
+    text-align: center;
+    padding-top: 10px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    text-decoration: none;
 }
 
 .signup-form-page, .login-form-page, .upload-page {

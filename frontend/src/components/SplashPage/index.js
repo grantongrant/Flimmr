@@ -14,7 +14,7 @@ const SplashPage = () => {
                     </div>
                 </div>
                 <div className="splash-footer">
-                    <ul className="footer-technologies"></ul>
+                    {/* <ul className="footer-technologies"> */}
                         <li>React</li>
                         <li>Redux</li>
                         <li>Javascript</li>
@@ -24,6 +24,13 @@ const SplashPage = () => {
                         <li>CSS</li>
                         <li>JSON API</li>
                         <li>Git</li>
+                    {/* </ul> */}
+                </div>
+                <div className="about-footer">
+                        <li>GrantRussell+flimmer. Connecting people to Norway through photography.</li>
+                        <li><a href="https://github.com/grantongrant">Github</a></li>
+                        <li><a href="www.linkedin.com/in/grant-russell-625bbb228">LinkedIn</a></li>
+
                 </div>
                     {/* <ul className="grant-info">
                         <li>GrantRussell+flimmr. Connecting people through photography.</li>
