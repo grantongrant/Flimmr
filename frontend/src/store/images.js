@@ -62,7 +62,7 @@ export const getAllImages = () => async (dispatch) => {
       }),
     });
     const data = await response.json();
-    dispatch(editImage(data.photo));
+    dispatch(addImage(data.photo));
     // return response;
 };
 
@@ -76,7 +76,7 @@ export const updateImage = (photo) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(addImage(data.photo));
-        return data;
+        // return data;
       }
     }
 
@@ -95,25 +95,7 @@ const imageReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_IMAGES:
-            // newState = {...state}
-            // newState.images = action.images.reduce((images, image) => {
-            //     images[image.id] = image
-            //     return images;
-            // }, {})
             return {...action.images};
-            // newState = Object.assign({}, state);
-            // newState.user = action.payload;
-            // return newState;
-        // case ADD_IMAGE:
-        //     if (!state[action.image.id]) {
-        //       newState = {...state, ...action.image}
-        //     } else {
-        //       newState = {...state, [action.image.id]: {
-        //           ...action.image,
-        //         }
-        //         }
-        //     };
-        //     return newState;
         case ADD_IMAGE:
             newState = {...state, ...action.image}
             return newState;

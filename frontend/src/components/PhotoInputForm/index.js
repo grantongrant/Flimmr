@@ -80,8 +80,8 @@ const PhotoInputForm = () => {
           rows='3'
         ></textarea>
         <button id="upload-submit-button" type='submit'>Submit</button>
-        <p className="login-signup-link">Not a Flimmr member?
-        <NavLink id="login-signup-link-link"to="/signup"> Sign up here.</NavLink></p>
+        <p className="login-signup-link">Not Ready?
+      <NavLink id="login-signup-link-link"to="/photos"> Back to Photostream.</NavLink></p>
       </form>
     </div>
     </div>
