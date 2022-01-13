@@ -30,10 +30,10 @@ const SinglePhoto = () => {
     <div className="single-photo-page">
         <div className='single-photo-container'>
             <NavLink to="/photos">
-              <i class="arrow left"></i>
+              <i className="arrow left"></i>
                Back to photostream</NavLink>
             <div className="single-photo-container-container">
-            <img src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
+              <img className="single-photo-page-photo" src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
             </div>
             <button id="edit-photo-button" onClick={openCloseMenu}>
                 <i className="fas fa-camera-retro" />
