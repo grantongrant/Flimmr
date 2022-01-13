@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_IMAGES = 'images/loadImages';
 const ADD_IMAGE = 'images/addImage';
 const REMOVE_IMAGE = 'images/removeImage';
+const UPDATE_IMAGE ='images/updateImage';
 
 export const loadImages = (images) => {
     return {
@@ -14,6 +15,13 @@ export const loadImages = (images) => {
 export const addImage = (image) => {
     return {
         type: ADD_IMAGE,
+        image
+    };
+};
+
+export const editImage = (image) => {
+    return {
+        type: UPDATE_IMAGE,
         image
     };
 };
@@ -54,26 +62,21 @@ export const getAllImages = () => async (dispatch) => {
       }),
     });
     const data = await response.json();
-    dispatch(addImage(data.photo));
+    dispatch(editImage(data.photo));
     // return response;
 };
 
 export const updateImage = (photo) => async (dispatch) => {
-    const { userId, imageUrl, description } = photo;
     const response = await csrfFetch(`/api/images/${photo.id}`, {
       method: 'PUT',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        userId,
-        imageUrl,
-        description,
-      }),
+      body: JSON.stringify({photo}),
     })
 
     if (response.ok) {
         const data = await response.json();
         dispatch(addImage(data.photo));
-        // return data;
+        return data;
       }
     }
 
@@ -101,12 +104,23 @@ const imageReducer = (state = initialState, action) => {
             // newState = Object.assign({}, state);
             // newState.user = action.payload;
             // return newState;
+        // case ADD_IMAGE:
+        //     if (!state[action.image.id]) {
+        //       newState = {...state, ...action.image}
+        //     } else {
+        //       newState = {...state, [action.image.id]: {
+        //           ...action.image,
+        //         }
+        //         }
+        //     };
+        //     return newState;
         case ADD_IMAGE:
-            if (!state[action.image.id]) {
-              newState = {...state, ...action.image}
-            } else {
-              newState = {...state, [action.image.id]: action.image}
-            }
+            newState = {...state, ...action.image}
+            return newState;
+        case UPDATE_IMAGE:
+            newState = {...state, [action.image.id]: {
+                ...action.image,
+            }}
             return newState;
         case REMOVE_IMAGE:
             newState = {...state}

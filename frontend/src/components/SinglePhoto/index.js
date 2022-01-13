@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as imageActions from '../../store/images'
 import { useDispatch, useSelector } from 'react-redux';

@@ -5,8 +5,8 @@ import { useHistory } from "react-router-dom";
 import React from 'react';
 
 const PhotoEditForm = ({ singlePhoto }) => {
-    const id = singlePhoto.id;
-    const userId = useState(singlePhoto.userId);
+    const id = parseInt(singlePhoto.id, 10);
+    const userId = (parseInt(singlePhoto.userId, 10));
     const [description, setDescription] = useState(singlePhoto.description);
     const [imageUrl, setImageUrl] = useState(singlePhoto.imageUrl);
 
@@ -26,17 +26,15 @@ const PhotoEditForm = ({ singlePhoto }) => {
         description
       };
 
-      await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push(`/photos/${singlePhoto.id}`))
-    };
+      await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push('/photos'))
 
-//     useEffect(() => {
-//       dispatch(imageActions.getAllImages());
-//   }, [handleSubmit, dispatch]);
+    };
 
     return (
       <div className='editBox'>
         <h1>Edit Photo</h1>
         <form onSubmit={handleSubmit}>
+          <label> Image URL
           <input
             type='text'
             placeholder={imageUrl}
@@ -44,6 +42,8 @@ const PhotoEditForm = ({ singlePhoto }) => {
             onChange={updateImageUrl}
             name='imageUrl'
           />
+          </label>
+          <label> Description
           <textarea
             value={description}
             onChange={updateDescription}
@@ -51,6 +51,7 @@ const PhotoEditForm = ({ singlePhoto }) => {
             placeholder={description}
             rows='3'
           ></textarea>
+          </label> 
           <button type='submit'>Submit</button>
         </form>
       </div>
