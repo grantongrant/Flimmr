@@ -57,7 +57,7 @@ const PhotoInputForm = () => {
     <div className="upload-page">
     <div className='upload-container'>
       <form onSubmit={handleSubmit}>
-      <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"}/></div>
+      <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"} alt="signup background"/></div>
         <h1>Upload Photo</h1>
         {/* <input
           type='number'

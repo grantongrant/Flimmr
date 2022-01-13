@@ -69,6 +69,26 @@ module.exports = {
       imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642112525/Flimmr/agent-j-szMWVPuPzJI-unsplash_bn9oti.jpg",
       description: "Nordnes, Bergen, Norwegen by Agent J",
      },
+     {
+      userId: 3,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642113132/Flimmr/christoffer-engstrom-en0CrvuW6Zc-unsplash_ovizfu.jpg",
+      description: "Contemporary architecture in Oslo, Norway by Christoffer Engström",
+     },
+     {
+      userId: 3,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642113132/Flimmr/tobias-tullius-rit9JuAXOhI-unsplash_vphpzq.jpg",
+      description: "The church in Lærdal, Norway by Tobias Tullius",
+     },
+     {
+      userId: 3,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642113130/Flimmr/giorgio-grani-yFh7EFPBnXA-unsplash_n6yekr.jpg",
+      description: "The Norwegian National Opera & Ballet, Oslo, Norway By Giorgio Grani",
+     },
+     {
+      userId: 3,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642113128/Flimmr/akira-hojo-cI-Ctf3PRPs-unsplash_bhykdl.jpg",
+      description: "She lies in Oslo, Norway by Akira Hojo",
+     },
   ], {});
   },
 

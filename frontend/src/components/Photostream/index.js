@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, NavLink } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { getAllImages } from '../../store/images';
 import PhotoDetail from '../PhotoDetail';
 import PhotoInputForm from '../PhotoInputForm';
