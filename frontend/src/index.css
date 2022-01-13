@@ -267,7 +267,7 @@ input, textarea {
     background-color: transparent;
 }
 
-#signup-submit-button, #login-submit-button, .demo-button, #upload-submit-button {
+#signup-submit-button, #login-submit-button, .demo-button, #upload-submit-button, .edit-submit-button {
     color: white;
     background-color: #128fdc;
     transition: color .15c ease-in-out;
@@ -485,7 +485,7 @@ main .photo div img {
     position: absolute;
     margin-top: 600px;
     display: flex;
-    background-color: purple;
+    background-color: #f3f5f6;
     width: 100%;
 }
 
@@ -506,3 +506,27 @@ main .photo div img {
       position: absolute;
       top: 700px;
   }
+
+  .photo-avatar-container {
+    width: 60px;
+    height: 60px;
+    background-color: #F02427;
+    position: absolute;
+    display: flex;
+    vertical-align: bottom;
+    border-radius: 100%;
+    left: 40px;
+    bottom: 20px;
+    top: 20px;
+}
+
+.photo-description-text {
+    position: absolute;
+    left: 120px;
+}
+
+.editBox {
+    position: absolute;
+    left: 120px;
+    width: 400px;
+}

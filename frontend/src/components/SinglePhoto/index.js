@@ -40,7 +40,7 @@ const SinglePhoto = () => {
             </button>
         </div>
         <div className="photo-description">
-            <div>hi</div>
+            <div className="photo-avatar-container"></div>
             <div className="photo-description-text">
                 <h2>Hei, {sessionUser.name}</h2>
                 <p>{singlePhoto.description}</p>
@@ -49,7 +49,6 @@ const SinglePhoto = () => {
         {showMenu && (
             <div className="photo-edit-delete-form">
                 <PhotoEditForm singlePhoto={singlePhoto}/>
-                <button onClick={handleDelete}>Delete</button>
             </div>
         )}
     </div>

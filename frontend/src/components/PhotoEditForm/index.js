@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as imageActions from '../../store/images';
 import { useHistory } from "react-router-dom";
 import React from 'react';
+import "../../../src/index.css"
 
 const PhotoEditForm = ({ singlePhoto }) => {
     const id = parseInt(singlePhoto.id, 10);
@@ -15,6 +16,11 @@ const PhotoEditForm = ({ singlePhoto }) => {
 
     const history = useHistory();
     const dispatch = useDispatch();
+
+    const handleDelete = async (e) => {
+      e.preventDefault();
+      await dispatch(imageActions.deleteImage(singlePhoto)).then(() => history.push("/photos"))
+    };
 
     const handleSubmit =  async (e) => {
       e.preventDefault();
@@ -51,8 +57,9 @@ const PhotoEditForm = ({ singlePhoto }) => {
             placeholder={description}
             rows='3'
           ></textarea>
-          </label> 
-          <button type='submit'>Submit</button>
+          </label>
+          <button className="edit-submit-button" type='submit'>Submit</button>
+          <button className="edit-submit-button" onClick={handleDelete}>Delete</button>
         </form>
       </div>
     );
