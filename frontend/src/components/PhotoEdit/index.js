@@ -7,9 +7,9 @@ const PhotoEdit = ({ singlePhoto }) => {
     const { id } = singlePhoto
   return (
     <div>
-        <div>
+        <>
             <NavLink to={`/photos/${id}/edit`}>Edit</NavLink>
-        </div>
+        <>
 
         <Switch>
             <Route path="photos/:id/edit">

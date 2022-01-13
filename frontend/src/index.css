@@ -64,10 +64,33 @@ body {
 
 }
 
-#log-in-button #sign-up-button button {
-    height: 32px;
-    line-height: 32px;
+.logged-in-nav {
+    display: flex;
+    flex-direction: row;
 }
+
+#log-in-button #sign-up-button button {
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    margin: 10px;
+}
+
+#upload-button button img {
+    width: 50px;
+    margin-right: 20px
+}
+
+#logged-in-menu {
+    border-radius: 100%;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    box-shadow: none;
+    border: none;
+}
+
 
 #log-in-button {
     background-color: transparent;
@@ -90,6 +113,18 @@ body {
     border-radius: 6px;
     border:none;
     cursor: pointer;
+}
+
+#upload-button button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: flex;
+}
+
+.profile-dropdown {
+    position: absolute;
+    margin-top: 60px;
 }
 
 /* .splash-inspiration{
@@ -292,11 +327,11 @@ main .photo div img {
     width: auto;
 } */
 
-.photo div a img {
+/* .photo div a img {
     height: 300px;
-}
+} */
 
-.photo-page {
+/* .photo-page {
     background-color: #f3f5f6;
     display: flex;
     align-items: center;
@@ -307,4 +342,97 @@ main .photo div img {
     padding: 0 60px;
     background-repeat: no-repeat;
     background-size: cover;
+} */
+
+
+.photo-info-container {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1641762893/Flimmr/dessy-dimcheva-zeMOWL-9mhc-unsplash_ecttle.jpg);
+    height: 250px;
+    z-index: 1;
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+
+.avatar-container {
+    width: 100px;
+    height: 100px;
+    background-color: #F02427;
+    position: relative;
+    display: flex;
+    vertical-align: bottom;
+    border-radius: 100%;
+    left: 120px;
+    bottom: 20px;
+    top: 135px;
+}
+
+.info-container {
+    position: relative;
+    margin-bottom: 20px;
+    left: 130px;
+    top: 135px;
+}
+
+.info-container h1 {
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 3px;
+}
+
+.info-container p {
+    line-height: 18px;
+    font-weight: 300;
+    color: white;
+    font-weight: 16px;
+    bottom: 10px;
+    margin-top: 0px;
+}
+
+.photo-stream-container {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.single-photo {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.single-photo img {
+    width: 300px;
+}
+
+/* .photo-gallery-photo a img {
+    margin-top: 230px;
+    display: inline-grid;
+    height: 80%;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    align-items: center;
+    align-content:center;
+    column-gap: 10px;
+    row-gap: 20px;
+}
+
+.photo-gallery-photo img {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    height: 400px;
+} */
+
+/* .photo-gallery-photo a img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    justify-content: center;
+}  */
