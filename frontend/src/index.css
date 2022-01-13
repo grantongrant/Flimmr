@@ -10,12 +10,12 @@
 }
 
 
-div {
+/* div {
     margin: 0;
     padding: 0;
     border: 0;
     display: block;
-}
+} */
 
 
 body {
@@ -125,7 +125,25 @@ body {
 .profile-dropdown {
     position: absolute;
     margin-top: 60px;
+    background-color: white;
+    justify-content: center;
 }
+
+.profile-dropdown li {
+    padding: 3px;
+}
+
+#profile-logout-button {
+    width: 100%;
+    color: white;
+    background-color: #128fdc;
+    border-radius: 6px;
+    border:none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* .splash-inspiration{
     opacity: 1!important;
@@ -194,14 +212,38 @@ body {
     color: hsla(0,0%,100%,.6);
     position: absolute;
     bottom: 0;
+    left: 0;
     line-height: 1.2em;
     text-align: center;
-    height: 68px;
+    padding-top: 10px;
+    height: 80px;
     width: 100%;
     display: flex;
-    margin: 0 24px!important;
     justify-content: space-around;
     flex-direction: row;
+    font-size: 14px;
+    letter-spacing: .5px;
+}
+
+
+.about-footer {
+    background-color: black;
+    color: hsla(0,0%,100%,.6);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    line-height: 1.2em;
+    text-align: center;
+    padding-top: 10px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    text-decoration: none;
 }
 
 .signup-form-page, .login-form-page, .upload-page {
@@ -396,18 +438,25 @@ main .photo div img {
     margin-top: 0px;
 }
 
-.photo-stream-container {
+
+
+.photo-stream-content {
+    position: absolute;
+    top: 250px;
+    width: 100%;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: wrap;
+    justify-content: center;
 }
 
-.single-photo {
+/* .single-photo {
     display: flex;
     flex-flow: column wrap;
-}
+} */
 
 .single-photo img {
     width: 300px;
+    padding: 10px;
 }
 
 /* .photo-gallery-photo a img {
@@ -453,6 +502,11 @@ main .photo div img {
     height: 600px;
 }
 
+.single-photo-container-container {
+    display: flex;
+    justify-content: center;
+}
+
 .single-photo-container a {
     left: 50px;
     top: 75px;
@@ -462,6 +516,8 @@ main .photo div img {
     font-size: 13px;
     display: flex;
 }
+
+
 
 .single-photo-container img {
     max-width: 80%;

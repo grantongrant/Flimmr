@@ -30,7 +30,8 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout()).then(() => history.push('/'))
+    dispatch(sessionActions.logout());
+    history.push("/")
   };
 
   return (
@@ -49,7 +50,7 @@ function ProfileButton({ user }) {
           <li>{user.name}</li>
           <li>{user.email}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button id="profile-logout-button" onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}
