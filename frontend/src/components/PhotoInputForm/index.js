@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { useEffect } from 'react';
 import React, { useState } from 'react';
 import './PhotoInputForm.css';
@@ -15,7 +15,10 @@ import * as imageActions from "../../store/images";
 // dispatch the new article to the Redux store
 
 const PhotoInputForm = () => {
-  const [userId, setUserId] = useState(1);
+
+  const sessionUser = useSelector(state => state.session.user);
+  const userId = sessionUser.id;
+  console.log(userId);
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
 
