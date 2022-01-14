@@ -28,7 +28,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     return res.json(image);
   }));
 
-router.put('/:id', asyncHandler(async (req, res) => {
+router.put('/:id', validateCreate, asyncHandler(async (req, res) => {
     console.log(req.body)
     const id = parseInt(req.params.id, 10);
     const image = await Image.findByPk(id);
