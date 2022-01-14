@@ -30,8 +30,10 @@ const PhotoInputForm = () => {
 
     // await dispatch(imageActions.createImage(newPhoto)).then(() => history.push("/photos"));
   await dispatch(imageActions.createImage(newPhoto))
-  .then(alert("Successfully added!"))
-  .then(() => history.push("/photos"))
+  .then(() => {
+    alert("Successfully added!")
+    history.push("/photos")
+  })
   .catch (async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors)
