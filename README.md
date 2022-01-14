@@ -6,12 +6,12 @@
 
 ## Technologies
 
-Frontend: Javascript React/Reduc, HTML5, CSS
-Backend: JSON API
-Cloud Image Hosting: Cloudinary
-Database: PostgreSQL
-Hosting: Heroku
-Control System: GIT
+- Frontend: Javascript React/Reduc, HTML5, CSS
+- Backend: JSON API
+- Cloud Image Hosting: Cloudinary
+- Database: PostgreSQL
+- Hosting: Heroku
+- Control System: GIT
 
 ## Features
 
