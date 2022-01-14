@@ -528,16 +528,27 @@ form h1 {
     bottom: 15px;
 }
 
+.name-and-edit {
+    display: inline-flex;
+}
+
 #edit-photo-button {
- position: absolute;
+ /* position: absolute;
  display: flex;
- left: 350px;
- top: 625px;
+ right: 200px;
+ top: 625px; */
  cursor: pointer;
  height: 25px;
  color: gray;
  background-color: transparent;
  border: none;
+ font-size: 20px;
+ margin-top: 20px;
+ margin-left: 10px;
+}
+
+#edit-photo-button:hover {
+  color: #00205B;
 }
 
 .photo-description {
@@ -582,6 +593,8 @@ form h1 {
 .photo-description-text {
     position: absolute;
     left: 120px;
+    display: flex;
+    flex-direction: column;
 }
 
 .editBox {

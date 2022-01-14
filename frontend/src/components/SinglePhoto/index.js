@@ -32,16 +32,19 @@ const SinglePhoto = () => {
             </div>
 
               <img className="single-photo-page-photo" src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
-              <button id="edit-photo-button" onClick={openCloseMenu}>
-              <i class="fas fa-pen"></i>
-              </button>
+
 
         </div>
         <div className="photo-description">
             <div className="photo-avatar-container"></div>
               <img className="heart-logo-photo-page" src="https://res.cloudinary.com/ddxtopm0l/image/upload/v1642106208/Flimmr/norway-heart-icon_ihdvtj.png" alt="norway-heart"/>
             <div className="photo-description-text">
+                <div className="name-and-edit">
                 <h2>Hei, {sessionUser.name}</h2>
+                <button id="edit-photo-button" onClick={openCloseMenu}>
+                  <i class="fas fa-pen"></i>
+                </button>
+                </div>
                 <p>{singlePhoto.description}</p>
             </div>
         </div>
