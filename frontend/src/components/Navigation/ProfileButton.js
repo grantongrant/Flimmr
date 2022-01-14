@@ -47,6 +47,8 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
+          <p>Hei! Now you know how to </p>
+          <p>greet people in Norwegian.</p>
           <li>{user.name}</li>
           <li>{user.email}</li>
           <li>

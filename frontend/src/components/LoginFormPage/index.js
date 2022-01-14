@@ -41,7 +41,7 @@ function LoginFormPage() {
     <div className="login-form-page">
     <div className="login-form-container">
     <form onSubmit={handleSubmit}>
-    <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"}/></div>
+    <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"} alt=""/></div>
     <h1>Log in to flimmr</h1>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}

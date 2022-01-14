@@ -43,9 +43,14 @@ body {
 .global-logo {
     margin-left: 20px;
 }
+
 #logo-png {
     width: 98px;
     margin-bottom: 2px;
+}
+
+#logo-png:hover {
+    opacity: .75;
 }
 
 #github-logo, #linkedin-logo {
@@ -121,6 +126,10 @@ body {
     cursor: pointer;
 }
 
+#sign-up-button:hover {
+    color: gray;
+}
+
 #upload-button button {
     background: transparent;
     border: none;
@@ -130,9 +139,33 @@ body {
 
 .profile-dropdown {
     position: absolute;
-    margin-top: 60px;
+    margin-top: 64px;
+    right: 20px;
     background-color: white;
     justify-content: center;
+    font-size: 12px;
+    text-align: right;
+    padding:12px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,.25);
+}
+
+.profile-dropdown:after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 14px solid white;
+}
+
+.profile-dropdown p {
+    line-height: 2px;
+    font-weight: 500;
 }
 
 .profile-dropdown li {
@@ -163,6 +196,7 @@ body {
     padding: 0 60px;
     background-repeat: no-repeat;
     background-size: cover;
+    animation: slide 20s linear infinite;
 }
 
 .inspiration-copy {
@@ -202,6 +236,10 @@ body {
     cursor: pointer;
     width: 200px;
     margin: 0 auto;
+}
+
+.inspiration-copy button:hover {
+    color: gray;
 }
 
 .splash-footer {
@@ -492,8 +530,14 @@ form h1 {
 
 #edit-photo-button {
  position: absolute;
- left: 200px;
- bottom: 10px;
+ display: flex;
+ left: 350px;
+ top: 625px;
+ cursor: pointer;
+ height: 25px;
+ color: gray;
+ background-color: transparent;
+ border: none;
 }
 
 .photo-description {
@@ -579,4 +623,31 @@ form h1 {
     height: 40px;
     left: 46px;
     top: 32px;
+}
+
+@keyframes slide {
+    0% {
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/1_swxnmr.jpg);
+    }
+    20% {
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/1_swxnmr.jpg);
+    }
+    25% {
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg);
+    }
+    45% {
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg);
+    }
+    50% {
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg);
+    }
+    70% {
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg);
+    }
+    75% {
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/2_xzpavf.jpg);
+    }
+    95% {
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/2_xzpavf.jpg);
+    }
 }
