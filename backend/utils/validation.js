@@ -20,10 +20,19 @@ const handleValidationErrors = (req, _res, next) => {
   next();
 };
 
+const updateImageUrl = check('photo.imageUrl')
+  .notEmpty()
+  .isURL()
+  .withMessage('URL for image must be a valid URL.')
+
 const imageUrl = check('imageUrl')
   .notEmpty()
   .isURL()
   .withMessage('URL for image must be a valid URL.');
+
+const updateDescription = check('photo.description')
+  .notEmpty()
+  .withMessage('Description must contain text.');
 
 const description = check('description')
   .notEmpty()
@@ -35,7 +44,14 @@ const validateCreate = [
   handleValidationErrors,
 ];
 
+const validateUpdate = [
+  updateImageUrl,
+  updateDescription,
+  handleValidationErrors,
+];
+
 module.exports = {
   handleValidationErrors,
   validateCreate,
+  validateUpdate
 };

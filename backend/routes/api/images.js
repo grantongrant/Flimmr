@@ -2,7 +2,7 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
 const { Image } = require('../../db/models');
-const { validateCreate } = require('../../utils/validation');
+const { validateCreate, validateUpdate } = require('../../utils/validation');
 
 
 router.get('', asyncHandler(async (req, res) => {
@@ -28,7 +28,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     return res.json(image);
   }));
 
-router.put('/:id', validateCreate, asyncHandler(async (req, res) => {
+router.put('/:id', validateUpdate, asyncHandler(async (req, res) => {
     console.log(req.body)
     const id = parseInt(req.params.id, 10);
     const image = await Image.findByPk(id);

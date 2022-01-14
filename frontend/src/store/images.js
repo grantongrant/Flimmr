@@ -67,6 +67,7 @@ export const getAllImages = () => async (dispatch) => {
 };
 
 export const updateImage = (photo) => async (dispatch) => {
+    console.log(photo)
     const response = await csrfFetch(`/api/images/${photo.id}`, {
       method: 'PUT',
       headers: {'Content-Type':'application/json'},

@@ -5,7 +5,10 @@ import { useHistory } from "react-router-dom";
 import "../../../src/index.css"
 
 const PhotoEditForm = ({ singlePhoto }) => {
+
+    console.log(singlePhoto)
     const id = parseInt(singlePhoto.id, 10);
+    console.log(id)
     const userId = (parseInt(singlePhoto.userId, 10));
     const [description, setDescription] = useState(singlePhoto.description);
     const [imageUrl, setImageUrl] = useState(singlePhoto.imageUrl);
@@ -33,8 +36,7 @@ const PhotoEditForm = ({ singlePhoto }) => {
       };
 
       // await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push('/photos'))
-      await dispatch(imageActions.createImage(updatedPhoto))
-      .then(() => history.push("/photos"))
+      await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push("/photos"))
       .catch (async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors)
