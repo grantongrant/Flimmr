@@ -41,6 +41,7 @@ const SinglePhoto = () => {
         </div>
         <div className="photo-description">
             <div className="photo-avatar-container"></div>
+              <img className="heart-logo-photo-page" src="https://res.cloudinary.com/ddxtopm0l/image/upload/v1642106208/Flimmr/norway-heart-icon_ihdvtj.png" alt="norway-heart"/>
             <div className="photo-description-text">
                 <h2>Hei, {sessionUser.name}</h2>
                 <p>{singlePhoto.description}</p>
