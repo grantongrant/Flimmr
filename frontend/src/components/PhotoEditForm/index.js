@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as imageActions from '../../store/images';
 import { useHistory } from "react-router-dom";
-import React from 'react';
 import "../../../src/index.css"
 
 const PhotoEditForm = ({ singlePhoto }) => {
+
+    console.log(singlePhoto)
     const id = parseInt(singlePhoto.id, 10);
+    console.log(id)
     const userId = (parseInt(singlePhoto.userId, 10));
     const [description, setDescription] = useState(singlePhoto.description);
     const [imageUrl, setImageUrl] = useState(singlePhoto.imageUrl);
@@ -16,6 +18,7 @@ const PhotoEditForm = ({ singlePhoto }) => {
 
     const history = useHistory();
     const dispatch = useDispatch();
+    const [errors, setErrors] = useState([]);
 
     const handleDelete = async (e) => {
       e.preventDefault();
@@ -32,13 +35,20 @@ const PhotoEditForm = ({ singlePhoto }) => {
         description
       };
 
-      await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push('/photos'))
-
+      // await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push('/photos'))
+      await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push("/photos"))
+      .catch (async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors)
+            })
     };
 
     return (
       <div className='editBox'>
         <h1>Edit Photo</h1>
+        <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
         <form onSubmit={handleSubmit}>
           <label> Image URL
           <input

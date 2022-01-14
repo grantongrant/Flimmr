@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, NavLink } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { getAllImages } from '../../store/images';
 import PhotoDetail from '../PhotoDetail';
 import PhotoInputForm from '../PhotoInputForm';
@@ -12,7 +12,10 @@ const ImageList = () => {
     const sessionUser = useSelector(state => state.session.user);
     const imagesObject = useSelector((state) => state.image)
     const images = Object.values(imagesObject);
-    // console.log(images)
+    console.log(images)
+    console.log(sessionUser.id)
+    const sessionImages = images.filter((image) => image.userId === sessionUser.id)
+    console.log(sessionImages);
 
 
     useEffect(() => {
@@ -33,7 +36,7 @@ const ImageList = () => {
                 {/* {images?.map((image) => {
                     return <img src={`${image.imageUrl}`} alt={image.description}/>
                 })} */}
-                {images?.map(({ imageUrl, id, description }) => (
+                {sessionImages?.map(({ imageUrl, id, description }) => (
                     <PhotoDetail key={id} id={id} imageUrl={imageUrl} description={description}/>
                 ))}
         </div>

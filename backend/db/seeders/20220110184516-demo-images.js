@@ -40,19 +40,54 @@ module.exports = {
       description: "Eidskog, Norway. instagram.com/foynfoyen/",
      },
      {
-      userId: 1,
+      userId: 2,
       imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1641841447/Flimmr/lachlan-gowen-jrMsv-0o0bw-unsplash_mq5t6s.jpg",
       description: "Bryggen, Bergen, Norway, Rain. by Lachlan Gowen",
      },
      {
-      userId: 1,
+      userId: 2,
       imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1641841520/Flimmr/taneli-lahtinen-e57Hpo-Qek4-unsplash_x6wx2t.jpg",
       description: "Watching the world in Senja Norway, by Taneli Lahtinen",
      },
      {
-      userId: 1,
+      userId: 2,
       imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1641841608/Flimmr/laura-cleffmann-vCPBI5uDXM8-unsplash_hspzav.jpg",
       description: "Viewpoint Snohetta, Hjerkinn, Norway, by Laura Cleffmann",
+     },
+     {
+      userId: 2,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642112527/Flimmr/michael-fousert-lE5-z4nTCTQ-unsplash_iww976.jpg",
+      description: "Row Houses in Bryggen, Bergen, Norway by Michael Fousert.",
+     },
+     {
+      userId: 2,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642112526/Flimmr/jarand-k-lokeland-3-MftKobVtg-unsplash_ovmovr.jpg",
+      description: "Aksla Viewpoint, Alesund, Norway by Jarand K. Løkeland",
+     },
+     {
+      userId: 2,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642112525/Flimmr/agent-j-szMWVPuPzJI-unsplash_bn9oti.jpg",
+      description: "Nordnes, Bergen, Norwegen by Agent J",
+     },
+     {
+      userId: 3,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642113132/Flimmr/christoffer-engstrom-en0CrvuW6Zc-unsplash_ovizfu.jpg",
+      description: "Contemporary architecture in Oslo, Norway by Christoffer Engström",
+     },
+     {
+      userId: 3,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642113132/Flimmr/tobias-tullius-rit9JuAXOhI-unsplash_vphpzq.jpg",
+      description: "The church in Lærdal, Norway by Tobias Tullius",
+     },
+     {
+      userId: 3,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642113130/Flimmr/giorgio-grani-yFh7EFPBnXA-unsplash_n6yekr.jpg",
+      description: "The Norwegian National Opera & Ballet, Oslo, Norway By Giorgio Grani",
+     },
+     {
+      userId: 3,
+      imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1642113128/Flimmr/akira-hojo-cI-Ctf3PRPs-unsplash_bhykdl.jpg",
+      description: "She lies in Oslo, Norway by Akira Hojo",
      },
   ], {});
   },
