@@ -4,6 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { Image } = require('../../db/models');
 const { validateCreate } = require('../../utils/validation');
 
+
 router.get('', asyncHandler(async (req, res) => {
   const images = await Image.findAll();
   res.json(images);

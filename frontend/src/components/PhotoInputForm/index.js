@@ -21,12 +21,15 @@ const PhotoInputForm = () => {
   console.log(userId);
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [errors, setErrors] = useState([]);
+
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
 
     const newPhoto = {
       userId,
@@ -34,24 +37,13 @@ const PhotoInputForm = () => {
       description
     };
 
-    // let createdPhoto = await dispatch(imageActions.createImage(newPhoto));
-    // if (createdPhoto) {
-    //     history.push("/photos");
-    //     reset();
-    // }
-    await dispatch(imageActions.createImage(newPhoto)).then(() => history.push("/photos"));
-    // reset();
-    };
-
-//   const reset = () => {
-//     setUserId(1);
-//     setImageUrl('');
-//     setDescription('');
-//   };
-
-//   useEffect(() => {
-//     dispatch(getAllImages());
-// }, [handleSubmit, dispatch]);
+    // await dispatch(imageActions.createImage(newPhoto)).then(() => history.push("/photos"));
+  await dispatch(imageActions.createImage(newPhoto))
+  .catch (async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors)
+        })
+};
 
   return (
     <div className="upload-page">
@@ -59,6 +51,9 @@ const PhotoInputForm = () => {
       <form onSubmit={handleSubmit}>
       <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"} alt="signup background"/></div>
         <h1>Upload Photo</h1>
+        <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
         {/* <input
           type='number'
           onChange={(e) => setUserId(parseInt(e.target.value, 10))}

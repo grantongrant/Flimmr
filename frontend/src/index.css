@@ -523,8 +523,6 @@ main .photo div img {
     display: flex;
 }
 
-
-
 .single-photo-container img {
     max-width: 80%;
     max-height: 70%;
@@ -539,8 +537,8 @@ main .photo div img {
 
 #edit-photo-button {
  position: absolute;
- right: 100px;
- bottom: 20px;
+ left: 200px;
+ bottom: 10px;
 }
 
 .photo-description {
