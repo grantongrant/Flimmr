@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory, NavLink } from 'react-router-dom';
-
 import "../../../src/index.css"
 
 function ProfileButton({ user }) {

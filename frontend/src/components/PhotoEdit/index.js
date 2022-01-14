@@ -1,5 +1,4 @@
 import { NavLink, Route, Switch } from 'react-router-dom';
-import PhotoInputForm from '../PhotoInputForm';
 import PhotoEditForm from '../PhotoEditForm';
 import React from 'react';
 

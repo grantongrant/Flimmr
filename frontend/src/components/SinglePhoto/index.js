@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import * as imageActions from '../../store/images'
 import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import PhotoEditForm from '../PhotoEditForm';
+import "../../../src/index.css";
 
 const SinglePhoto = () => {
 
@@ -21,10 +21,6 @@ const SinglePhoto = () => {
     else setShowMenu(true);
   };
 
-  // const handleDelete = async (e) => {
-  //   e.preventDefault();
-  //   await dispatch(imageActions.deleteImage(singlePhoto)).then(() => history.push("/photos"))
-  // };
 
   return (
     <div className="single-photo-page">

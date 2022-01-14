@@ -1,18 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
 import React, { useState } from 'react';
-import './PhotoInputForm.css';
 import { useHistory, NavLink } from "react-router-dom";
-// import { getAllImages } from '../../store/images';
 import * as imageActions from "../../store/images";
 
-// When only one component cares about the state, use local state, not Redux
-
-//GOALS:
-// Add an image to the redux store
-// import useDispatch
-// import action creator from store to create an image
-// dispatch the new article to the Redux store
+import "../../../src/index.css";
 
 const PhotoInputForm = () => {
 
