@@ -22,7 +22,9 @@ const PhotoEditForm = ({ singlePhoto }) => {
 
     const handleDelete = async (e) => {
       e.preventDefault();
-      await dispatch(imageActions.deleteImage(singlePhoto)).then(() => history.push("/photos"))
+      await dispatch(imageActions.deleteImage(singlePhoto))
+      .then(alert("Successfully deleted!"))
+      .then(() => history.push("/photos"))
     };
 
     const handleSubmit =  async (e) => {
@@ -36,7 +38,9 @@ const PhotoEditForm = ({ singlePhoto }) => {
       };
 
       // await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push('/photos'))
-      await dispatch(imageActions.updateImage(updatedPhoto)).then(() => history.push("/photos"))
+      await dispatch(imageActions.updateImage(updatedPhoto))
+      .then(alert("Successfully updated!"))
+      .then(() => history.push("/photos"))
       .catch (async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors)

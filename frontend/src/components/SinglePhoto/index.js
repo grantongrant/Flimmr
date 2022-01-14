@@ -29,18 +29,17 @@ const SinglePhoto = () => {
             <NavLink to="/photos">
               <i className="arrow left"></i>
                Back to photostream</NavLink>
-            <div>
-            <button id="edit-photo-button" onClick={openCloseMenu}>
-                <i className="fas fa-camera-retro" />
-              </button>
             </div>
-            </div>
-            <div className="single-photo-container-container">
+
               <img className="single-photo-page-photo" src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
-            </div>
+              <button id="edit-photo-button" onClick={openCloseMenu}>
+              <i class="fas fa-pen"></i>
+              </button>
+
         </div>
         <div className="photo-description">
             <div className="photo-avatar-container"></div>
+              <img className="heart-logo-photo-page" src="https://res.cloudinary.com/ddxtopm0l/image/upload/v1642106208/Flimmr/norway-heart-icon_ihdvtj.png" alt="norway-heart"/>
             <div className="photo-description-text">
                 <h2>Hei, {sessionUser.name}</h2>
                 <p>{singlePhoto.description}</p>

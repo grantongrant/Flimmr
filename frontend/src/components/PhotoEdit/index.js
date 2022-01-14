@@ -4,11 +4,12 @@ import React from 'react';
 
 const PhotoEdit = ({ singlePhoto }) => {
     const { id } = singlePhoto
+
   return (
     <div>
         <>
             <NavLink to={`/photos/${id}/edit`}>Edit</NavLink>
-        <>
+        </>
 
         <Switch>
             <Route path="photos/:id/edit">
