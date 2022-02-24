@@ -6,7 +6,7 @@
 
 ## Technologies
 
-- Frontend: Javascript React/Reduc, HTML5, CSS
+- Frontend: Javascript React/Redux, HTML5, CSS
 - Backend: JSON API
 - Cloud Image Hosting: Cloudinary
 - Database: PostgreSQL
