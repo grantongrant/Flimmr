@@ -19,6 +19,7 @@ app.use(morgan("dev"));
 
 // parse cookies, parse json bodies of req with 'content-type':'application/json'
 app.use(cookieParser());
+app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 
 // allow CORS in dev only because react frontend will be served from different server than express
