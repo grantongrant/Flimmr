@@ -58,11 +58,13 @@ const PhotoInputForm = () => {
         /> */}
 
         <input
-          type='text'
-          onChange={(e) => setImageUrl(e.target.value)}
+          type='file'
+          accept='.png,.jpg,.jpeg'
           value={imageUrl}
-          placeholder='Image URL'
-          name='imageUrl'
+          onChange={(e) => setImageUrl(e.target.value)}
+          // value={imageUrl}
+          // placeholder='Image URL'
+          // name='imageUrl'
         />
 
         <textarea

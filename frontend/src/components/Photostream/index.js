@@ -43,12 +43,12 @@ const ImageList = () => {
         </div>
 
 
-                <Route path='photos/:id'>
+                {/* <Route path='photos/:id'>
                     <SinglePhoto images={images} />
                 </Route>
                 <Route path='/upload'>
                     <PhotoInputForm />
-                </Route>
+                </Route> */}
         </div>
     )
 }
