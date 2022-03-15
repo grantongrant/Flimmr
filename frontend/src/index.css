@@ -827,5 +827,11 @@ background: rgb(44,44,44);
     margin-top: 0px;
     height: 42px;
     text-align: center;
+}
 
+.comment-container {
+    border: 1px solid black;
+}
+.comment-body {
+    margin: 10px;
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import "../../../src/index.css"
-import { createComment } from '../../store/comments';
+import { createComment, getAllComments} from '../../store/comments';
 
 const CommentForm = ({imageId, userId}) => {
 
@@ -23,6 +23,8 @@ const CommentForm = ({imageId, userId}) => {
         }
 
         await dispatch(createComment(newComment))
+        await dispatch(getAllComments(imageId));
+        setBody("")
     };
 
     return (
@@ -30,6 +32,7 @@ const CommentForm = ({imageId, userId}) => {
         <form onSubmit={handleSubmit}>
           <textarea
             value={body}
+            required
             onChange={updateComment}
             name='comment'
             placeholder='Add a comment'
