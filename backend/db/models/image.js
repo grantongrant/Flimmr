@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.INTEGER,
     allowNull: false
     },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     // albumId: {
     //   type: DataTypes.INTEGER,
     //   allowNull: false
@@ -22,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Image.belongsTo(models.User, {
       foreignKey: 'userId'
+    })
+    Image.hasMany(models.Comment, {
+      foreignKey: 'imageId'
     })
   };
   return Image;
