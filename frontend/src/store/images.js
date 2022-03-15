@@ -51,15 +51,15 @@ export const getAllImages = () => async (dispatch) => {
 //   }
 
   export const createImage = (newPhoto) => async (dispatch) => {
-    const { userId, imageUrl, description } = newPhoto;
+    const { userId, image } = newPhoto;
+    const formData = new FormData();
+    formData.append("userId", userId);
+    formData.append("image", image);
+   
     const response = await csrfFetch ("/api/images", {
       method: "POST",
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        userId,
-        imageUrl,
-        description,
-      }),
+      headers: {'Content-Type':'multipart/form-data'},
+      body: formData,
     });
     const data = await response.json();
     dispatch(addImage(data.photo));
@@ -67,7 +67,6 @@ export const getAllImages = () => async (dispatch) => {
 };
 
 export const updateImage = (photo) => async (dispatch) => {
-    console.log(photo)
     const response = await csrfFetch(`/api/images/${photo.id}`, {
       method: 'PUT',
       headers: {'Content-Type':'application/json'},

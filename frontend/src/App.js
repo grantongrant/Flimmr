@@ -11,7 +11,6 @@ import PhotoInputForm from "./components/PhotoInputForm";
 import SinglePhoto from "./components/SinglePhoto";
 import PhotoEditForm from "./components/PhotoEditForm";
 
-
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

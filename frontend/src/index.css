@@ -281,7 +281,7 @@ body {
     justify-content: center;
 }
 
-.signup-form-page, .login-form-page, .upload-page {
+.signup-form-page, .login-form-page {
     background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1641762893/Flimmr/damir-spanic-DRzpEt8deC4-unsplash_d0ywwq.jpg);
     display: flex;
     align-items: center;
@@ -294,7 +294,7 @@ body {
     background-size: cover;
 }
 
-.signup-form-container, .login-form-container, .upload-container {
+.signup-form-container, .login-form-container {
     justify-content: center;
     align-items: center;
     display: flex;
@@ -331,7 +331,7 @@ body {
     margin-bottom: 0px;
 }
 
-.login-form-container form, .upload-container form {
+.login-form-container form {
     width: 354px;
     height: 428px;
     position: relative;
@@ -465,18 +465,59 @@ form h1 {
     padding: 2px;
 }
 
+.photo-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
 .photo-stream-content {
     position: absolute;
     top: 250px;
-    width: 100%;
-    display: flex;
-    flex-flow: wrap;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows:300px 300px;
+    grid-gap:0px;
+    /* grid-auto-flow: dense; */
+    width: 80%;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photostream-item {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.photostream-item .photostream-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.photostream-item .photostream-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    cursor: pointer;
+}
+
+.w-1{
+    grid-column: span 1;
+}
+.w-2{
+    grid-column: span 2;
+}
+.w-3{
+    grid-column: span 3;
 }
 
 .single-photo img {
     width: 300px;
-    padding: 10px;
+    padding: 2px;
 }
 
 .single-photo-page {
@@ -643,19 +684,22 @@ form h1 {
         background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/1_swxnmr.jpg);
     }
     20% {
-        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/1_swxnmr.jpg);
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/1_swxnmr.jpg),
+        url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg);
     }
     25% {
         background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg);
     }
     45% {
-        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg);
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg),
+        url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg);
     }
     50% {
         background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg);
     }
     70% {
-        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg);
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg),
+        url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/2_xzpavf.jpg);
     }
     75% {
         background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/2_xzpavf.jpg);
@@ -663,4 +707,107 @@ form h1 {
     95% {
         background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/2_xzpavf.jpg);
     }
+}
+
+
+/* VERSION 2.0 */
+
+.upload-page {
+background: rgb(44,44,44);
+    display: flex;
+    align-items: center;
+    min-height: 800px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.upload-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-bottom: 4rem;
+    padding: 2rem;
+    width: 100%;
+    color: #212124;
+    line-height: 1.3;
+    font-size: 16px;
+}
+
+.upload-container form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#label-for-upload {
+    cursor: pointer;
+}
+
+#upload-button {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.upload-link {
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: #898989;
+}
+
+.upload-text {
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+#label-for-upload {
+    color: white;
+    background-color: #128fdc;
+    padding: 16px;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 6px;
+    border:none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    margin-top: 0px;
+    height: 42px;
+    text-align: center;
+}
+
+.upload-verification {
+    justify-self: center;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: 24px;
+    color: green;
+    height: 24px;
+}
+
+.upload-image-name {
+    color: white;
+    padding: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 6px;
+    border:none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    margin-top: 0px;
+    height: 42px;
+    text-align: center;
+
 }
