@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, NavLink } from "react-router-dom";
 import * as imageActions from "../../store/images";
 import { csrfFetch } from "../../store/csrf";
-import {AiOutlineCheckCircle} from 'react-icons/ai';
+import {BsFillCheckCircleFill} from 'react-icons/bs';
 import { getAllImages } from '../../store/images';
 
 
@@ -63,7 +63,7 @@ const PhotoInputForm = () => {
       <form onSubmit={handleSubmit}>
       {/* <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"} alt="signup background"/></div> */}
         <p className="upload-text">You can upload {16 - numOfPhotos} more photos.</p>
-        <div className="upload-verification">{image ? <AiOutlineCheckCircle/>: null}</div>
+        <div className="upload-verification">{image ? <BsFillCheckCircleFill/>: null}</div>
         <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -79,8 +79,8 @@ const PhotoInputForm = () => {
         <span>Choose photo to upload</span>
         </label> }
         <button id="upload-submit-button" type='submit'>Submit</button>
-        <p className="upload-link">Not Ready?
-      <NavLink className="upload-link"to="/photos"> Back to Photostream.</NavLink></p>
+        <p className="upload-link-a">Not Ready?
+      <NavLink className="upload-link-b"to="/photos"> Back to Photostream.</NavLink></p>
       </form>
     </div>
     </div>
