@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import PhotoEditForm from '../PhotoEditForm';
 import "../../../src/index.css";
 import {BsArrowLeftShort} from 'react-icons/bs';
+import Comments from '../Comments';
+import CommentForm from '../Comments/CommentForm';
 
 const SinglePhoto = () => {
 
@@ -36,7 +38,24 @@ const SinglePhoto = () => {
             </div>
         </div>
         <div className="photo-description">
-            <div className="photo-avatar-container"></div>
+          <div className="description-left-column">
+            <div className="top-left">
+              <div className="avatar"></div>
+              <div className="photo-info">
+                <div>{sessionUser.name}</div>
+                <div>Title</div>
+                <div>{singlePhoto.description}</div>
+              </div>
+            </div>
+            <div className="comment-list">
+              <Comments id={id}/>
+            </div>
+            <div className="add-comment-form">
+              <CommentForm imageId={id} userId={sessionUser.id}/>
+            </div>
+          </div>
+          <div className="description-right-column"></div>
+            {/* <div className="photo-avatar-container"></div>
               <img className="heart-logo-photo-page" src="https://res.cloudinary.com/ddxtopm0l/image/upload/v1642106208/Flimmr/norway-heart-icon_ihdvtj.png" alt="norway-heart"/>
             <div className="photo-description-text">
                 <div className="name-and-edit">
@@ -46,7 +65,7 @@ const SinglePhoto = () => {
                 </button>
                 </div>
                 <p>{singlePhoto.description}</p>
-            </div>
+            </div> */}
         </div>
         {showMenu && (
             <div className="photo-edit-delete-form">

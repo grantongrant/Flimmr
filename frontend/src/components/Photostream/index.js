@@ -13,7 +13,7 @@ const ImageList = () => {
     const imagesObject = useSelector((state) => state.image)
     const images = Object.values(imagesObject);
     const sessionImages = images.filter((image) => image.userId === sessionUser.id)
-    console.log(sessionImages.length)
+    // console.log(sessionImages.length)
 
     useEffect(() => {
         dispatch(getAllImages());

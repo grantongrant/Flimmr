@@ -526,6 +526,7 @@ form h1 {
 .single-photo-page {
     display: flex;
     flex-direction: column;
+    background-color: #f3f5f6;
 }
 
 .single-photo-page {
@@ -606,8 +607,11 @@ form h1 {
     margin-top: 600px; */
     display: flex;
     background-color: #f3f5f6;
-    width: 100%;
+    width: 80%;
     flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 26px;
 }
 
 .arrow {
