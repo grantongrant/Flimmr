@@ -465,18 +465,59 @@ form h1 {
     padding: 2px;
 }
 
+.photo-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
 .photo-stream-content {
     position: absolute;
     top: 250px;
-    width: 100%;
-    display: flex;
-    flex-flow: wrap;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows:300px 300px;
+    grid-gap:0px;
+    /* grid-auto-flow: dense; */
+    width: 90%;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photostream-item {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.photostream-item .photostream-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.photostream-item .photostream-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    cursor: pointer;
+}
+
+.w-1{
+    grid-column: span 1;
+}
+.w-2{
+    grid-column: span 2;
+}
+.w-3{
+    grid-column: span 3;
 }
 
 .single-photo img {
     width: 300px;
-    padding: 10px;
+    padding: 2px;
 }
 
 .single-photo-page {
@@ -643,19 +684,22 @@ form h1 {
         background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/1_swxnmr.jpg);
     }
     20% {
-        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/1_swxnmr.jpg);
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/1_swxnmr.jpg),
+        url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg);
     }
     25% {
         background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg);
     }
     45% {
-        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg);
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/3_httdlk.jpg),
+        url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg);
     }
     50% {
         background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg);
     }
     70% {
-        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg);
+        background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/4_nawmmq.jpg),
+        url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/2_xzpavf.jpg);
     }
     75% {
         background-image: url(https://res.cloudinary.com/ddxtopm0l/image/upload/v1642143467/Flimmr/2_xzpavf.jpg);

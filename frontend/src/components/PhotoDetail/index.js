@@ -4,8 +4,12 @@ import "../../../src/index.css"
 
 const PhotoDetail = ({ id, imageUrl, description }) => {
   return (
-    <div className="photo-gallery-photo">
-      <NavLink className="single-photo" to={`/photos/${id}`}><img src={`${imageUrl}`} alt={description}/></NavLink>
+    <div className="photostream-container">
+      <div className="photostream-item">
+        <div className="photostream-image">
+          <NavLink className="single-photo" to={`/photos/${id}`}><img src={`${imageUrl}`} alt={description}/></NavLink>
+        </div>
+      </div>
     </div>
   );
 };
