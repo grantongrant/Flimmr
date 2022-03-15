@@ -10,6 +10,7 @@ import Photostream from "./components/Photostream";
 import PhotoInputForm from "./components/PhotoInputForm";
 import SinglePhoto from "./components/SinglePhoto";
 import PhotoEditForm from "./components/PhotoEditForm";
+import PhotoUpload from "./components/PhotoInputForm/PhotoUpload";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           </Route>
           <Route exact path="/photos/upload">
             <PhotoInputForm />
+            {/* <PhotoUpload /> */}
           </Route>
           <Route exact path="/photos/:id">
             <SinglePhoto />

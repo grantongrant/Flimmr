@@ -12,11 +12,7 @@ const ImageList = () => {
     const sessionUser = useSelector(state => state.session.user);
     const imagesObject = useSelector((state) => state.image)
     const images = Object.values(imagesObject);
-    console.log(images)
-    console.log(sessionUser.id)
     const sessionImages = images.filter((image) => image.userId === sessionUser.id)
-    console.log(sessionImages);
-
 
     useEffect(() => {
         dispatch(getAllImages());
@@ -43,12 +39,12 @@ const ImageList = () => {
         </div>
 
 
-                <Route path='photos/:id'>
+                {/* <Route path='photos/:id'>
                     <SinglePhoto images={images} />
                 </Route>
                 <Route path='/upload'>
                     <PhotoInputForm />
-                </Route>
+                </Route> */}
         </div>
     )
 }

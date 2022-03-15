@@ -6,9 +6,7 @@ import "../../../src/index.css"
 
 const PhotoEditForm = ({ singlePhoto }) => {
 
-    console.log(singlePhoto)
     const id = parseInt(singlePhoto.id, 10);
-    console.log(id)
     const userId = (parseInt(singlePhoto.userId, 10));
     const [description, setDescription] = useState(singlePhoto.description);
     const [imageUrl, setImageUrl] = useState(singlePhoto.imageUrl);

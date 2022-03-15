@@ -2,6 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import { useHistory, NavLink } from "react-router-dom";
 import * as imageActions from "../../store/images";
+import { csrfFetch } from "../../store/csrf";
+// const fs = require('fs');
+// const AWS = require('aws-sdk');
 
 import "../../../src/index.css";
 
@@ -9,9 +12,9 @@ const PhotoInputForm = () => {
 
   const sessionUser = useSelector(state => state.session.user);
   const userId = sessionUser.id;
-  console.log(userId);
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
 
@@ -22,23 +25,28 @@ const PhotoInputForm = () => {
     e.preventDefault();
     setErrors([]);
 
+
     const newPhoto = {
       userId,
-      imageUrl,
-      description
+      image,
     };
 
     // await dispatch(imageActions.createImage(newPhoto)).then(() => history.push("/photos"));
-  await dispatch(imageActions.createImage(newPhoto))
-  .then(() => {
-    alert("Successfully added!")
-    history.push("/photos")
-  })
-  .catch (async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors)
-        })
+    await dispatch(imageActions.createImage(newPhoto))
+      .then(() => {
+      alert("Successfully added!")
+      history.push("/photos")
+    })
+    .catch (async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors)
+    })
 };
+
+  const selectedFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  }
 
   return (
     <div className="upload-page">
@@ -58,11 +66,13 @@ const PhotoInputForm = () => {
         /> */}
 
         <input
-          type='text'
-          onChange={(e) => setImageUrl(e.target.value)}
-          value={imageUrl}
-          placeholder='Image URL'
-          name='imageUrl'
+          type='file'
+          accept='image/*'
+          // value={imageUrl}
+          onChange={selectedFile}
+          // value={imageUrl}
+          // placeholder='Image URL'
+          // name='imageUrl'
         />
 
         <textarea
