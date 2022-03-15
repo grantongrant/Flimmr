@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import PhotoEditForm from '../PhotoEditForm';
 import "../../../src/index.css";
+import {BsArrowLeftShort} from 'react-icons/bs';
 
 const SinglePhoto = () => {
 
@@ -27,13 +28,12 @@ const SinglePhoto = () => {
         <div className='single-photo-container'>
           <div className="single-icons">
             <NavLink to="/photos">
-              <i className="arrow left"></i>
+              <BsArrowLeftShort id="back-to-photostream"/>
                Back to photostream</NavLink>
             </div>
-
-              <img className="single-photo-page-photo" src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
-
-
+            <div className="single-photo-page-photo">
+              <img src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
+            </div>
         </div>
         <div className="photo-description">
             <div className="photo-avatar-container"></div>

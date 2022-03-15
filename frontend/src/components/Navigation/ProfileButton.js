@@ -36,7 +36,7 @@ function ProfileButton({ user }) {
   return (
     <>
      <div className="logged-in-nav">
-     <NavLink id="upload-button" to="/photos/upload"><button>
+     <NavLink id="upload-icon-button" to="/photos/upload"><button>
         <img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1642078914/Flimmr/upload-icon-png_hf1aiv.png"}
         alt="upload icon"
         />
