@@ -29,8 +29,9 @@ const Comments = ({imageId}) => {
         <>
         {comments?.map(({id, body, User}) => (
             <div className="comment-container">
-                <div className="comment-top">
-                    <div className="comment-list-avatar camera"></div>
+                <div className="comment-list-avatar camera"></div>
+                <div className="comment-right">
+                    <div className="author-and-edit-comment">
                     <div className="comment-author">{User.name}</div>
                     {User.id === sessionUser.id ? 
                     <div className="comment-edit-delete">
@@ -44,8 +45,8 @@ const Comments = ({imageId}) => {
                             }}>delete</button>      
                     </div> :
                     null }
-                </div>
-                <div className="comment-body">
+                    </div>
+                    <div className="comment-body">
                     {
                     edit === true && commentId == id? 
                     <CommentEditForm 
@@ -56,6 +57,7 @@ const Comments = ({imageId}) => {
                         userId={User.id}/> 
                     : body
                     }
+                    </div>
                 </div>
             </div>
         ))}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
@@ -9,24 +9,30 @@ import CommentForm from '../Comments/CommentForm';
 import {RiEditBoxLine} from 'react-icons/ri';
 import {HiDownload} from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
-import { deleteImage, updateImage } from '../../store/images';
+import { deleteImage, getTheImage, updateImage } from '../../store/images';
 
 
 const SinglePhoto = () => {
 
+  const { id } = useParams();
   const sessionUser = useSelector(state => state.session.user);
-  const imagesObject = useSelector((state) => state.image)
+  const singlePhoto = useSelector((state) => state.image)
+  // console.log(imagesObject)
   const [descriptionEdit, setDescriptionEdit] = useState(false)
   const dispatch = useDispatch();
   const history = useHistory();
-  const images = Object.values(imagesObject);
+  // const images = Object.values(imagesObject);
   const [photoEdit, setPhotoEdit] = useState(false);
   const [showPhotoEditForm, setShowPhotoEditForm] = useState(false);
-  const { id } = useParams();
-  const singlePhoto = images.find((image) => image.id === +id);
+  // const singlePhoto = images.find((image) => image.id === +id);
   const [title, setTitle] = useState(singlePhoto.title);
   const [errors, setErrors] = useState([]);
   const [description, setDescription] = useState(singlePhoto.description);
+  const [render, setRender] = useState(false)
+
+  useEffect(() => {
+    dispatch(getTheImage(id));
+}, [dispatch, id, render]);
 
 
   const DeleteThisImage = (id) => {
@@ -55,6 +61,9 @@ const SinglePhoto = () => {
 
     await dispatch(updateImage(updatedPhoto))
     setShowPhotoEditForm(false)
+    setRender(!render)
+    setDescriptionEdit(false)
+
   };
 
   return (
