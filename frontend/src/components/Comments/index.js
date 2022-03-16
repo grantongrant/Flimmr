@@ -7,13 +7,14 @@ import "../../../src/index.css";
 const Comments = ({id}) => {
 
     const commentsObject = useSelector((state) => state.comment)
-    const comments = Object.values(commentsObject);
-    const [commentId, setCommentId] = useState(null);
+    const commentsList = Object.values(commentsObject);
+    const comments = commentsList.reverse();
     const dispatch = useDispatch();
+    const [render, setRender] = useState(false);
     
     useEffect(() => {
         dispatch(getAllComments(id));
-    }, [dispatch]);
+    }, [dispatch, render]);
 
     const deleteThisComment = (commentId) => {
         dispatch(deleteComment(commentId))
@@ -23,16 +24,18 @@ const Comments = ({id}) => {
     return (
         <>
         {comments?.map(({id, body, User}) => (
-            <div className="comment-container"
-            onMouseEnter={() => setCommentId(id)}
-            onMouseLeave={() => setCommentId(null)}>
-                <div className="comment-author">{User.name}</div>
+            <div className="comment-container">
+                <div className="comment-top">
+                    <div className="comment-author">{User.name}</div>
+                    <div className="comment-edit-delete">
+                        <button>edit</button>    
+                        <button type="button" onClick={(e) => {
+                            deleteThisComment(id)
+                            setRender(!render)
+                        }}>delete</button>      
+                    </div>
+                </div>
                 <div className="comment-body">{body}</div>
-                {commentId === id && 
-                <div>
-                    <button type="button">edit</button>
-                    <button type="button">delete</button>
-                </div>}
             </div>
         ))}
         </>
