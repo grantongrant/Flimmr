@@ -9,7 +9,7 @@ import CommentForm from '../Comments/CommentForm';
 import {RiEditBoxLine} from 'react-icons/ri';
 import {HiDownload} from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
-import { deleteImage } from '../../store/images';
+import { deleteImage, updateImage } from '../../store/images';
 
 
 const SinglePhoto = () => {
@@ -21,8 +21,13 @@ const SinglePhoto = () => {
   const history = useHistory();
   const images = Object.values(imagesObject);
   const [photoEdit, setPhotoEdit] = useState(false);
+  const [showPhotoEditForm, setShowPhotoEditForm] = useState(false);
   const { id } = useParams();
   const singlePhoto = images.find((image) => image.id === +id);
+  const [title, setTitle] = useState(singlePhoto.title);
+  const [errors, setErrors] = useState([]);
+  const [description, setDescription] = useState(singlePhoto.description);
+
 
   const DeleteThisImage = (id) => {
     dispatch(deleteImage(id));
@@ -38,6 +43,19 @@ const SinglePhoto = () => {
       <div className="photo-edit-arrow"></div>
     </div>
   )
+
+  const handleSubmit =  async (e) => {
+    e.preventDefault();
+
+    const updatedPhoto = {
+      id,
+      title,
+      description
+    };
+
+    await dispatch(updateImage(updatedPhoto))
+    setShowPhotoEditForm(false)
+  };
 
   return (
     <div className="single-photo-page">
@@ -63,13 +81,39 @@ const SinglePhoto = () => {
               </div>
               <div className="photo-info">
                 <div className="session-user-name">{sessionUser.name}</div>
-                <div className="info-shadow" onClick={(e) => console.log("edit")} onMouseEnter={(e) => setDescriptionEdit(true)} onMouseLeave={(e) => setDescriptionEdit(false)}>
+                {showPhotoEditForm === false ?
+                <div className="info-shadow" onClick={(e) => setShowPhotoEditForm(true)} onMouseEnter={(e) => setDescriptionEdit(true)} onMouseLeave={(e) => setDescriptionEdit(false)}>
                   <div className="title-and-edit">
                     <div id="photo-title">{singlePhoto.title ? singlePhoto.title : "Add Title"}</div>
-                    {descriptionEdit ? <button id="photo-edit"><RiEditBoxLine/></button> : <button id="photo-edit"></button>}
+                    {descriptionEdit ? <button id="photo-edit" onClick={(e) => setShowPhotoEditForm(true)}><RiEditBoxLine/></button> : <button id="photo-edit"></button>}
                   </div>
                   <div className="photo-description-label">{singlePhoto.description}</div>
-                </div>
+                </div> : 
+                <form className="info-shadow-edit" onSubmit={handleSubmit}>
+                  <div className="title-and-edit-form">
+                    <div>
+                    <input
+                      type='text'
+                      placeholder={singlePhoto.title}
+                      defaultValue={singlePhoto.title}
+                      onChange={(e) => setTitle(e.target.value)}
+                      className="photo-title-input"
+                    />
+                    </div>
+                    <div>
+                    <textarea
+                      type='text'
+                      placeholder={singlePhoto.description}
+                      defaultValue={singlePhoto.description}
+                      onChange={(e) => setDescription(e.target.value)}
+                      className="photo-description-input"
+                      />
+                      </div>
+                      <div>
+                      <button className="photo-edit-form-button" type='submit'>Done</button>
+                      </div>
+                  </div>
+                </form> }
               </div>
             </div>
             <div className="comment-list">

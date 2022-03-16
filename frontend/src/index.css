@@ -1045,4 +1045,57 @@ background: rgb(44,44,44);
     background-color: rgb(230, 232, 233);
 }
 
+.photo-title-input, .photo-description-input {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+    height: 32px;
+    padding: 0 0 0 10px;
+    width: 100%;
+    box-shadow: inset 0 0 0 1px #9ea4a7;
+    border-radius: 3px;
+    background-color: #fff;
+    margin: 0px;
+    margin-bottom: 10px;
+    border: none;
+}
 
+.photo-title-input:focus, .photo-description-input:focus {
+    border: 0.2px solid #1c9be9;
+    outline-offset: 0px;
+    outline: none;
+}
+
+
+.title-and-edit-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-description-input {
+    height: 58px;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    word-wrap: break-word;
+    padding: 10px;
+}
+
+.info-shadow-edit {
+    padding: 5px;
+}
+
+.photo-edit-form-button {
+    font-size: 14px;
+    font-weight: 600;
+    float: right;
+    text-decoration: none;
+    min-width: 100px;
+    background: #128fdc;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    border: none;
+    padding: 0 8px;
+    height: 32px;
+}
