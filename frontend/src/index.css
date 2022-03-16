@@ -565,7 +565,10 @@ form h1 {
 }
 
 .single-photo-page-photo img {
-    max-height: 95%;
+    max-height: 96%;
+    max-width: 96%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     padding: 5px;
     border: 1px solid lightgray;
@@ -844,6 +847,14 @@ background: rgb(44,44,44);
     border: 1px solid purple;
 }
 
+.avatar-div {
+    width: 15%;
+}
+
+.photo-info {
+    width: 85%;
+    margin-left: 10px;
+}
 .additional-photo-info {
     display: flex;
     flex-direction: row;
@@ -922,7 +933,7 @@ background: rgb(44,44,44);
     padding: 6px;
     font-size: 25px;
     color: white;
-    margin-left: 5px;
+    margin-left: 15px;
     left: auto;
     right: auto;
     top: auto;
@@ -930,5 +941,108 @@ background: rgb(44,44,44);
     cursor: pointer;
 }
 
+.photo-edit-content {
+    top: -40px;
+    left: -132px;
+    position: absolute;
+    width: 170px;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow:  0 0 1px rgb(0 0 0 / 30%), 0 1px 4px rgb(0 0 0 / 20%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.photo-edit-dropdown {
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px;
+}
+
+.photo-edit-delete {
+    margin-bottom: 8px;
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.photo-edit-arrow {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-top: 7px;
+    background-color: #fff;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 10px;
+    bottom: -6px;
+}
+
+
+.top-left {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#photo-title {
+    width: 90%;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+    margin-bottom: 10px;
+    min-height: 18px;
+    word-wrap: break-word;
+}
+
+#photo-edit {
+    width: 10%;
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+    color: rgb(147, 148, 148);
+}
+
+.title-and-edit button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.title-and-edit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.photo-description-label {
+    width: 100%;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.session-user-name {
+    font-size: 18px;
+    padding-left: 5px;
+    font-weight: 600;
+    color: #212124;
+    padding-bottom: 4px;
+}
+
+.info-shadow {
+    transition: background-color .2s ease-in-out;
+    padding: 5px;
+}
+
+.info-shadow:hover {
+    background-color: rgb(230, 232, 233);
+}
 
 
