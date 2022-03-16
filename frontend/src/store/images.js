@@ -39,17 +39,6 @@ export const getAllImages = () => async (dispatch) => {
     dispatch(loadImages(data))
 };
 
-// export const createImage = (payload) => async (dispatch) => {
-//     const response = await fetch('/api/images', {
-//       method: 'POST',
-//       headers: {'Content-Type':'application/json'},
-//       body: JSON.stringify(payload)
-//     })
-//     const data = await response.json();
-//     dispatch(addImage(data));
-//     return data;
-//   }
-
   export const createImage = (newPhoto) => async (dispatch) => {
     const { userId, image } = newPhoto;
     const formData = new FormData();
@@ -63,7 +52,7 @@ export const getAllImages = () => async (dispatch) => {
     });
     const data = await response.json();
     dispatch(addImage(data.photo));
-    // return response;
+    return data;
 };
 
 export const updateImage = (photo) => async (dispatch) => {

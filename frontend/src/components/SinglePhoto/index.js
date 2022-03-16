@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import PhotoEditForm from '../PhotoEditForm';
 import "../../../src/index.css";
-import {BsArrowLeftShort, BsCamera2} from 'react-icons/bs';
+import {BsArrowLeftShort} from 'react-icons/bs';
 import Comments from '../Comments';
 import CommentForm from '../Comments/CommentForm';
+import {RiEditBoxLine} from 'react-icons/ri';
+import {HiDownload} from 'react-icons/hi';
 
 const SinglePhoto = () => {
 
@@ -25,10 +27,14 @@ const SinglePhoto = () => {
             <NavLink to="/photos">
               <BsArrowLeftShort id="back-to-photostream"/>
                Back to photostream</NavLink>
-            </div>
-            <div className="single-photo-page-photo">
-              <img src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
-            </div>
+          </div>
+          <div className="single-photo-page-photo">
+            <img src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
+          </div>
+          <div className="photo-edit-icon">
+            <div><RiEditBoxLine/></div>
+            <div><a href={singlePhoto?.imageUrl} target="_blank" download={singlePhoto?.title}><HiDownload/></a></div>
+          </div>
         </div>
         <div className="photo-description">
           <div className="description-left-column">
