@@ -39,7 +39,13 @@ export const getAllImages = () => async (dispatch) => {
     dispatch(loadImages(data))
 };
 
-  export const createImage = (newPhoto) => async (dispatch) => {
+export const getTheImage = (id) => async (dispatch) => {
+    const response = await csrfFetch(`/api/images/${id}`)
+    const data = await response.json()
+    dispatch(loadImages(data))
+}
+
+export const createImage = (newPhoto) => async (dispatch) => {
     const { userId, image } = newPhoto;
     const formData = new FormData();
     formData.append("userId", userId);

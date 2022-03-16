@@ -9,7 +9,7 @@ const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 router.get('', asyncHandler(async (req, res) => {
   const images = await Image.findAll();
-  res.json(images);
+  return res.json(images);
 }));
 
 router.post('', singleMulterUpload("image"), asyncHandler(async (req, res) => {
