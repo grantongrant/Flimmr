@@ -31,4 +31,27 @@ router.delete('/:id/delete', asyncHandler(async (req, res) => {
   return res.json(comment);
 }));
 
+router.put('/edit', asyncHandler(async (req, res) => {
+  
+  const { commentId, userId, imageId, updatedBody } = req.body;
+
+  const comment = await Comment.findOne({
+    where: {
+      id: commentId
+    },
+    include: {
+      model: User
+    }
+  });
+
+  await comment.update({
+    id: commentId,
+    userId: userId,
+    imageId: imageId,
+    body: updatedBody
+  })
+  await comment.save();
+  return res.json(comment);
+}));
+
   module.exports = router;

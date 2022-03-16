@@ -48,7 +48,7 @@ const SinglePhoto = () => {
               </div>
             </div>
             <div className="comment-list">
-              <Comments id={id}/>
+              <Comments imageId={id}/>
             </div>
             <div className="add-comment-form">
               <CommentForm imageId={id} userId={sessionUser.id}/>
