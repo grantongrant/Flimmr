@@ -3,14 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_COMMENTS = 'comments/loadComments';
 const ADD_COMMENT = 'comments/addComment';
 const REMOVE_COMMENT = 'comments/removeComment';
-// const UPDATE_COMMENT ='comments/updateComment';
-
-export const loadComments = (comments) => {
-    return {
-        type: LOAD_COMMENTS,
-        comments
-    };
-};
+const UPDATE_COMMENT ='comments/updateComment';
 
 export const addComment = (comment) => {
     return {
@@ -18,6 +11,20 @@ export const addComment = (comment) => {
         comment
     }
 }
+
+export const updateComment = (comment) => {
+    return {
+        type: UPDATE_COMMENT,
+        comment
+    }
+}
+
+export const loadComments = (comments) => {
+    return {
+        type: LOAD_COMMENTS,
+        comments
+    };
+};
 
 export const removeComment = (commentId) => {
     return {
@@ -33,7 +40,6 @@ export const getAllComments = (id) => async (dispatch) => {
 };
 
 export const createComment = (newComment) => async (dispatch) => {
-    console.log(newComment)
     const { userId, imageId, body } = newComment;
     const response = await csrfFetch("/api/comments/", {
       method: "POST",
@@ -45,8 +51,25 @@ export const createComment = (newComment) => async (dispatch) => {
     });
     const data = await response.json();
     dispatch(addComment(data.comment));
-    return response;
+    return data;
 };
+
+export const updateAComment = (updatedComment) => async (dispatch) => {
+    const { commentId, userId, imageId, updatedBody} = updatedComment;
+    const response = await csrfFetch("/api/comments/edit", {
+        method: "PUT",
+        body: JSON.stringify({
+            commentId,
+            userId,
+            imageId,
+            updatedBody
+        }),
+    });
+    const comment = await response.json();
+    console.log(comment)
+    dispatch(updateComment(comment));
+    return comment;
+}
 
 export const deleteComment = (commentId) => async (dispatch) => {
     const response = await csrfFetch(`/api/comments/${commentId}/delete`, {
@@ -54,7 +77,7 @@ export const deleteComment = (commentId) => async (dispatch) => {
       });
     const data = await response.json();
     dispatch(removeComment(data.id));
-    return response;
+    return data;
   };
 
 const initialState = {};
@@ -67,11 +90,11 @@ const commentReducer = (state = initialState, action) => {
         case ADD_COMMENT:
             newState = {...state, ...action.comment}
             return newState;
-        // case UPDATE_IMAGE:
-        //     newState = {...state, [action.image.id]: {
-        //         ...action.image,
-        //     }}
-        //     return newState;
+        case UPDATE_COMMENT:
+            newState = {...state, [action.comment.id]: {
+                ...action.comment,
+            }}
+            return newState;
         case REMOVE_COMMENT:
             newState = {...state}
             delete newState[action.commentId]

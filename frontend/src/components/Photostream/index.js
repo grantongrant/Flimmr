@@ -23,7 +23,7 @@ const ImageList = () => {
         <div className="photo-page">
             <div className="photo-info-container">
                 <div className="avatar-container">
-                    <img className="heart-logo medium" src="https://res.cloudinary.com/ddxtopm0l/image/upload/v1642106208/Flimmr/norway-heart-icon_ihdvtj.png" alt="norway-heart"/>
+                    <div className="large-avatar"></div>
                 </div>
                 <div className="info-container">
                     <h1>{sessionUser.name}</h1>

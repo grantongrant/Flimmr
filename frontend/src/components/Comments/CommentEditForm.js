@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import "../../../src/index.css"
-import { createComment, getAllComments} from '../../store/comments';
-import {BsCamera2} from 'react-icons/bs';
+import { getAllComments, updateAComment} from '../../store/comments';
 
-const CommentForm = ({imageId, userId}) => {
+const CommentEditForm = ({setEdit, body, commentId, imageId, userId}) => {
 
-    const [body, setBody] = useState("");
-    const updateComment = (e) => setBody(e.target.value);
+    const [updatedBody, setUpdatedBody] = useState(body)
+    const updateComment = (e) => setUpdatedBody(e.target.value);
     const history = useHistory();
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([]);
@@ -17,33 +16,33 @@ const CommentForm = ({imageId, userId}) => {
         e.preventDefault();
         setErrors([]);
 
-        const newComment = {
+        const updatedComment = {
+            commentId,
             userId,
             imageId,
-            body
+            updatedBody
         }
 
-        await dispatch(createComment(newComment))
+        await dispatch(updateAComment(updatedComment))
         await dispatch(getAllComments(imageId));
-        setBody("")
+        setEdit(false)
     };
 
     return (
         <>
-        <div className="add-comment-avatar camera"></div>
         <form onSubmit={handleSubmit}>
           <textarea
-            value={body}
+            defaultValue={body}
             required
             onChange={updateComment}
             name='comment'
-            placeholder='Add a comment'
+            placeholder={body}
             rows='2'
           ></textarea>
-          <button className="edit-submit-button" type='submit'>Comment</button>
+          <button className="edit-submit-button" type='submit'>Done</button>
         </form>
         </>
     )
 };
 
-export default CommentForm;
+export default CommentEditForm;

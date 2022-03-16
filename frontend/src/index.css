@@ -88,23 +88,19 @@ body {
 }
 
 #upload-icon-button button img {
-    width: 35px;
-    margin-right: 20px
+    width: 32px;
+    margin-right: 15px;
 }
 
 #logged-in-menu {
-    border-radius: 100%;
     position: relative;
-    width: 35px;
-    height: 35px;
-    background-color: white;
+    background-color: transparent;
     box-shadow: none;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 #log-in-button {
     background-color: transparent;
@@ -417,13 +413,9 @@ form h1 {
 }
 
 .avatar-container {
-    width: 100px;
-    height: 100px;
-    background-color: white;
     position: relative;
     display: flex;
     vertical-align: bottom;
-    border-radius: 100%;
     left: 120px;
     bottom: 20px;
     top: 135px;
@@ -563,6 +555,7 @@ form h1 {
     margin-right:5px;
 }
 
+
 .single-photo-page-photo {
     justify-content: center;
     align-items: center;
@@ -572,7 +565,10 @@ form h1 {
 }
 
 .single-photo-page-photo img {
-    max-height: 95%;
+    max-height: 96%;
+    max-width: 96%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     padding: 5px;
     border: 1px solid lightgray;
@@ -834,4 +830,272 @@ background: rgb(44,44,44);
 }
 .comment-body {
     margin: 10px;
+}
+
+.description-left-column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: 1px solid red;
+    margin-right: 60px;
+}
+
+.description-right-column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: 1px solid purple;
+}
+
+.avatar-div {
+    width: 15%;
+}
+
+.photo-info {
+    width: 85%;
+    margin-left: 10px;
+}
+.additional-photo-info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 1px solid black;
+    justify-content: space-between;
+}
+
+.photo-info-left {
+    display: flex;
+    flex-direction: row;
+}
+
+.view-count {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-count {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-album-info {
+    text-align: center;
+    border: 1px solid #cfd6d9;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.camera {
+    height: 32px;
+    width: 32px;
+    background-image: url(https://flimmr.s3.us-east-2.amazonaws.com/Flimmr+Default+Icon.jpg);
+    background-size: contain;
+    border-radius: 50%;
+}
+
+.avatar {
+    height: 60px;
+    width: 60px;
+    background-image: url(https://flimmr.s3.us-east-2.amazonaws.com/Flimmr+Default+Icon.jpg);
+    background-size: contain;
+    border-radius: 50%;
+}
+
+.large-avatar {
+    height: 100px;
+    width: 100px;
+    background-image: url(https://flimmr.s3.us-east-2.amazonaws.com/Flimmr+Default+Icon.jpg);
+    background-size: contain;
+    border-radius: 50%;
+}
+
+.photo-edit-icon {
+    height: 30px;
+    width: 30px;
+    padding: 6px;
+    font-size: 25px;
+    color: white;
+    position: absolute;
+    top: 560px;
+    right: 120px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.photo-edit-icon a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 37px;
+    width: 37px;
+    padding: 6px;
+    font-size: 25px;
+    color: white;
+    margin-left: 15px;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: -7px;
+    cursor: pointer;
+}
+
+.photo-edit-content {
+    top: -40px;
+    left: -132px;
+    position: absolute;
+    width: 170px;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow:  0 0 1px rgb(0 0 0 / 30%), 0 1px 4px rgb(0 0 0 / 20%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.photo-edit-dropdown {
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px;
+}
+
+.photo-edit-delete {
+    margin-bottom: 8px;
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.photo-edit-arrow {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-top: 7px;
+    background-color: #fff;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 10px;
+    bottom: -6px;
+}
+
+
+.top-left {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#photo-title {
+    width: 90%;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+    margin-bottom: 10px;
+    min-height: 18px;
+    word-wrap: break-word;
+}
+
+#photo-edit {
+    width: 10%;
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+    color: rgb(147, 148, 148);
+}
+
+.title-and-edit button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.title-and-edit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.photo-description-label {
+    width: 100%;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.session-user-name {
+    font-size: 18px;
+    padding-left: 5px;
+    font-weight: 600;
+    color: #212124;
+    padding-bottom: 4px;
+}
+
+.info-shadow {
+    transition: background-color .2s ease-in-out;
+    padding: 5px;
+}
+
+.info-shadow:hover {
+    background-color: rgb(230, 232, 233);
+}
+
+.photo-title-input, .photo-description-input {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+    height: 32px;
+    padding: 0 0 0 10px;
+    width: 100%;
+    box-shadow: inset 0 0 0 1px #9ea4a7;
+    border-radius: 3px;
+    background-color: #fff;
+    margin: 0px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.photo-title-input:focus, .photo-description-input:focus {
+    border: 0.2px solid #1c9be9;
+    outline-offset: 0px;
+    outline: none;
+}
+
+
+.title-and-edit-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-description-input {
+    height: 58px;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    word-wrap: break-word;
+    padding: 10px;
+}
+
+.info-shadow-edit {
+    padding: 5px;
+}
+
+.photo-edit-form-button {
+    font-size: 14px;
+    font-weight: 600;
+    float: right;
+    text-decoration: none;
+    min-width: 100px;
+    background: #128fdc;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    border: none;
+    padding: 0 8px;
+    height: 32px;
 }
