@@ -88,23 +88,19 @@ body {
 }
 
 #upload-icon-button button img {
-    width: 35px;
-    margin-right: 20px
+    width: 32px;
+    margin-right: 15px;
 }
 
 #logged-in-menu {
-    border-radius: 100%;
     position: relative;
-    width: 35px;
-    height: 35px;
-    background-color: white;
+    background-color: transparent;
     box-shadow: none;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 #log-in-button {
     background-color: transparent;
@@ -835,3 +831,66 @@ background: rgb(44,44,44);
 .comment-body {
     margin: 10px;
 }
+
+.description-left-column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: 1px solid red;
+    margin-right: 60px;
+}
+
+.description-right-column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: 1px solid purple;
+}
+
+.additional-photo-info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 1px solid black;
+    justify-content: space-between;
+}
+
+.photo-info-left {
+    display: flex;
+    flex-direction: row;
+}
+
+.view-count {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-count {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-album-info {
+    text-align: center;
+    border: 1px solid #cfd6d9;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.camera {
+    height: 32px;
+    width: 32px;
+    background-image: url(https://flimmr.s3.us-east-2.amazonaws.com/Flimmr+Default+Icon.jpg);
+    background-size: contain;
+    border-radius: 50%;
+}
+
+.avatar {
+    height: 60px;
+    width: 60px;
+    background-image: url(https://flimmr.s3.us-east-2.amazonaws.com/Flimmr+Default+Icon.jpg);
+    background-size: contain;
+    border-radius: 50%;
+}
+

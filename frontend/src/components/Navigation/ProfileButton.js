@@ -43,7 +43,8 @@ function ProfileButton({ user }) {
       </button></NavLink>
       <button id="logged-in-menu" onClick={openMenu}>
         {/* <i className="fas fa-camera-retro" /> */}
-        <img className="heart-logo small" src="https://res.cloudinary.com/ddxtopm0l/image/upload/v1642106208/Flimmr/norway-heart-icon_ihdvtj.png" alt="norway-heart"/>
+        <div className="camera"></div>
+        {/* <img className="heart-logo small" src="https://res.cloudinary.com/ddxtopm0l/image/upload/v1642106208/Flimmr/norway-heart-icon_ihdvtj.png" alt="norway-heart"/> */}
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

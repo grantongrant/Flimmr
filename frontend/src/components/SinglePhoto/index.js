@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import PhotoEditForm from '../PhotoEditForm';
 import "../../../src/index.css";
-import {BsArrowLeftShort} from 'react-icons/bs';
+import {BsArrowLeftShort, BsCamera2} from 'react-icons/bs';
 import Comments from '../Comments';
 import CommentForm from '../Comments/CommentForm';
 
@@ -17,13 +17,6 @@ const SinglePhoto = () => {
   // const history = useHistory();
   const { id } = useParams();
   const singlePhoto = images.find((image) => image.id === +id);
-  const [showMenu, setShowMenu] = useState(false);
-
-  const openCloseMenu = () => {
-    if (showMenu) setShowMenu(false);
-    else setShowMenu(true);
-  };
-
 
   return (
     <div className="single-photo-page">
@@ -54,24 +47,28 @@ const SinglePhoto = () => {
               <CommentForm imageId={id} userId={sessionUser.id}/>
             </div>
           </div>
-          <div className="description-right-column"></div>
-            {/* <div className="photo-avatar-container"></div>
-              <img className="heart-logo-photo-page" src="https://res.cloudinary.com/ddxtopm0l/image/upload/v1642106208/Flimmr/norway-heart-icon_ihdvtj.png" alt="norway-heart"/>
-            <div className="photo-description-text">
-                <div className="name-and-edit">
-                <h2>Hei, {sessionUser.name}</h2>
-                <button id="edit-photo-button" onClick={openCloseMenu}>
-                  <i class="fas fa-pen"></i>
-                </button>
+          <div className="description-right-column">
+            <div className="additional-photo-info">
+              <div className="photo-info-left">
+                <div className="view-count">
+                  <div>2</div>
+                  <div>views</div>
                 </div>
-                <p>{singlePhoto.description}</p>
-            </div> */}
-        </div>
-        {showMenu && (
-            <div className="photo-edit-delete-form">
-                <PhotoEditForm singlePhoto={singlePhoto}/>
+                <div className="comment-count">
+                  <div>3</div>
+                  <div>comments</div>
+                </div>
+              </div>
+              <div className="photo-info-right">
+                <div>Uploaded on Date</div>
+              </div>
             </div>
-        )}
+            <div className="photo-album-info">
+              <p>This photo is currently not in any albums</p>
+              <p>Add to Album</p>
+            </div>
+          </div>
+        </div>
     </div>
   );
 };

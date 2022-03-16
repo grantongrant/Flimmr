@@ -6,7 +6,7 @@ import { getAllComments, updateAComment} from '../../store/comments';
 
 const CommentEditForm = ({setEdit, body, commentId, imageId, userId}) => {
 
-    const [updatedBody, setUpdatedBody] = useState("")
+    const [updatedBody, setUpdatedBody] = useState(body)
     const updateComment = (e) => setUpdatedBody(e.target.value);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const CommentEditForm = ({setEdit, body, commentId, imageId, userId}) => {
             required
             onChange={updateComment}
             name='comment'
-            // placeholder={body}
+            placeholder={body}
             rows='2'
           ></textarea>
           <button className="edit-submit-button" type='submit'>Done</button>

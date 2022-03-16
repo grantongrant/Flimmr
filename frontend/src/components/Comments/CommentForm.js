@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import "../../../src/index.css"
 import { createComment, getAllComments} from '../../store/comments';
+import {BsCamera2} from 'react-icons/bs';
 
 const CommentForm = ({imageId, userId}) => {
 
@@ -29,6 +30,7 @@ const CommentForm = ({imageId, userId}) => {
 
     return (
         <>
+        <div className="add-comment-avatar camera"></div>
         <form onSubmit={handleSubmit}>
           <textarea
             value={body}
