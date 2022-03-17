@@ -20,7 +20,6 @@ const SinglePhoto = () => {
   const sessionUser = useSelector(state => state.session.user);
   const singlePhoto = useSelector((state) => state.image)
   const date = new Date(singlePhoto.createdAt)
-  console.log(date.toString().split(" "))
   const [descriptionEdit, setDescriptionEdit] = useState(false)
   const dispatch = useDispatch();
   const history = useHistory();
@@ -72,13 +71,6 @@ useEffect(() => {
     setDescriptionEdit(false)
 
   };
-
-  const UploadedOn = () => {
-    const date = singlePhoto.createdAt
-    date.forEach((char) => {
-
-    })
-  }
 
   const uploadedOn = (date) => {
     const rawDate = date.toString().split(" ");
@@ -190,7 +182,7 @@ useEffect(() => {
             </div>
             <div className="photo-album-info">
               <p>This photo is currently not in any albums</p>
-              <div><AlbumFormModal/></div>
+              <div><AlbumFormModal singlePhoto={singlePhoto}/></div>
             </div>
           </div>
         </div>
