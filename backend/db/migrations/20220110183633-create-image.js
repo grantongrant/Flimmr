@@ -16,10 +16,10 @@ module.exports = {
         type: Sequelize.STRING(40),
         allowNull: true
       },
-      // albumId: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false
-      // },
+      albumId: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+      },
       imageUrl: {
         type: Sequelize.STRING(500),
         allowNull: false
@@ -27,6 +27,11 @@ module.exports = {
       description: {
         type: Sequelize.STRING(255),
         allowNull: true
+      },
+      views: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,

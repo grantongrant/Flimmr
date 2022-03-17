@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true
     },
-    // albumId: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false
-    // },
+    albumId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: false
@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    views: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {});
   Image.associate = function(models) {
