@@ -2,8 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Image = sequelize.define('Image', {
     userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     title: {
       type: DataTypes.STRING,
@@ -34,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     Image.hasMany(models.Comment, {
       foreignKey: 'imageId'
     })
+    Image.belongsToMany(models.Album, { through: 'Album_Images' });
   };
   return Image;
 };

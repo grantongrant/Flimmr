@@ -1200,3 +1200,16 @@ background: rgb(44,44,44);
     justify-content: space-between;
     margin-bottom: 4px;
 }
+
+.album-modal-container {
+    width: 600px;
+    height: 392px;
+}
+
+.album-modal-container form {
+    padding: 20px;
+}
+
+#description-optional {
+    height: 100px;
+}
