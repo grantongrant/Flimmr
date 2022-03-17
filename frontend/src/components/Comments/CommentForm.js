@@ -29,8 +29,9 @@ const CommentForm = ({imageId, userId}) => {
     };
 
     return (
-        <>
-        <div className="add-comment-avatar camera"></div>
+        <div className="add-comment-container">
+        <div className="comment-list-avatar camera"></div>
+        <div className="comment-right comment-body">
         <form onSubmit={handleSubmit}>
           <textarea
             value={body}
@@ -39,10 +40,12 @@ const CommentForm = ({imageId, userId}) => {
             name='comment'
             placeholder='Add a comment'
             rows='2'
+            className="photo-description-input"
           ></textarea>
-          <button className="edit-submit-button" type='submit'>Comment</button>
+          <button className="photo-edit-form-button" type='submit'>Comment</button>
         </form>
-        </>
+        </div>
+        </div>
     )
 };
 

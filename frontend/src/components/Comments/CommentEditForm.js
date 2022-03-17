@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import "../../../src/index.css"
 import { getAllComments, updateAComment} from '../../store/comments';
 
-const CommentEditForm = ({setEdit, body, commentId, imageId, userId}) => {
+const CommentEditForm = ({setEditFormIsOn, setUserId, setEdit, body, commentId, imageId, userId}) => {
 
     const [updatedBody, setUpdatedBody] = useState(body)
     const updateComment = (e) => setUpdatedBody(e.target.value);
@@ -26,6 +26,8 @@ const CommentEditForm = ({setEdit, body, commentId, imageId, userId}) => {
         await dispatch(updateAComment(updatedComment))
         await dispatch(getAllComments(imageId));
         setEdit(false)
+        setUserId(null)
+        setEditFormIsOn(false)
     };
 
     return (
@@ -37,9 +39,9 @@ const CommentEditForm = ({setEdit, body, commentId, imageId, userId}) => {
             onChange={updateComment}
             name='comment'
             placeholder={body}
-            rows='2'
+            className="photo-description-input"
           ></textarea>
-          <button className="edit-submit-button" type='submit'>Done</button>
+          <button className="photo-edit-form-button" type='submit'>Done</button>
         </form>
         </>
     )
