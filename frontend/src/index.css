@@ -829,8 +829,8 @@ background: rgb(44,44,44);
     display: flex;
     flex-direction: column;
     width: 50%;
-    /* border: 1px solid red; */
     margin-right: 60px;
+    margin-bottom: 120px;
 }
 
 .description-right-column {
@@ -845,11 +845,10 @@ background: rgb(44,44,44);
 }
 
 .photo-info {
-    width: 85%;
-    margin-left: 10px;
+    width: 87%;
+    /* margin-left: 5px; */
     border-bottom: 1px solid #cfd6d9;
     padding-bottom: 10px;
-    /* border: 1px solid red; */
 }
 
 .additional-photo-info {
@@ -1005,6 +1004,10 @@ background: rgb(44,44,44);
     color: rgb(147, 148, 148);
 }
 
+#photo-edit:hover {
+    color: rgb(58, 57, 57);
+}
+
 .title-and-edit button {
     background-color: transparent;
     border: none;
@@ -1095,10 +1098,11 @@ background: rgb(44,44,44);
     border: none;
     padding: 0 8px;
     height: 32px;
+    margin-bottom: 5px;
 }
 
-.comment-list {
-    margin-left: 20px;
+.comment-list, .add-comment-form {
+    /* margin-left: 20px; */
     margin-top: 5px;
     padding: 5px 0px;
 }
@@ -1108,14 +1112,20 @@ background: rgb(44,44,44);
     display: flex;
     flex-direction: row;
     width: 100%;
+    padding-top: 15px;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.comment-container:hover {
+    background-color: #fff;
 }
 
 .comment-right {
     display: flex;
     flex-direction: column;
-    margin-left: 9px;
-    width: 90%;
-    /* border: 1px solid red; */
+    width: 87%;
+    padding-right: 5px;
 }
 
 .author-and-edit-comment{
@@ -1126,12 +1136,12 @@ background: rgb(44,44,44);
 }
 
 .comment-list-avatar {
-    margin-left: 8px;
+    margin-left: 28px;
 }
 
 .comment-author {
     padding-left: 5px;
-    margin: 2px 0px;
+    margin-bottom: 2px;
     color: #006dac;
     line-height: 24px;
     font-weight: 600;
@@ -1140,4 +1150,66 @@ background: rgb(44,44,44);
 
 .comment-body {
     padding-left: 5px;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.comment-edit-delete button {
+    background: transparent;
+    border: none;
+    padding: 2px;
+}
+
+.comment-edit-delete {
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    margin-right: 22px;
+}
+
+#comment-edit-icon {
+    font-size: 16px;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: rgb(147, 148, 148);
+    cursor: pointer;
+}
+
+#comment-edit-icon:hover {
+    color: rgb(58, 57, 57);
+}
+
+#comment-delete-icon {
+    font-size: 16px;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: rgb(147, 148, 148);
+    cursor: pointer;
+}
+
+#comment-delete-icon:hover {
+    color: rgb(58, 57, 57);
+}
+
+.add-comment-container {
+    /* background-color: purple; */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-top: 15px;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.album-modal-container {
+    width: 600px;
+    height: 392px;
+}
+
+.album-modal-container form {
+    padding: 20px;
+}
+
+#description-optional {
+    height: 100px;
 }

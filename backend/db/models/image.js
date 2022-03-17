@@ -2,17 +2,17 @@
 module.exports = (sequelize, DataTypes) => {
   const Image = sequelize.define('Image', {
     userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     title: {
       type: DataTypes.STRING,
       allowNull: true
     },
-    // albumId: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false
-    // },
+    albumId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: false
@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    views: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {});
   Image.associate = function(models) {
@@ -30,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     Image.hasMany(models.Comment, {
       foreignKey: 'imageId'
     })
+    Image.belongsToMany(models.Album, { through: 'Album_Images' });
   };
   return Image;
 };

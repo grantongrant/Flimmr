@@ -10,6 +10,8 @@ import {RiEditBoxLine} from 'react-icons/ri';
 import {HiDownload} from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
 import { deleteImage, getTheImage, updateImage } from '../../store/images';
+import { getAllComments } from '../../store/comments';
+import AlbumFormModal from '../Album';
 
 
 const SinglePhoto = () => {
@@ -17,22 +19,27 @@ const SinglePhoto = () => {
   const { id } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const singlePhoto = useSelector((state) => state.image)
-  // console.log(imagesObject)
+  const date = new Date(singlePhoto.createdAt)
+  console.log(date.toString().split(" "))
   const [descriptionEdit, setDescriptionEdit] = useState(false)
   const dispatch = useDispatch();
   const history = useHistory();
-  // const images = Object.values(imagesObject);
   const [photoEdit, setPhotoEdit] = useState(false);
   const [showPhotoEditForm, setShowPhotoEditForm] = useState(false);
-  // const singlePhoto = images.find((image) => image.id === +id);
   const [title, setTitle] = useState(singlePhoto.title);
   const [errors, setErrors] = useState([]);
   const [description, setDescription] = useState(singlePhoto.description);
   const [render, setRender] = useState(false)
+  const commentsObject = useSelector((state) => state.comment)
+  const comments = Object.values(commentsObject);
 
   useEffect(() => {
     dispatch(getTheImage(id));
 }, [dispatch, id, render]);
+
+useEffect(() => {
+  dispatch(getAllComments(id));
+}, [dispatch, render]);
 
 
   const DeleteThisImage = (id) => {
@@ -65,6 +72,34 @@ const SinglePhoto = () => {
     setDescriptionEdit(false)
 
   };
+
+  const UploadedOn = () => {
+    const date = singlePhoto.createdAt
+    date.forEach((char) => {
+
+    })
+  }
+
+  const uploadedOn = (date) => {
+    const rawDate = date.toString().split(" ");
+    const rawMonth = rawDate[1];
+    let month;
+    if (rawMonth === "Jan") month = "January"
+    if (rawMonth === "Feb") month = "Feburary"
+    if (rawMonth === "Mar") month = "March"
+    if (rawMonth === "Apr") month = "April"
+    if (rawMonth === "May") month = "May"
+    if (rawMonth === "Jun") month = "June"
+    if (rawMonth === "Jul") month = "July"
+    if (rawMonth === "Aug") month = "August"
+    if (rawMonth === "Sep") month = "September"
+    if (rawMonth === "Oct") month = "October"
+    if (rawMonth === "Nov") month = "November"
+    if (rawMonth === "Dec") month = "December"
+
+    const newDate = month + " " + rawDate[2] + " " + rawDate[3]
+    return newDate;
+  }
 
   return (
     <div className="single-photo-page">
@@ -139,18 +174,23 @@ const SinglePhoto = () => {
                   <div>2</div>
                   <div>views</div>
                 </div>
+                {comments.length === 1 ?
                 <div className="comment-count">
-                  <div>3</div>
+                  <div>{comments.length}</div>
+                  <div>comment</div>
+                </div> :
+                  <div className="comment-count">
+                    <div>{comments.length}</div>
                   <div>comments</div>
-                </div>
+                </div> }
               </div>
               <div className="photo-info-right">
-                <div>Uploaded on Date</div>
+                <div>Uploaded on {uploadedOn(date)}</div>
               </div>
             </div>
             <div className="photo-album-info">
               <p>This photo is currently not in any albums</p>
-              <p>Add to Album</p>
+              <div><AlbumFormModal/></div>
             </div>
           </div>
         </div>
