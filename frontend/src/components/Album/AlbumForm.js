@@ -19,7 +19,7 @@ function AlbumForm({setShowModal, singlePhoto}) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
-  const [createAlbum, setCreateAlbum] = useState(false);
+  const [createAlbumToggle, setCreateAlbumToggle] = useState(false);
 
   useEffect(() => {
     dispatch(getAllAlbums(userId));
@@ -46,7 +46,7 @@ function AlbumForm({setShowModal, singlePhoto}) {
 
   let modalContent;
 
-  if (!createAlbum) {
+  if (!createAlbumToggle) {
       modalContent = 
       <>
       <div className="add-to-album-container">
@@ -65,7 +65,7 @@ function AlbumForm({setShowModal, singlePhoto}) {
         <div id="no-albums">No albums</div>}
       </div>
       <div className="album-footer">
-        <button type="button" onClick={(e) => setCreateAlbum(true)}>
+        <button type="button" onClick={(e) => setCreateAlbumToggle(true)}>
           <div id="album-plus"><BiPlus/></div>
           <div id="create-new-album">Create new album</div>
         </button>
@@ -95,7 +95,7 @@ function AlbumForm({setShowModal, singlePhoto}) {
           placeholder="Description (optional)"
           id="description-optional"
         />
-        <button type="button" onClick={(e) => setCreateAlbum(false)}>Cancel</button>
+        <button type="button" onClick={(e) => setCreateAlbumToggle(false)}>Cancel</button>
         <button type="submit">Create</button>
     </form>
   }

@@ -33,6 +33,10 @@ const SinglePhoto = () => {
   const comments = Object.values(commentsObject);
 
   useEffect(() => {
+    
+  })
+
+  useEffect(() => {
     dispatch(getTheImage(id));
 }, [dispatch, id, render]);
 
