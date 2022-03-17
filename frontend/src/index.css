@@ -882,6 +882,14 @@ background: rgb(44,44,44);
     border-radius: 3px;
 }
 
+.photo-album-info p {
+    font-size: 15px;
+    margin-top: 16px;
+    margin-bottom: 0px;
+    line-height: 24px;
+
+}
+
 .camera {
     height: 32px;
     width: 32px;
@@ -1212,4 +1220,150 @@ background: rgb(44,44,44);
 
 #description-optional {
     height: 100px;
+}
+
+.add-to-album-container {
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: row;
+    height: 52px;
+    align-items: center;
+    font-size: 15px;
+    color: #212124;
+}
+
+.add-to {
+    padding-right: 20px;
+    font-weight: 600;
+}
+
+.album-header {
+    padding: 16px;
+    border-bottom: 3px solid #128fdc;
+    margin-bottom: -3px;
+}
+
+.album-search-header {
+    margin: 0px 20px;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    height: 36px;
+}
+
+.album-list {
+    height: 234px;
+    display: flex;
+    flex-direction: column;
+}
+
+.album-footer {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    padding: 0px 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.album-footer button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#album-plus {
+    font-size: 20px;
+    color: rgb(147, 148, 148);
+    margin-top: 6px;
+}
+
+#create-new-album {
+    color: #006dac;
+    font-size: 13px;
+    margin-left: 20px;
+    align-items: center;
+}
+
+#create-new-album:hover {
+    text-decoration: underline;
+}
+
+#new-album-done {
+    height: 29px;
+    font-size: 13px;
+    background-color: #128fdc;
+    color: #fff;
+    min-width: 80px;
+    line-height: 29px;
+    font-weight: 600;
+    border-radius: 3px;
+    justify-content: center;
+}
+
+#no-albums {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #898989;
+    font-size: 13px;
+}
+
+.album-list-container {
+    display: flex;
+    flex-direction: row;
+    width: 556px;
+    height: 52px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.album-list-container:hover {
+    background-color:#f3f5f6;
+}
+
+.album-list-cover-image {
+    height: 52px;
+    width: 52px;
+    font-size: 42px;
+    align-self: center;
+    text-align: center;
+    color: #898989;
+}
+
+.album-list-name {
+    width: 444px;
+    color: #006dac;
+    font-weight: 600;
+    font-size: 13px;
+    padding-top: 8px;
+}
+
+.album-list-check {
+    width: 60px;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    font-size: 20px;
+    color: #006dac;
+}
+
+#add-to-album-button {
+    background-color: transparent;
+    border: none;
+    font-size: 13px;
+    color: #006dac;
+    cursor: pointer;
+    margin-bottom: 16px;
+    line-height: 24px;
+}
+
+#add-to-album-button:hover {
+    text-decoration: underline;
 }
