@@ -22,7 +22,11 @@ router.post('', singleMulterUpload("image"), asyncHandler(async (req, res) => {
 router.get('/:id', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id,10);
     const image = await Image.findByPk(id);
-    res.json(image);
+    await image.update({
+      views: image.views + 1
+    });
+    await image.save();
+    return res.json(image);
   }));
 
 router.delete('/:id', asyncHandler(async (req, res) => {
@@ -42,6 +46,16 @@ router.put('/:id', asyncHandler(async (req, res) => {
     });
     await image.save();
     return res.json(image);
+}));
+
+router.put('/', asyncHandler(async (req, res) => {
+  const id = parseInt(req.body.updatedPhoto.singlePhotoId, 10);
+  const image = await Image.findByPk(id);
+  await image.update ({
+    albumId: req.body.updatedPhoto.idOfAlbum,
+  });
+  await image.save();
+  return res.json(image);
 }));
 
 module.exports = router;

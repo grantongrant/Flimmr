@@ -33,7 +33,7 @@ const SinglePhoto = () => {
   const comments = Object.values(commentsObject);
 
   useEffect(() => {
-    
+
   })
 
   useEffect(() => {
@@ -93,7 +93,7 @@ useEffect(() => {
     if (rawMonth === "Nov") month = "November"
     if (rawMonth === "Dec") month = "December"
 
-    const newDate = month + " " + rawDate[2] + " " + rawDate[3]
+    const newDate = month + " " + rawDate[2] + ", " + rawDate[3]
     return newDate;
   }
 
@@ -166,18 +166,23 @@ useEffect(() => {
           <div className="description-right-column">
             <div className="additional-photo-info">
               <div className="photo-info-left">
+                {singlePhoto.views === 1 ?
                 <div className="view-count">
-                  <div>2</div>
-                  <div>views</div>
-                </div>
+                  <div className="count-label">{singlePhoto.views}</div>
+                  <div className="count-text">view</div>
+                </div> :
+                <div className="view-count">
+                  <div className="count-label">{singlePhoto.views}</div>
+                  <div className="count-text">views</div>
+                </div> }
                 {comments.length === 1 ?
                 <div className="comment-count">
-                  <div>{comments.length}</div>
-                  <div>comment</div>
+                  <div className="count-label">{comments.length}</div>
+                  <div className="count-text">comment</div>
                 </div> :
                   <div className="comment-count">
-                    <div>{comments.length}</div>
-                  <div>comments</div>
+                    <div className="count-label">{comments.length}</div>
+                  <div className="count-text">comments</div>
                 </div> }
               </div>
               <div className="photo-info-right">

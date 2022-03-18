@@ -6,24 +6,36 @@ import { createAlbum, getAllAlbums } from "../../store/albums";
 import { BiPlus } from 'react-icons/bi';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import {CgAlbum} from 'react-icons/cg';
+import { updateImageAlbum } from "../../store/images";
 
 function AlbumForm({setShowModal, singlePhoto}) {
     
   const sessionUser = useSelector(state => state.session.user);
   const albumsObject = useSelector((state) => state.album)
   const albums = Object.values(albumsObject);
-  console.log(albums) 
-  console.log(singlePhoto)
   const userId = sessionUser.id;
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
   const [createAlbumToggle, setCreateAlbumToggle] = useState(false);
+  const [check, setCheck] = useState(false);
+  const [idOfAlbum, setIdOfAlbum] = useState(null);
+  const singlePhotoId = singlePhoto.id;
 
   useEffect(() => {
     dispatch(getAllAlbums(userId));
   }, [dispatch]);
+
+  const addImageToAlbum =  async (e) => {
+
+    const updatedPhoto = {
+      singlePhotoId,
+      idOfAlbum
+    };
+
+    await dispatch(updateImageAlbum(updatedPhoto))
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,8 +70,13 @@ function AlbumForm({setShowModal, singlePhoto}) {
         {albums? albums.map((album) => (
           <div className="album-list-container">
             <div className="album-list-cover-image"><CgAlbum/></div>
-            <div className="album-list-name">{album.name}</div>
-            <div className="album-list-check"><BsFillCheckCircleFill/></div>
+            <div className="album-list-name" onClick={(e) => {
+              setCheck(true)
+              setIdOfAlbum(album.id)
+              }}>{album.name}</div>
+            {check && album.id === idOfAlbum ? 
+            <div className="album-list-check"><BsFillCheckCircleFill/></div> :
+            <div className="album-list-check"></div> }
           </div>
         )) :
         <div id="no-albums">No albums</div>}
@@ -69,7 +86,9 @@ function AlbumForm({setShowModal, singlePhoto}) {
           <div id="album-plus"><BiPlus/></div>
           <div id="create-new-album">Create new album</div>
         </button>
-        <button type="button" id="new-album-done" onClick={(e) => setShowModal(false)}>Done</button>
+        <button type="button" id="new-album-done" onClick={(e) => {
+          setShowModal(false)
+          addImageToAlbum(idOfAlbum)}}>Done</button>
       </div>
       </>
   } else {
