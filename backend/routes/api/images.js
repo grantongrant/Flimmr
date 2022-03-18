@@ -60,4 +60,14 @@ router.put('/', asyncHandler(async (req, res) => {
   return res.json(image);
 }));
 
+router.get('/album/:id', asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id, 10)
+  const images = await Image.findAll({
+    where: {
+      albumId: id
+    }
+  })
+  return res.json(images)
+}))
+
 module.exports = router;
