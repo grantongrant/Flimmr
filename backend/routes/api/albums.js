@@ -20,4 +20,10 @@ router.get('/:id', asyncHandler(async (req, res) => {
     return res.json(albums);
 }));
 
+router.get('/album/:id', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    const album = await Album.findByPk(id);
+    return res.json(album);
+}))
+
 module.exports = router;

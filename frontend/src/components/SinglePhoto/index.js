@@ -12,6 +12,8 @@ import { useDispatch } from 'react-redux';
 import { deleteImage, getTheImage, updateImage } from '../../store/images';
 import { getAllComments } from '../../store/comments';
 import AlbumFormModal from '../Album';
+import {CgAlbum} from 'react-icons/cg';
+import { getTheAlbum } from '../../store/albums';
 
 
 const SinglePhoto = () => {
@@ -19,6 +21,9 @@ const SinglePhoto = () => {
   const { id } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const singlePhoto = useSelector((state) => state.image)
+  const album = useSelector(state => state.album);
+  console.log(singlePhoto)
+  console.log(album)
   const date = new Date(singlePhoto.createdAt)
   const [descriptionEdit, setDescriptionEdit] = useState(false)
   const dispatch = useDispatch();
@@ -33,17 +38,16 @@ const SinglePhoto = () => {
   const comments = Object.values(commentsObject);
 
   useEffect(() => {
-    
-  })
+    dispatch(getTheAlbum(singlePhoto?.albumId))
+  }, [dispatch, singlePhoto.albumId])
 
   useEffect(() => {
     dispatch(getTheImage(id));
-}, [dispatch, id, render]);
+  }, [dispatch, id, render]);
 
-useEffect(() => {
-  dispatch(getAllComments(id));
-}, [dispatch, render]);
-
+  useEffect(() => {
+    dispatch(getAllComments(id));
+  }, [dispatch, render]);
 
   const DeleteThisImage = (id) => {
     dispatch(deleteImage(id));
@@ -93,7 +97,7 @@ useEffect(() => {
     if (rawMonth === "Nov") month = "November"
     if (rawMonth === "Dec") month = "December"
 
-    const newDate = month + " " + rawDate[2] + " " + rawDate[3]
+    const newDate = month + " " + rawDate[2] + ", " + rawDate[3]
     return newDate;
   }
 
@@ -166,28 +170,47 @@ useEffect(() => {
           <div className="description-right-column">
             <div className="additional-photo-info">
               <div className="photo-info-left">
+                {singlePhoto.views === 1 ?
                 <div className="view-count">
-                  <div>2</div>
-                  <div>views</div>
-                </div>
+                  <div className="count-label">{singlePhoto.views}</div>
+                  <div className="count-text">view</div>
+                </div> :
+                <div className="view-count">
+                  <div className="count-label">{singlePhoto.views}</div>
+                  <div className="count-text">views</div>
+                </div> }
                 {comments.length === 1 ?
                 <div className="comment-count">
-                  <div>{comments.length}</div>
-                  <div>comment</div>
+                  <div className="count-label">{comments.length}</div>
+                  <div className="count-text">comment</div>
                 </div> :
                   <div className="comment-count">
-                    <div>{comments.length}</div>
-                  <div>comments</div>
+                    <div className="count-label">{comments.length}</div>
+                  <div className="count-text">comments</div>
                 </div> }
               </div>
               <div className="photo-info-right">
                 <div>Uploaded on {uploadedOn(date)}</div>
               </div>
             </div>
+            {singlePhoto.albumId === null ?
             <div className="photo-album-info">
               <p>This photo is currently not in any albums</p>
               <div><AlbumFormModal singlePhoto={singlePhoto}/></div>
-            </div>
+            </div> :
+            <div className="photo-album-exists">
+              <div className="photo-album-top">
+                <div className="photo-top-left">This photo is in an album</div>
+                <div><AlbumFormModal singlePhoto={singlePhoto}/></div>
+              </div>
+              <div className="photo-album-bottom">
+                <div className="photo-bottom-left"><CgAlbum/></div>
+                <div className="photo-bottom-right">
+                  <div className="photo-album-name">{album?.name}</div>
+                  <div className="photo-album-items">2 items</div>
+                </div>
+              </div>
+            </div> }
           </div>
         </div>
     </div>

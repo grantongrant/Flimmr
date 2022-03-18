@@ -21,7 +21,6 @@ const PhotoInputForm = () => {
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
   const numOfPhotos = sessionImages.length;
-  console.log(image)
 
   const dispatch = useDispatch();
   const history = useHistory();

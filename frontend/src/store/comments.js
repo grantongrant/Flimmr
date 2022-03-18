@@ -66,7 +66,6 @@ export const updateAComment = (updatedComment) => async (dispatch) => {
         }),
     });
     const comment = await response.json();
-    console.log(comment)
     dispatch(updateComment(comment));
     return comment;
 }
