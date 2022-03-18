@@ -898,7 +898,7 @@ background: rgb(44,44,44);
 
 .count-text {
     color: #898989;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .photo-album-info {
@@ -914,7 +914,11 @@ background: rgb(44,44,44);
     margin-top: 16px;
     margin-bottom: 0px;
     line-height: 24px;
+}
 
+.photo-album-exists {
+    padding-bottom: 17px;
+    border-top: 1px solid #cfd6d9;
 }
 
 .camera {
@@ -1281,6 +1285,7 @@ background: rgb(44,44,44);
     height: 234px;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
 }
 
 .album-footer {
@@ -1393,4 +1398,63 @@ background: rgb(44,44,44);
 
 #add-to-album-button:hover {
     text-decoration: underline;
+}
+
+.photo-album-top {
+    margin: 20px 0 6px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.photo-top-left {
+    font-size: 15px;
+}
+
+.photo-top-right button{
+    font-size: 13px;
+    background-color: transparent;
+    border: none;
+    color: #006dac;
+    cursor: pointer;
+}
+
+.photo-top-right button:hover {
+    text-decoration: underline;
+}
+
+.photo-album-bottom {
+    padding: 9px;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.photo-album-bottom:hover {
+    background-color: rgb(230, 232, 233);
+}
+
+.photo-bottom-left {
+    height: 48px;
+    width: 48px;
+    color: #898989;
+    font-size: 48px;
+    margin-right: 20px;
+    text-align: center;
+    vertical-align: center;
+}
+
+.photo-album-name {
+    color: #006dac;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.photo-album-items {
+    font-size: 14px;
+    color: #898989;
+    margin-top: 3px;
 }

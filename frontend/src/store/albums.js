@@ -34,6 +34,12 @@ export const createAlbum = (newAlbum) => async (dispatch) => {
     return data;
 };
 
+export const getTheAlbum = (albumId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/albums/album/${albumId}`)
+    const data = await response.json()
+    dispatch(loadAlbums(data))
+}
+
 export const getAllAlbums = (userId) => async (dispatch) => {
     const response = await csrfFetch(`/api/albums/${userId}`)
     const data = await response.json()

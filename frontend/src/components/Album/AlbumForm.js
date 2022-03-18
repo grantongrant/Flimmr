@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../index.css";
-import { createAlbum, getAllAlbums } from "../../store/albums";
+import { createAlbum, getAllAlbums, getTheAlbum } from "../../store/albums";
 import { BiPlus } from 'react-icons/bi';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import {CgAlbum} from 'react-icons/cg';
-import { updateImageAlbum } from "../../store/images";
+import { getTheImage, updateImageAlbum } from "../../store/images";
 
 function AlbumForm({setShowModal, singlePhoto}) {
     
@@ -20,7 +20,8 @@ function AlbumForm({setShowModal, singlePhoto}) {
   const [errors, setErrors] = useState([]);
   const [createAlbumToggle, setCreateAlbumToggle] = useState(false);
   const [check, setCheck] = useState(false);
-  const [idOfAlbum, setIdOfAlbum] = useState(null);
+  const [idOfAlbum, setIdOfAlbum] = useState(singlePhoto.albumId);
+  console.log(idOfAlbum)
   const singlePhotoId = singlePhoto.id;
 
   useEffect(() => {
@@ -29,12 +30,18 @@ function AlbumForm({setShowModal, singlePhoto}) {
 
   const addImageToAlbum =  async (e) => {
 
+    if (idOfAlbum === singlePhoto.albumId) {
+      await dispatch(getTheImage(singlePhotoId))
+      await dispatch(getTheAlbum(idOfAlbum))
+    } else {
     const updatedPhoto = {
       singlePhotoId,
       idOfAlbum
     };
 
     await dispatch(updateImageAlbum(updatedPhoto))
+    await dispatch(getTheImage(singlePhotoId))
+    };
   };
 
   const handleSubmit = async (e) => {
@@ -49,12 +56,6 @@ function AlbumForm({setShowModal, singlePhoto}) {
 
     await dispatch(createAlbum(newAlbum))
   };
-
-  const divStyle = {
-    backgroundImage: "url(" + singlePhoto.imageUrl + ")",
-    height: "52px",
-    width: "52px"
-  }
 
   let modalContent;
 

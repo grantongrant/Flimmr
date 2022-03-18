@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
-const { Image } = require('../../db/models');
+const { Image, Album } = require('../../db/models');
 const { validateCreate, validateUpdate } = require('../../utils/validation');
 
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
@@ -22,11 +22,13 @@ router.post('', singleMulterUpload("image"), asyncHandler(async (req, res) => {
 router.get('/:id', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id,10);
     const image = await Image.findByPk(id);
+
     await image.update({
       views: image.views + 1
     });
     await image.save();
     return res.json(image);
+
   }));
 
 router.delete('/:id', asyncHandler(async (req, res) => {
