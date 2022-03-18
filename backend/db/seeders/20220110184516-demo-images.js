@@ -28,13 +28,13 @@ module.exports = {
      },
      {
       userId: 1,
-      albumId: 1,
+      albumId: 2,
       imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1641841101/Flimmr/mathilde-ro-IiqG8qA-cww-unsplash_fmot6j.jpg",
       description: "Oslo, Norvège by Mathilde Ro",
      },
      {
       userId: 1,
-      albumId: 1,
+      albumId: 2,
       imageUrl: "https://res.cloudinary.com/ddxtopm0l/image/upload/v1641841159/Flimmr/phil-aicken-7Am4N9J5Lts-unsplash_ufvjra.jpg",
       description: "Oslo Sognsvann by Phil Aicken",
      },
