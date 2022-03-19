@@ -15,7 +15,7 @@ router.get('', asyncHandler(async (req, res) => {
 router.post('', singleMulterUpload("image"), asyncHandler(async (req, res) => {
   const { userId } = req.body;
   const imageUrl = await singlePublicFileUpload(req.file);
-  const image = await Image.create({userId, imageUrl});
+  const image = await Image.create({userId, imageUrl, views: 0});
   return res.json(image);
 }));
 
@@ -23,10 +23,10 @@ router.get('/:id', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id,10);
     const image = await Image.findByPk(id);
 
-    await image.update({
-      views: image.views + 1
-    });
-    await image.save();
+    // await image.update({
+    //   views: image.views + 1
+    // });
+    // await image.save();
     return res.json(image);
 
   }));
@@ -59,6 +59,18 @@ router.put('/', asyncHandler(async (req, res) => {
   await image.save();
   return res.json(image);
 }));
+
+router.get('/view/:id', asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const image = await Image.findByPk(id);
+
+  await image.update({
+    views: image.views + 1
+  });
+  await image.save();
+  return res.json(image)
+}))
+
 
 router.get('/album/:id', asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10)

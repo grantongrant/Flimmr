@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     views: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     }
   }, {});
   Image.associate = function(models) {

@@ -9,7 +9,7 @@ import CommentForm from '../Comments/CommentForm';
 import {RiEditBoxLine} from 'react-icons/ri';
 import {HiDownload} from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
-import { deleteImage, getTheImage, updateImage } from '../../store/images';
+import { deleteImage, getTheImage, updateImage, addImageView } from '../../store/images';
 import { getAllComments } from '../../store/comments';
 import AlbumFormModal from '../Album';
 import {CgAlbum} from 'react-icons/cg';
@@ -34,6 +34,10 @@ const SinglePhoto = () => {
   const [render, setRender] = useState(false)
   const commentsObject = useSelector((state) => state.comment)
   const comments = Object.values(commentsObject);
+
+  useEffect(() => {
+    dispatch(addImageView(id))
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getTheAlbum(singlePhoto?.albumId))
@@ -129,7 +133,7 @@ const SinglePhoto = () => {
                     <div id="photo-title">{singlePhoto.title ? singlePhoto.title : "Add Title"}</div>
                     {descriptionEdit ? <button id="photo-edit" onClick={(e) => setShowPhotoEditForm(true)}><RiEditBoxLine/></button> : <button id="photo-edit"></button>}
                   </div>
-                  <div className="photo-description-label">{singlePhoto.description}</div>
+                  <div className="photo-description-label">{singlePhoto.description ? singlePhoto.description : "Add description"}</div>
                 </div> : 
                 <form className="info-shadow-edit" onSubmit={handleSubmit}>
                   <div className="title-and-edit-form">

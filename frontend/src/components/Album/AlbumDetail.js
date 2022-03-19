@@ -6,8 +6,7 @@ import { deleteAnAlbum } from '../../store/albums';
 
 const AlbumDetail = ({album}) => {
 
-    const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
 
   const deleteThisAlbum = async (albumId) => {
       await dispatch (deleteAnAlbum(albumId))

@@ -93,6 +93,13 @@ export const updateImageAlbum = (updatedPhoto) => async (dispatch) => {
     }
 }
 
+export const addImageView = (id) => async (dispatch) => {
+    console.log(id)
+    const response = await csrfFetch(`/api/images/view/${id}`)
+    const data = await response.json()
+    dispatch(loadImages(data))
+}
+
 export const deleteImage = (photoId) => async (dispatch) => {
     const response = await csrfFetch(`/api/images/${photoId}`, {
         method: "DELETE",
