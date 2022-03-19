@@ -418,6 +418,7 @@ form h1 {
     left: 120px;
     bottom: 20px;
     top: 135px;
+    height: 100px;
 }
 
 .info-container {
@@ -1753,4 +1754,8 @@ input.album-title {
 
 #go-to-photostream:hover {
     background-color: #3a97d1;
+}
+
+.album-delete-button{
+    cursor: pointer;
 }

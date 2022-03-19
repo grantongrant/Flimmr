@@ -61,7 +61,7 @@ function Albums() {
             <div className="photostream-item">
               <div className="photostream-image">
                   <div>{album.name}</div>
-                  <button type="button" onClick={(e) => deleteThisAlbum(album.id)}>Delete</button>
+                  <button className="album-delete-button" type="button" onClick={(e) => deleteThisAlbum(album.id)}>Delete</button>
                   <NavLink className="single-photo album-photo" to={`/albums/${album.id}`}><img src={`${album.coverImg}`} alt="album-cover"/></NavLink>
               </div>
             </div>

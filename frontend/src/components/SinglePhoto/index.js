@@ -9,7 +9,7 @@ import CommentForm from '../Comments/CommentForm';
 import {RiEditBoxLine} from 'react-icons/ri';
 import {HiDownload} from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
-import { deleteImage, getTheImage, updateImage } from '../../store/images';
+import { deleteImage, getTheImage, updateImage, addImageView } from '../../store/images';
 import { getAllComments } from '../../store/comments';
 import AlbumFormModal from '../Album';
 import {CgAlbum} from 'react-icons/cg';
@@ -34,6 +34,10 @@ const SinglePhoto = () => {
   const [render, setRender] = useState(false)
   const commentsObject = useSelector((state) => state.comment)
   const comments = Object.values(commentsObject);
+
+  useEffect(() => {
+    dispatch(addImageView(id))
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getTheAlbum(singlePhoto?.albumId))
