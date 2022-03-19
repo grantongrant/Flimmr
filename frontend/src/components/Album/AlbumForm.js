@@ -21,8 +21,8 @@ function AlbumForm({setShowModal, singlePhoto}) {
   const [createAlbumToggle, setCreateAlbumToggle] = useState(false);
   const [check, setCheck] = useState(false);
   const [idOfAlbum, setIdOfAlbum] = useState(singlePhoto.albumId);
-  console.log(idOfAlbum)
   const singlePhotoId = singlePhoto.id;
+  const coverImg = singlePhoto.imageUrl;
 
   useEffect(() => {
     dispatch(getAllAlbums(userId));
@@ -51,9 +51,10 @@ function AlbumForm({setShowModal, singlePhoto}) {
     const newAlbum = {
         userId,
         name,
+        coverImg,
         description
     }
-
+    
     await dispatch(createAlbum(newAlbum))
   };
 

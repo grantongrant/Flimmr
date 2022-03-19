@@ -22,8 +22,6 @@ const SinglePhoto = () => {
   const sessionUser = useSelector(state => state.session.user);
   const singlePhoto = useSelector((state) => state.image)
   const album = useSelector(state => state.album);
-  console.log(singlePhoto)
-  console.log(album)
   const date = new Date(singlePhoto.createdAt)
   const [descriptionEdit, setDescriptionEdit] = useState(false)
   const dispatch = useDispatch();
@@ -39,7 +37,7 @@ const SinglePhoto = () => {
 
   useEffect(() => {
     dispatch(getTheAlbum(singlePhoto?.albumId))
-  }, [dispatch, singlePhoto.albumId])
+  }, [dispatch, singlePhoto.albumId, render])
 
   useEffect(() => {
     dispatch(getTheImage(id));
