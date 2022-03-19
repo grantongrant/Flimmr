@@ -133,7 +133,7 @@ const SinglePhoto = () => {
                     <div id="photo-title">{singlePhoto.title ? singlePhoto.title : "Add Title"}</div>
                     {descriptionEdit ? <button id="photo-edit" onClick={(e) => setShowPhotoEditForm(true)}><RiEditBoxLine/></button> : <button id="photo-edit"></button>}
                   </div>
-                  <div className="photo-description-label">{singlePhoto.description}</div>
+                  <div className="photo-description-label">{singlePhoto.description ? singlePhoto.description : "Add description"}</div>
                 </div> : 
                 <form className="info-shadow-edit" onSubmit={handleSubmit}>
                   <div className="title-and-edit-form">
