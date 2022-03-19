@@ -26,4 +26,28 @@ router.get('/album/:id', asyncHandler(async (req, res) => {
     return res.json(album);
 }))
 
+router.put('/edit', asyncHandler(async (req, res) => {
+  
+    const { albumId, name, description } = req.body;
+    console.log("REQ BODY ODY ODY", req.body)
+
+    const album = await Album.findByPk(albumId)
+  
+    await album.update({
+      id: albumId,
+      name: name,
+      description: description,
+    })
+    
+    await album.save();
+    return res.json(album);
+  }));
+
+  router.delete('/:id/delete', asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id,10);
+    const album = await Album.findByPk(id);
+    await album.destroy();
+    return res.json(album);
+  }));
+
 module.exports = router;

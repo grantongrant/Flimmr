@@ -1548,7 +1548,11 @@ background: rgb(44,44,44);
 
 .album-page-container {
     background-color: #f3f5f6;
-    padding-top: 64px;
+}
+
+#navbar-background {
+    background-color: #212124;
+    height: 64px;
 }
 
 .album-page-content {
@@ -1585,4 +1589,120 @@ background: rgb(44,44,44);
 .album-left-arrow {
     font-size: 25px;
     margin-top: -2px;
+}
+
+.album-stream-content {
+    margin-top: 5px;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows:300px 300px;
+    /* grid-auto-flow: dense; */
+    grid-gap: 5px;
+    margin-bottom: 60px;
+}
+
+.album-stream-content img {
+    padding: 0px;
+}
+
+.album-title-description {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 0 10px 5px;
+    cursor: text;
+    color: #fff;
+    text-shadow: 0 1px 1px #000;
+    margin-top: 44px;
+}
+
+.album-title-description:hover {
+    background: rgba(0,0,0,.4);
+    border-radius: 2px;
+}
+
+.album-title-description-form {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 0 10px 5px;
+    cursor: text;
+    color: #fff;
+    text-shadow: 0 1px 1px #000;
+    margin-top: 44px;
+    background: rgba(0,0,0,.4);
+    border-radius: 2px;
+}
+
+.album-title-description-form input {
+    color: white;
+    /* text-shadow: 0 1px 1px #000; */
+    border: none;
+    text-align: center;
+    /* background-color: purple; */
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    height: auto;
+}
+
+.album-title-description-form button { 
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    opacity: .8;
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 4px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.album-title {
+    font-size: 32px;
+}
+
+.album-description {
+    font-size: 24px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 13px;
+    font-style: italic;
+}
+
+input + .album-description{
+    padding-top: 12px;
+    padding-bottom: 0px;
+}
+
+input.album-title {
+    padding-bottom: 0px;
+}
+
+.number-of-photos, .by-user {
+    font-size: 14px;
+    text-shadow: 0 1px 1px #000;
+    color: white;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.by-user {
+    margin-top: 60px;
+}
+
+.by-user a {
+    color: white;
+}
+
+.by-user a:hover {
+    text-decoration: underline;
+}
+
+.edit-button-hover {
+    position: absolute;
+    margin-top: 10px;
+    font-size: 20px;
 }
