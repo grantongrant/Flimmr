@@ -9,8 +9,8 @@ import SplashPage from "./components/SplashPage";
 import Photostream from "./components/Photostream";
 import PhotoInputForm from "./components/PhotoInputForm";
 import SinglePhoto from "./components/SinglePhoto";
-// import PhotoEditForm from "./components/PhotoEditForm";
 import AlbumPage from "./components/Album/AlbumPage";
+import Albums from "./components/Album/Albums";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,9 +43,9 @@ function App() {
           <Route exact path="/photos/:id">
             <SinglePhoto />
           </Route>
-          {/* <Route exact path="photos/:id/edit">
-              <PhotoEditForm />
-          </Route> */}
+          <Route exact path="/albums">
+              <Albums />
+          </Route>
           <Route exact path="/albums/:id">
             <AlbumPage/>
           </Route>

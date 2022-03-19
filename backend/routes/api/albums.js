@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
-const { Album } = require('../../db/models');
+const { Album, Image } = require('../../db/models');
 
 router.post('/', asyncHandler(async (req, res) => {
     const { userId, name, coverImg, description } = req.body;
@@ -45,6 +45,19 @@ router.put('/edit', asyncHandler(async (req, res) => {
 
   router.delete('/:id/delete', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id,10);
+    const images = await Image.findAll({
+        where: {
+            albumId: id
+        }
+    })
+
+    images.forEach(image => {
+        image.update ({
+            albumId: null
+          });
+        image.save();
+    });
+
     const album = await Album.findByPk(id);
     await album.destroy();
     return res.json(album);
