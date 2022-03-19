@@ -9,7 +9,8 @@ import SplashPage from "./components/SplashPage";
 import Photostream from "./components/Photostream";
 import PhotoInputForm from "./components/PhotoInputForm";
 import SinglePhoto from "./components/SinglePhoto";
-import PhotoEditForm from "./components/PhotoEditForm";
+// import PhotoEditForm from "./components/PhotoEditForm";
+import AlbumPage from "./components/Album/AlbumPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,8 +43,11 @@ function App() {
           <Route exact path="/photos/:id">
             <SinglePhoto />
           </Route>
-          <Route exact path="photos/:id/edit">
+          {/* <Route exact path="photos/:id/edit">
               <PhotoEditForm />
+          </Route> */}
+          <Route exact path="/albums/:id">
+            <AlbumPage/>
           </Route>
           <Route>
             404: Not Found

@@ -39,6 +39,11 @@ export const getAllImages = () => async (dispatch) => {
     dispatch(loadImages(data))
 };
 
+export const getImagesInAlbum = (albumId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/images/album/${albumId}`)
+    const data = await response.json()
+    dispatch(loadImages(data))
+}
 export const getTheImage = (id) => async (dispatch) => {
     const response = await csrfFetch(`/api/images/${id}`)
     const data = await response.json()

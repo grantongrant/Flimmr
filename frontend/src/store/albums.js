@@ -20,12 +20,13 @@ export const loadAlbums = (albums) => {
 };
 
 export const createAlbum = (newAlbum) => async (dispatch) => {
-    const { userId, name, description } = newAlbum;
+    const { userId, name, coverImg, description } = newAlbum;
     const response = await csrfFetch("/api/albums/", {
       method: "POST",
       body: JSON.stringify({
         userId,
         name,
+        coverImg,
         description
       }),
     });
