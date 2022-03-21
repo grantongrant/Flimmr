@@ -7,6 +7,7 @@ import { BiPlus } from 'react-icons/bi';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import {CgAlbum} from 'react-icons/cg';
 import { getTheImage, updateImageAlbum } from "../../store/images";
+import {IoMdClose} from 'react-icons/io';
 
 function AlbumForm({setShowModal, singlePhoto}) {
     
@@ -55,7 +56,11 @@ function AlbumForm({setShowModal, singlePhoto}) {
         description
     }
     
-    await dispatch(createAlbum(newAlbum))
+    await dispatch(createAlbum(newAlbum));
+    await dispatch(getAllAlbums(userId));
+    setName("")
+    setDescription("")
+    setCreateAlbumToggle(false)
   };
 
   let modalContent;
@@ -95,8 +100,11 @@ function AlbumForm({setShowModal, singlePhoto}) {
       </>
   } else {
       modalContent = 
-      <form onSubmit={handleSubmit}>
-        <div>Create a new album</div>
+      <form className="create-album-form" onSubmit={handleSubmit}>
+        <div className="create-a-new-album">
+          <div>Create a new album</div>
+          <div className="close-create-album" onClick={(e) => setShowModal(false)}><IoMdClose/></div>
+          </div>
         <input
           type="text"
           value={name}
@@ -109,15 +117,17 @@ function AlbumForm({setShowModal, singlePhoto}) {
           <li key={idx}>{error}</li>
         ))}
         </ul>
-        <input
-          type="text"
+        <textarea
+          // type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description (optional)"
           id="description-optional"
         />
-        <button type="button" onClick={(e) => setCreateAlbumToggle(false)}>Cancel</button>
-        <button type="submit">Create</button>
+        <div className="create-album-buttons">
+          <button className="create-album-cancel" type="button" onClick={(e) => setCreateAlbumToggle(false)}>Cancel</button>
+          <button className="create-album-create" type="submit">Create</button>
+        </div>
     </form>
   }
 
