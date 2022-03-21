@@ -151,8 +151,9 @@ body {
 
 .profile-dropdown {
     position: absolute;
-    margin-top: 64px;
-    right: 20px;
+    margin-top: 50px;
+    right: 64px!important;
+    /* right: 10%; */
     background-color: white;
     justify-content: center;
     font-size: 12px;
