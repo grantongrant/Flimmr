@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { getAllImages } from '../../store/images';
+import { getAllImages, getAllImagesFromUser } from '../../store/images';
 import PhotoDetail from '../PhotoDetail';
 import PhotoInputForm from '../PhotoInputForm';
 import SinglePhoto from "../SinglePhoto";
@@ -14,13 +14,24 @@ const ImageList = () => {
     const sessionUser = useSelector(state => state.session.user);
     const imagesObject = useSelector((state) => state.image)
     const images = Object.values(imagesObject);
-    const sessionImages = images.filter((image) => image?.userId === sessionUser.id)
+    const [isLoaded, setIsLoaded] = useState(false);
+    console.log(images)
+    // const sessionImages = images.filter((image) => image?.userId === sessionUser.id)
+
+    useEffect( () => {
+        dispatch(getAllImagesFromUser(sessionUser.id));
+        // setIsLoaded(true)
+    }, [dispatch, sessionUser.id]);
 
     useEffect(() => {
-        dispatch(getAllImages());
-    }, [dispatch]);
+        const timer = setTimeout(() => {
+            setIsLoaded(true);
+        }, 50);
+        return () => clearTimeout(timer);
+    });
 
     return (
+        <>
         <div className="photo-page">
             <div className="photo-info-container">
                 <div className="avatar-container">
@@ -34,16 +45,21 @@ const ImageList = () => {
             <div className="menu-bar">
                 <div className="menu-bar-content">
                     <div className="photostream-menu-label border">Photostream</div>
-                    <div className="photostream-menu-label noborder"><NavLink to="/albums">Albums</NavLink></div>
+                    <NavLink to="/albums"><div className="photostream-menu-label noborder">Albums</div></NavLink>
                 </div>
             </div>
             <div className="new-album-menu"></div>
+            {isLoaded &&
             <div className="photo-stream-content">
-                {sessionImages?.map(({ imageUrl, id, description }) => (
-                    <PhotoDetail key={id} id={id} imageUrl={imageUrl} description={description}/>
+                {images?.map((image) => (
+                    <>
+                    {console.log(image)}
+                    <PhotoDetail key={image.id} id={image.id} imageUrl={image.imageUrl} description={image.description}/>
+                    </>
                 ))}
-            </div>
+            </div>}
         </div>
+        </>
     )
 }
 

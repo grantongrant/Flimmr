@@ -22,14 +22,24 @@ function AlbumPage() {
     const [name, setName] = useState(album.name);
     const [description, setDescription] = useState(album.description);
     const [updateAlbum, setUpdateAlbum] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         dispatch(getImagesInAlbum(id));
         dispatch(getTheAlbum(id))
-      }, [dispatch]);
+        // setIsLoaded(true)
+    }, [dispatch]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoaded(true);
+        }, 50);
+        return () => clearTimeout(timer);
+    });
+
 
     const sectionStyle = {
-        backgroundImage: "url(" + images[0].imageUrl + ")"
+        backgroundImage: "url(" + images[0]?.imageUrl + ")"
     };
 
     const updateThisAlbum = async (e) => {
@@ -67,15 +77,16 @@ function AlbumPage() {
     )
 
   return (
+    <>
     <div className="album-page-container">
         <div id="navbar-background"></div>
         <div className="album-page-content">
-            <NavLink to="/photos"><div className="album-page-menu">
+            <NavLink to="/albums"><div className="album-page-menu">
                 <div className="album-left-arrow"><BsArrowLeftShort/></div>
-                <div>Back to photostream</div>
+                <div>Back to albums</div>
             </div></NavLink>
             <div className="album-page-background-photo" style={ sectionStyle }>
-                {updateAlbum ? EditAlbumDetails :
+                {updateAlbum && isLoaded ? EditAlbumDetails :
                 <div className="album-title-description" onClick={(e) => {
                     setUpdateAlbum(true)
                     setName(album.name)
@@ -92,12 +103,13 @@ function AlbumPage() {
                 <div className="by-user"><NavLink to="/photos">By: {sessionUser.name}</NavLink></div>
             </div>
             <div className="album-stream-content">
-                {images?.map(({ imageUrl, id, description }) => (
+                {isLoaded && images?.map(({ imageUrl, id, description }) => (
                     <PhotoDetail key={id} id={id} imageUrl={imageUrl}/>
                 ))}
             </div>
         </div>
     </div>
+    </>
   )
 }
 

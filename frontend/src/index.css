@@ -1461,6 +1461,15 @@ background: rgb(44,44,44);
     background-color: rgb(230, 232, 233);
 }
 
+.photo-album-right-exit {
+    color: #898989;
+    display: flex;
+    cursor: pointer;
+    width: 10%;
+    margin-right: 0px;
+    margin-left: auto;
+}
+
 .photo-bottom-left {
     height: 48px;
     width: 48px;
@@ -1476,6 +1485,14 @@ background: rgb(44,44,44);
     cursor: pointer;
     font-size: 13px;
     font-weight: 600;
+}
+
+.photo-album-name:hover {
+    text-decoration: underline;
+}
+
+.photo-album-name a {
+    color: #006dac;
 }
 
 .photo-album-items {
@@ -1515,9 +1532,10 @@ background: rgb(44,44,44);
     border-bottom: 1px solid #006dac;
 }
 
-.photostream-menu-label a {
+.menu-bar-content a {
     text-decoration: none;
     color: inherit;
+    z-index: 50;
 }
 
 .border {

@@ -61,6 +61,7 @@ function AlbumForm({setShowModal, singlePhoto}) {
     setName("")
     setDescription("")
     setCreateAlbumToggle(false)
+    
   };
 
   let modalContent;

@@ -12,6 +12,17 @@ router.get('', asyncHandler(async (req, res) => {
   return res.json(images);
 }));
 
+router.get('/user/:id', asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id, 10)
+  const images = await Image.findAll({
+    where: {
+      userId: id
+    }
+  })
+  
+  return res.json(images)
+}));
+
 router.post('', singleMulterUpload("image"), asyncHandler(async (req, res) => {
   const { userId } = req.body;
   const imageUrl = await singlePublicFileUpload(req.file);
@@ -108,7 +119,7 @@ router.put('/album/delete', asyncHandler(async (req, res) => {
       imageCount: album.imageCount -1
     })
   };
-  
+
   return res.json(image)
 }))
 

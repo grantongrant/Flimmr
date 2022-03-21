@@ -44,7 +44,7 @@ function Albums() {
     </div>
     <div className="menu-bar">
         <div className="menu-bar-content">
-            <div className="photostream-menu-label noborder"><NavLink to="/photos">Photostream</NavLink></div>
+            <NavLink to="/photos"><div className="photostream-menu-label noborder">Photostream</div></NavLink>
             <div className="photostream-menu-label border">Albums</div>
         </div> 
     </div>
@@ -54,7 +54,7 @@ function Albums() {
             <div className="add-album-text">New album</div>
         </div> */}
     </div>
-    {albums.length !== 0 ?
+    {albums?.length !== 0 ?
     <div className="album-content">
         {albums?.map((album) => (
             <div className="photostream-container">

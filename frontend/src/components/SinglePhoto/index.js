@@ -9,11 +9,12 @@ import CommentForm from '../Comments/CommentForm';
 import {RiEditBoxLine} from 'react-icons/ri';
 import {HiDownload} from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
-import { deleteImage, getTheImage, updateImage, addImageView } from '../../store/images';
+import { deleteImage, getTheImage, updateImage, addImageView, takeOutOfAlbum } from '../../store/images';
 import { getAllComments } from '../../store/comments';
 import AlbumFormModal from '../Album';
 import {CgAlbum} from 'react-icons/cg';
 import { getTheAlbum } from '../../store/albums';
+import {IoMdClose} from 'react-icons/io';
 
 
 const SinglePhoto = () => {
@@ -22,6 +23,7 @@ const SinglePhoto = () => {
   const sessionUser = useSelector(state => state.session.user);
   const singlePhoto = useSelector((state) => state.image)
   const album = useSelector(state => state.album);
+  console.log(album)
   const date = new Date(singlePhoto.createdAt)
   const [descriptionEdit, setDescriptionEdit] = useState(false)
   const dispatch = useDispatch();
@@ -34,6 +36,7 @@ const SinglePhoto = () => {
   const [render, setRender] = useState(false)
   const commentsObject = useSelector((state) => state.comment)
   const comments = Object.values(commentsObject);
+  const [removePhotoButton, setRemovePhotoButton] = useState(false)
 
   useEffect(() => {
     dispatch(addImageView(id))
@@ -81,6 +84,11 @@ const SinglePhoto = () => {
     setDescriptionEdit(false)
 
   };
+
+  const removeImageFromAlbum = async (albumId) => {
+    await dispatch(takeOutOfAlbum(id, albumId));
+    await dispatch(getTheImage(id));
+  }
 
   const uploadedOn = (date) => {
     const rawDate = date.toString().split(" ");
@@ -205,12 +213,16 @@ const SinglePhoto = () => {
                 <div className="photo-top-left">This photo is in an album</div>
                 <div><AlbumFormModal singlePhoto={singlePhoto}/></div>
               </div>
-              <div className="photo-album-bottom">
+              <div className="photo-album-bottom" onMouseEnter={(e) => setRemovePhotoButton(true)} onMouseLeave={(e) => setRemovePhotoButton(false)}>
                 <div className="photo-bottom-left"><CgAlbum/></div>
                 <div className="photo-bottom-right">
-                  <div className="photo-album-name">{album?.name}</div>
-                  <div className="photo-album-items">2 items</div>
+                  <div className="photo-album-name"><NavLink to={`/albums/${album.id}`}>{album?.name}</NavLink></div>
+                  {album.imageCount === 1 ?
+                  <div className="photo-album-items">1 item</div> :
+                  <div className="photo-album-items">{album.imageCount} items</div>}
                 </div>
+                {removePhotoButton ? 
+                <div className="photo-album-right-exit" onClick={(e) => removeImageFromAlbum(album.id) }><IoMdClose/></div> : null }
               </div>
             </div> }
           </div>

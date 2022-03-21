@@ -39,6 +39,12 @@ export const getAllImages = () => async (dispatch) => {
     dispatch(loadImages(data))
 };
 
+export const getAllImagesFromUser = (userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/images/user/${userId}`)
+    const data = await response.json()
+    dispatch(loadImages(data))
+}
+
 export const getImagesInAlbum = (albumId) => async (dispatch) => {
     const response = await csrfFetch(`/api/images/album/${albumId}`)
     const data = await response.json()
@@ -94,7 +100,6 @@ export const updateImageAlbum = (updatedPhoto) => async (dispatch) => {
 }
 
 export const addImageView = (id) => async (dispatch) => {
-    console.log(id)
     const response = await csrfFetch(`/api/images/view/${id}`)
     const data = await response.json()
     dispatch(loadImages(data))
@@ -108,6 +113,20 @@ export const deleteImage = (photoId) => async (dispatch) => {
     dispatch(removeImage(data.id));
     return response;
   };
+
+export const takeOutOfAlbum = (id, albumId) => async (dispatch) => {
+    console.log("TAKEOUTOFALBUM", id, albumId)
+    const response = await csrfFetch(`/api/images/album/delete`, {
+        method: 'PUT',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({id, albumId}),
+    })
+
+    // if (response.ok) {
+    //     const data = await response.json();
+    //     dispatch(addImage(data.photo));
+    // }
+}
 
 const initialState = { };
 
