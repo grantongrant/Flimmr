@@ -230,17 +230,19 @@ const SinglePhoto = () => {
             <div className="photo-album-exists">
               <div className="photo-album-top">
                 <div className="photo-top-left">This photo is in an album</div>
-                <div><AlbumFormModal singlePhoto={singlePhoto}/></div>
+                <div><AlbumFormModal sessionUser={sessionUser} singlePhoto={singlePhoto}/></div>
               </div>
               <div className="photo-album-bottom" onMouseEnter={(e) => setRemovePhotoButton(true)} onMouseLeave={(e) => setRemovePhotoButton(false)}>
                 <div className="photo-bottom-left"><CgAlbum/></div>
                 <div className="photo-bottom-right">
-                  <div className="photo-album-name"><NavLink to={`/albums/${album.id}`}>{album?.name}</NavLink></div>
+                  {sessionUser.id === singlePhoto.userId ?
+                  <div className="photo-album-name"><NavLink to={`/albums/${album.id}`}>{album?.name}</NavLink></div> :
+                  <div className="photo-album-name-no-link">{album?.name}</div>}
                   {album.imageCount === 1 ?
                   <div className="photo-album-items">1 item</div> :
                   <div className="photo-album-items">{album.imageCount} items</div>}
                 </div>
-                {removePhotoButton ? 
+                {removePhotoButton && sessionUser.id === singlePhoto.userId? 
                 <div className="photo-album-right-exit" onClick={(e) => removeImageFromAlbum(album.id) }><IoMdClose/></div> : null }
               </div>
             </div> }

@@ -1508,6 +1508,12 @@ background: rgb(44,44,44);
     color: #006dac;
 }
 
+.photo-album-name-no-link {
+    color: #006dac;
+    font-size: 13px;
+    font-weight: 600;
+}
+
 .photo-album-items {
     font-size: 14px;
     color: #898989;
