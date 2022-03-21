@@ -24,6 +24,10 @@ module.exports = {
         type: Sequelize.STRING(255),
         allowNull: true,
       },
+      imageCount: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

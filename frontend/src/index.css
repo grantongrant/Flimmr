@@ -1759,3 +1759,71 @@ input.album-title {
 .album-delete-button{
     cursor: pointer;
 }
+
+.create-a-new-album {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: 18px;
+    font-size: 16px;
+}
+
+.close-create-album {
+    /* color: #898989; */
+    font-size: 22px;
+    opacity: .3;
+    cursor: pointer;
+}
+
+.create-album-form input, textarea {
+    margin: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-shadow: inset 0 0 0 1px #9ea4a7;
+    border: none;
+    outline: none;
+    padding: 6px 10px;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 1.5;
+    background-color: white;
+    font-weight: 400;
+    height: auto;
+    text-align: start;
+}
+
+.create-album-form input:focus, textarea:focus {
+    box-shadow: inset 0 0 0 1px #3a97d1;
+}
+
+.create-album-buttons {
+    height: 140px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-album-buttons button {
+    margin-left: 10px;
+    /* padding-right: 20px; */
+    margin: 0 0 0 10px!important;
+    height: 29px;
+    line-height: 29px;
+    min-width: 85px;
+    font-size: 14px;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.create-album-cancel {
+    background-color: #979ea2;
+}
+
+.create-album-create {
+    background-color: #128fdc;
+}

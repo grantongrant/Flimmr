@@ -34,15 +34,17 @@ const Comments = ({imageId}) => {
             <div className="comment-container" 
                 onMouseEnter={(e) => {
                     setDescriptionEdit(true)
+                    setCommentId(id)
                     setUserId(User.id)}} 
                 onMouseLeave={(e) => {
                     setDescriptionEdit(false)
+                    setCommentId(null)
                     setUserId(null)}}>
                 <div className="comment-list-avatar camera"></div>
                 <div className="comment-right">
                     <div className="author-and-edit-comment">
                     <div className="comment-author">{User.name}</div>
-                    {userId === sessionUser.id && userId === User.id? 
+                    {userId === sessionUser.id && userId === User.id && commentId === id? 
                     <div className="comment-edit-delete">
                         {descriptionEdit === true && !editFormIsOn ?
                         <>

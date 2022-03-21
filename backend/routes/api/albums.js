@@ -5,7 +5,7 @@ const { Album, Image } = require('../../db/models');
 
 router.post('/', asyncHandler(async (req, res) => {
     const { userId, name, coverImg, description } = req.body;
-    const newComment = await Album.create({userId, name, coverImg, description});
+    const newComment = await Album.create({userId, name, coverImg, imageCount: 0, description});
     return res.json(newComment);
 }));
 
