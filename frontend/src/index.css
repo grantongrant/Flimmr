@@ -60,11 +60,24 @@ body {
 
 }
 .global-search {
+    display: flex;
     height: 33px;
     width: 80%;
     padding: 0px 33px;
-
+    align-items: center;
 }
+
+.global-links {
+    color: white;
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.global-links:hover {
+    color: #898989;
+}
+
 .login-signup {
     display: flex;
     margin-right: 20px;
@@ -1845,3 +1858,20 @@ input.album-title {
 .create-album-create {
     background-color: #128fdc;
 }
+
+.explore-header {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 24px;
+    margin-bottom: 5px;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 300;
+}
+
+.no-album {
+    margin-bottom: 16px;
+    line-height: 24px;
+}
+

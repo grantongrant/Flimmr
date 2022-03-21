@@ -26,7 +26,7 @@ const ImageList = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoaded(true);
-        }, 50);
+        }, 300);
         return () => clearTimeout(timer);
     });
 

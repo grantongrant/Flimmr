@@ -43,7 +43,11 @@ const SinglePhoto = () => {
   }, [dispatch])
 
   useEffect(() => {
-    dispatch(getTheAlbum(singlePhoto?.albumId))
+    if (singlePhoto.albumId){
+      dispatch(getTheAlbum(singlePhoto?.albumId))
+    } else {
+      return
+    }
   }, [dispatch, singlePhoto.albumId, render])
 
   useEffect(() => {
@@ -122,17 +126,22 @@ const SinglePhoto = () => {
           <div className="single-photo-page-photo">
             <img src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
           </div>
+          {sessionUser.id === singlePhoto.userId ?
           <div className="photo-edit-icon">
-            <div onClick={(e) => setPhotoEdit(!photoEdit)}><RiEditBoxLine/></div>
+            <div onClick={(e) => setPhotoEdit(!photoEdit)}><RiEditBoxLine/></div> 
             <div><a href={singlePhoto?.imageUrl} target="_blank" download={singlePhoto?.title}><HiDownload/></a></div>
             {photoEdit && photoEditMenu}
-          </div>
+          </div> : 
+          <div className="photo-edit-icon">
+            <div><a href={singlePhoto?.imageUrl} target="_blank" download={singlePhoto?.title}><HiDownload/></a></div>
+        </div> }
         </div>
         <div className="photo-description">
           <div className="description-left-column">
             <div className="top-left">
               <div className="avatar avatar-div">
               </div>
+              {sessionUser.id === singlePhoto.userId ? 
               <div className="photo-info">
                 <div className="session-user-name">{sessionUser.name}</div>
                 {showPhotoEditForm === false ?
@@ -168,7 +177,16 @@ const SinglePhoto = () => {
                       </div>
                   </div>
                 </form> }
-              </div>
+              </div> :
+              <div className="photo-info">
+                <div className="session-user-name">{singlePhoto.User?.name}</div>
+                <div className="info-shadow">
+                  <div className="title-and-edit">
+                    <div id="photo-title">{singlePhoto.title ? singlePhoto.title : null}</div>
+                  </div>
+                  <div className="photo-description-label">{singlePhoto.description ? singlePhoto.description : null}</div>
+                </div>
+              </div> }
             </div>
             <div className="comment-list">
               <Comments imageId={id}/>
@@ -206,7 +224,8 @@ const SinglePhoto = () => {
             {singlePhoto.albumId === null ?
             <div className="photo-album-info">
               <p>This photo is currently not in any albums</p>
-              <div><AlbumFormModal singlePhoto={singlePhoto}/></div>
+              {sessionUser.id === singlePhoto.userId ?
+              <div><AlbumFormModal singlePhoto={singlePhoto}/></div> : <div className="no-album"></div> }
             </div> :
             <div className="photo-album-exists">
               <div className="photo-album-top">

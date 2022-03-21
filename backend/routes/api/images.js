@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
-const { Image, Album } = require('../../db/models');
+const { Image, Album, User } = require('../../db/models');
 const { validateCreate, validateUpdate } = require('../../utils/validation');
 
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
@@ -17,9 +17,12 @@ router.get('/user/:id', asyncHandler(async (req, res) => {
   const images = await Image.findAll({
     where: {
       userId: id
+    },
+    include: {
+      model: User
     }
   })
-  
+
   return res.json(images)
 }));
 
@@ -31,13 +34,15 @@ router.post('', singleMulterUpload("image"), asyncHandler(async (req, res) => {
 }));
 
 router.get('/:id', asyncHandler(async (req, res) => {
-    const id = parseInt(req.params.id,10);
-    const image = await Image.findByPk(id);
-
-    // await image.update({
-    //   views: image.views + 1
-    // });
-    // await image.save();
+    const imageId = parseInt(req.params.id,10);
+    const image = await Image.findOne({
+      where: {
+        id: imageId
+      },
+      include: {
+        model: User
+      }
+    });
     return res.json(image);
 
   }));
@@ -81,7 +86,14 @@ router.put('/', asyncHandler(async (req, res) => {
 
 router.get('/view/:id', asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const image = await Image.findByPk(id);
+  const image = await Image.findOne({
+    where: {
+      id: id
+    },
+    include: {
+      model: User
+    }
+  });
 
   await image.update({
     views: image.views + 1
