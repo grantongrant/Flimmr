@@ -9,11 +9,12 @@ import CommentForm from '../Comments/CommentForm';
 import {RiEditBoxLine} from 'react-icons/ri';
 import {HiDownload} from 'react-icons/hi';
 import { useDispatch } from 'react-redux';
-import { deleteImage, getTheImage, updateImage, addImageView } from '../../store/images';
+import { deleteImage, getTheImage, updateImage, addImageView, takeOutOfAlbum } from '../../store/images';
 import { getAllComments } from '../../store/comments';
 import AlbumFormModal from '../Album';
 import {CgAlbum} from 'react-icons/cg';
 import { getTheAlbum } from '../../store/albums';
+import {IoMdClose} from 'react-icons/io';
 
 
 const SinglePhoto = () => {
@@ -22,6 +23,7 @@ const SinglePhoto = () => {
   const sessionUser = useSelector(state => state.session.user);
   const singlePhoto = useSelector((state) => state.image)
   const album = useSelector(state => state.album);
+  console.log(album)
   const date = new Date(singlePhoto.createdAt)
   const [descriptionEdit, setDescriptionEdit] = useState(false)
   const dispatch = useDispatch();
@@ -34,13 +36,18 @@ const SinglePhoto = () => {
   const [render, setRender] = useState(false)
   const commentsObject = useSelector((state) => state.comment)
   const comments = Object.values(commentsObject);
+  const [removePhotoButton, setRemovePhotoButton] = useState(false)
 
   useEffect(() => {
     dispatch(addImageView(id))
   }, [dispatch])
 
   useEffect(() => {
-    dispatch(getTheAlbum(singlePhoto?.albumId))
+    if (singlePhoto.albumId){
+      dispatch(getTheAlbum(singlePhoto?.albumId))
+    } else {
+      return
+    }
   }, [dispatch, singlePhoto.albumId, render])
 
   useEffect(() => {
@@ -82,6 +89,11 @@ const SinglePhoto = () => {
 
   };
 
+  const removeImageFromAlbum = async (albumId) => {
+    await dispatch(takeOutOfAlbum(id, albumId));
+    await dispatch(getTheImage(id));
+  }
+
   const uploadedOn = (date) => {
     const rawDate = date.toString().split(" ");
     const rawMonth = rawDate[1];
@@ -114,17 +126,22 @@ const SinglePhoto = () => {
           <div className="single-photo-page-photo">
             <img src={singlePhoto?.imageUrl} alt={singlePhoto?.description} />
           </div>
+          {sessionUser.id === singlePhoto.userId ?
           <div className="photo-edit-icon">
-            <div onClick={(e) => setPhotoEdit(!photoEdit)}><RiEditBoxLine/></div>
+            <div onClick={(e) => setPhotoEdit(!photoEdit)}><RiEditBoxLine/></div> 
             <div><a href={singlePhoto?.imageUrl} target="_blank" download={singlePhoto?.title}><HiDownload/></a></div>
             {photoEdit && photoEditMenu}
-          </div>
+          </div> : 
+          <div className="photo-edit-icon">
+            <div><a href={singlePhoto?.imageUrl} target="_blank" download={singlePhoto?.title}><HiDownload/></a></div>
+        </div> }
         </div>
         <div className="photo-description">
           <div className="description-left-column">
             <div className="top-left">
               <div className="avatar avatar-div">
               </div>
+              {sessionUser.id === singlePhoto.userId ? 
               <div className="photo-info">
                 <div className="session-user-name">{sessionUser.name}</div>
                 {showPhotoEditForm === false ?
@@ -160,7 +177,16 @@ const SinglePhoto = () => {
                       </div>
                   </div>
                 </form> }
-              </div>
+              </div> :
+              <div className="photo-info">
+                <div className="session-user-name">{singlePhoto.User?.name}</div>
+                <div className="info-shadow">
+                  <div className="title-and-edit">
+                    <div id="photo-title">{singlePhoto.title ? singlePhoto.title : null}</div>
+                  </div>
+                  <div className="photo-description-label">{singlePhoto.description ? singlePhoto.description : null}</div>
+                </div>
+              </div> }
             </div>
             <div className="comment-list">
               <Comments imageId={id}/>
@@ -198,19 +224,26 @@ const SinglePhoto = () => {
             {singlePhoto.albumId === null ?
             <div className="photo-album-info">
               <p>This photo is currently not in any albums</p>
-              <div><AlbumFormModal singlePhoto={singlePhoto}/></div>
+              {sessionUser.id === singlePhoto.userId ?
+              <div><AlbumFormModal singlePhoto={singlePhoto}/></div> : <div className="no-album"></div> }
             </div> :
             <div className="photo-album-exists">
               <div className="photo-album-top">
                 <div className="photo-top-left">This photo is in an album</div>
-                <div><AlbumFormModal singlePhoto={singlePhoto}/></div>
+                <div><AlbumFormModal sessionUser={sessionUser} singlePhoto={singlePhoto}/></div>
               </div>
-              <div className="photo-album-bottom">
+              <div className="photo-album-bottom" onMouseEnter={(e) => setRemovePhotoButton(true)} onMouseLeave={(e) => setRemovePhotoButton(false)}>
                 <div className="photo-bottom-left"><CgAlbum/></div>
                 <div className="photo-bottom-right">
-                  <div className="photo-album-name">{album?.name}</div>
-                  <div className="photo-album-items">2 items</div>
+                  {sessionUser.id === singlePhoto.userId ?
+                  <div className="photo-album-name"><NavLink to={`/albums/${album.id}`}>{album?.name}</NavLink></div> :
+                  <div className="photo-album-name-no-link">{album?.name}</div>}
+                  {album.imageCount === 1 ?
+                  <div className="photo-album-items">1 item</div> :
+                  <div className="photo-album-items">{album.imageCount} items</div>}
                 </div>
+                {removePhotoButton && sessionUser.id === singlePhoto.userId? 
+                <div className="photo-album-right-exit" onClick={(e) => removeImageFromAlbum(album.id) }><IoMdClose/></div> : null }
               </div>
             </div> }
           </div>

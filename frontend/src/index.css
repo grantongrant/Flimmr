@@ -60,11 +60,24 @@ body {
 
 }
 .global-search {
+    display: flex;
     height: 33px;
     width: 80%;
     padding: 0px 33px;
-
+    align-items: center;
 }
+
+.global-links {
+    color: white;
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.global-links:hover {
+    color: #898989;
+}
+
 .login-signup {
     display: flex;
     margin-right: 20px;
@@ -1461,6 +1474,15 @@ background: rgb(44,44,44);
     background-color: rgb(230, 232, 233);
 }
 
+.photo-album-right-exit {
+    color: #898989;
+    display: flex;
+    cursor: pointer;
+    width: 10%;
+    margin-right: 0px;
+    margin-left: auto;
+}
+
 .photo-bottom-left {
     height: 48px;
     width: 48px;
@@ -1474,6 +1496,20 @@ background: rgb(44,44,44);
 .photo-album-name {
     color: #006dac;
     cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.photo-album-name:hover {
+    text-decoration: underline;
+}
+
+.photo-album-name a {
+    color: #006dac;
+}
+
+.photo-album-name-no-link {
+    color: #006dac;
     font-size: 13px;
     font-weight: 600;
 }
@@ -1515,9 +1551,10 @@ background: rgb(44,44,44);
     border-bottom: 1px solid #006dac;
 }
 
-.photostream-menu-label a {
+.menu-bar-content a {
     text-decoration: none;
     color: inherit;
+    z-index: 50;
 }
 
 .border {
@@ -1758,6 +1795,11 @@ input.album-title {
 
 .album-delete-button{
     cursor: pointer;
+    font-size: 22px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    margin-top: 15px;
 }
 
 .create-a-new-album {
@@ -1826,4 +1868,40 @@ input.album-title {
 
 .create-album-create {
     background-color: #128fdc;
+}
+
+.explore-header {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 24px;
+    margin-bottom: 5px;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 300;
+}
+
+.no-album {
+    margin-bottom: 16px;
+    line-height: 24px;
+}
+
+.photo-stream-album-info {
+    position: absolute;
+    margin-top: -60px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    font-weight: 400;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#album-image-count {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
 }

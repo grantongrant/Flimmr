@@ -27,8 +27,13 @@ function Navigation({ isLoaded }){
             <div className="global-logo">
             <NavLink id="logo-font" exact to="/"><img id="logo-png" src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641938203/Flimmr/Flimmr-icon_cb79be.png"}/></NavLink>
             </div>
+            {sessionUser ?
             <div className="global-search">
-            </div>
+              <NavLink className="global-links" to="/photos">You</NavLink>
+              <NavLink className="global-links" to="/explore">Explore</NavLink>
+            </div> :
+            <div className="global-search">
+            </div>}
             {isLoaded && sessionLinks}
       </header>
 

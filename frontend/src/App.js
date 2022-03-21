@@ -11,6 +11,7 @@ import PhotoInputForm from "./components/PhotoInputForm";
 import SinglePhoto from "./components/SinglePhoto";
 import AlbumPage from "./components/Album/AlbumPage";
 import Albums from "./components/Album/Albums";
+import Explore from "./components/Explore";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route exact path="/albums/:id">
             <AlbumPage/>
+          </Route>
+          <Route exact path="/explore">
+            <Explore/>
           </Route>
           <Route>
             404: Not Found

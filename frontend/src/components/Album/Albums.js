@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { getAllImages } from '../../store/images';
@@ -11,6 +11,8 @@ import AlbumDetail from './AlbumDetail';
 import {MdOutlineLibraryAdd} from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import { deleteAnAlbum } from '../../store/albums';
+import {BiTrash} from 'react-icons/bi';
+
 
 function Albums() {
 
@@ -21,6 +23,7 @@ function Albums() {
     const sessionImages = images.filter((image) => image?.userId === sessionUser.id)
     const albumsObject = useSelector((state) => state.album)
     const albums = Object.values(albumsObject);
+    const [albumDelete, setAlbumDelete] = useState(false);
 
     useEffect(() => {
         dispatch(getAllAlbums(sessionUser.id));
@@ -44,7 +47,7 @@ function Albums() {
     </div>
     <div className="menu-bar">
         <div className="menu-bar-content">
-            <div className="photostream-menu-label noborder"><NavLink to="/photos">Photostream</NavLink></div>
+            <NavLink to="/photos"><div className="photostream-menu-label noborder">Photostream</div></NavLink>
             <div className="photostream-menu-label border">Albums</div>
         </div> 
     </div>
@@ -54,15 +57,23 @@ function Albums() {
             <div className="add-album-text">New album</div>
         </div> */}
     </div>
-    {albums.length !== 0 ?
+    {albums?.length !== 0 ?
     <div className="album-content">
         {albums?.map((album) => (
             <div className="photostream-container">
-            <div className="photostream-item">
+            <div className="photostream-item" onMouseEnter={(e) => setAlbumDelete(true)} onMouseLeave={(e) => setAlbumDelete(false)}>
               <div className="photostream-image">
-                  <div>{album.name}</div>
-                  <button className="album-delete-button" type="button" onClick={(e) => deleteThisAlbum(album.id)}>Delete</button>
                   <NavLink className="single-photo album-photo" to={`/albums/${album.id}`}><img src={`${album.coverImg}`} alt="album-cover"/></NavLink>
+              </div>
+              <div className="photo-stream-album-info">
+                <div className="album-title-count">
+                    <div>{album.name}</div>
+                    {album.imageCount === 1 ? 
+                    <div id="album-image-count">{album.imageCount} photo</div> :
+                    <div id="album-image-count">{album.imageCount} photos</div>}
+                </div>
+                {albumDelete ?
+                <div><button className="album-delete-button" type="button" onClick={(e) => deleteThisAlbum(album.id)}><BiTrash/></button></div> : null }
               </div>
             </div>
           </div>
