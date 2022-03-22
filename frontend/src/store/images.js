@@ -115,7 +115,6 @@ export const deleteImage = (photoId) => async (dispatch) => {
   };
 
 export const takeOutOfAlbum = (id, albumId) => async (dispatch) => {
-    console.log("TAKEOUTOFALBUM", id, albumId)
     const response = await csrfFetch(`/api/images/album/delete`, {
         method: 'PUT',
         headers: {'Content-Type':'application/json'},

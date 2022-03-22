@@ -62,7 +62,6 @@ export const getAllAlbums = (userId) => async (dispatch) => {
 };
 
 export const updateAnAlbum = (updatedAlbum) => async (dispatch) => {
-    console.log("UPDATED ALBUM", updatedAlbum)
     const { albumId, name, description} = updatedAlbum;
     const response = await csrfFetch("/api/albums/edit", {
         method: "PUT",
