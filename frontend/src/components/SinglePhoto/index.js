@@ -23,7 +23,6 @@ const SinglePhoto = () => {
   const sessionUser = useSelector(state => state.session.user);
   const singlePhoto = useSelector((state) => state.image)
   const album = useSelector(state => state.album);
-  console.log(album)
   const date = new Date(singlePhoto.createdAt)
   const [descriptionEdit, setDescriptionEdit] = useState(false)
   const dispatch = useDispatch();

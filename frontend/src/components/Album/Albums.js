@@ -24,10 +24,11 @@ function Albums() {
     const albumsObject = useSelector((state) => state.album)
     const albums = Object.values(albumsObject);
     const [albumDelete, setAlbumDelete] = useState(false);
+    const [albumId, setAlbumId] = useState(null)
 
     useEffect(() => {
         dispatch(getAllAlbums(sessionUser.id));
-      }, [dispatch]);
+      }, [dispatch, images]);
 
     const deleteThisAlbum = async (albumId) => {
         await dispatch (deleteAnAlbum(albumId))
@@ -61,7 +62,13 @@ function Albums() {
     <div className="album-content">
         {albums?.map((album) => (
             <div className="photostream-container">
-            <div className="photostream-item" onMouseEnter={(e) => setAlbumDelete(true)} onMouseLeave={(e) => setAlbumDelete(false)}>
+            <div className="photostream-item" 
+                onMouseEnter={(e) => {
+                    setAlbumDelete(true)
+                    setAlbumId(album.id)}} 
+                onMouseLeave={(e) => {
+                    setAlbumDelete(false)
+                    setAlbumId(null)}}>
               <div className="photostream-image">
                   <NavLink className="single-photo album-photo" to={`/albums/${album.id}`}><img src={`${album.coverImg}`} alt="album-cover"/></NavLink>
               </div>
@@ -72,7 +79,7 @@ function Albums() {
                     <div id="album-image-count">{album.imageCount} photo</div> :
                     <div id="album-image-count">{album.imageCount} photos</div>}
                 </div>
-                {albumDelete ?
+                {albumDelete && album.id === albumId?
                 <div><button className="album-delete-button" type="button" onClick={(e) => deleteThisAlbum(album.id)}><BiTrash/></button></div> : null }
               </div>
             </div>

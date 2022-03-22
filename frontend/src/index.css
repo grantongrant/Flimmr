@@ -821,6 +821,14 @@ background: rgb(44,44,44);
     font-weight: 600;
 }
 
+.upload-text-two{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
 #label-for-upload {
     color: white;
     background-color: #128fdc;

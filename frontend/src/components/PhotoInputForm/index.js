@@ -5,6 +5,7 @@ import * as imageActions from "../../store/images";
 import { csrfFetch } from "../../store/csrf";
 import {BsFillCheckCircleFill} from 'react-icons/bs';
 import { getAllImages } from '../../store/images';
+import { getAllImagesFromUser } from '../../store/images';
 
 
 import "../../../src/index.css";
@@ -12,22 +13,35 @@ import "../../../src/index.css";
 const PhotoInputForm = () => {
 
   const sessionUser = useSelector(state => state.session.user);
-  const userId = sessionUser.id;
+  console.log(sessionUser)
+  const userId = sessionUser?.id;
+  console.log(userId)
   const imagesObject = useSelector((state) => state.image)
   const images = Object.values(imagesObject);
-  const sessionImages = images.filter((image) => image.userId === sessionUser.id)
+  console.log(images)
+  // const sessionImages = images.filter((image) => image.userId === sessionUser.id)
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
-  const numOfPhotos = sessionImages.length;
+  const numOfPhotos = images.length;
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const dispatch = useDispatch();
   const history = useHistory();
 
+  useEffect( () => {
+    dispatch(getAllImagesFromUser(userId));
+    // setIsLoaded(true)
+}, [dispatch, userId]);
+
   useEffect(() => {
-    dispatch(getAllImages());
-  }, [dispatch]);
+    const timer = setTimeout(() => {
+        setIsLoaded(true);
+    }, 300);
+    return () => clearTimeout(timer);
+});
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,6 +71,8 @@ const PhotoInputForm = () => {
   }
 
   return (
+    <>
+    {isLoaded && 
     <div className="upload-page">
     <div className='upload-container'>
       {numOfPhotos < 16 ?
@@ -84,11 +100,12 @@ const PhotoInputForm = () => {
       </form> :
       <div>
         <p className="upload-text">You can't upload any more photos!</p> 
-        <p className="upload-text">Please delete one or more of your photos and try again.</p>
+        <p className="upload-text-two">Please delete one or more of your photos and try again.</p>
         <NavLink to="/photos"><button id="upload-submit-button">Back to photostream</button></NavLink>
       </div>}
     </div>
-    </div>
+    </div>}
+    </>
   );
 };
 export default PhotoInputForm
