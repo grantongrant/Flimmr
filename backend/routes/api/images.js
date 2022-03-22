@@ -138,7 +138,6 @@ router.get('/album/:id', asyncHandler(async (req, res) => {
 router.put('/album/delete', asyncHandler(async (req, res) => {
   const id = parseInt(req.body.id, 10)
   const albumId = parseInt(req.body.albumId, 10)
-  console.log("REISOPRJDSIFJD", id)
   const image = await Image.findByPk(id);
   await image.update ({
     albumId: null

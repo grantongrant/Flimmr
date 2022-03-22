@@ -29,7 +29,6 @@ router.get('/album/:id', asyncHandler(async (req, res) => {
 router.put('/edit', asyncHandler(async (req, res) => {
   
     const { albumId, name, description } = req.body;
-    console.log("REQ BODY ODY ODY", req.body)
 
     const album = await Album.findByPk(albumId)
   
