@@ -59,9 +59,10 @@ const PhotoInputForm = () => {
   return (
     <div className="upload-page">
     <div className='upload-container'>
+      {numOfPhotos < 16 ?
       <form onSubmit={handleSubmit}>
       {/* <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"} alt="signup background"/></div> */}
-        <p className="upload-text">You can upload {16 - numOfPhotos} more photos.</p>
+        <p className="upload-text">You can upload {16 - numOfPhotos} more photos.</p> 
         <div className="upload-verification">{image ? <BsFillCheckCircleFill/>: null}</div>
         <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -79,8 +80,13 @@ const PhotoInputForm = () => {
         </label> }
         <button id="upload-submit-button" type='submit'>Submit</button>
         <p className="upload-link-a">Not Ready?
-      <NavLink className="upload-link-b"to="/photos"> Back to Photostream.</NavLink></p>
-      </form>
+      <NavLink className="upload-link-b"to="/photos"> Back to photostream.</NavLink></p>
+      </form> :
+      <div>
+        <p className="upload-text">You can't upload any more photos!</p> 
+        <p className="upload-text">Please delete one or more of your photos and try again.</p>
+        <NavLink to="/photos"><button id="upload-submit-button">Back to photostream</button></NavLink>
+      </div>}
     </div>
     </div>
   );
