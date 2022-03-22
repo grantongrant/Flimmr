@@ -75,13 +75,29 @@ router.put('/', asyncHandler(async (req, res) => {
   });
   await image.save();
 
-  const album = await Album.findByPk(albumId);
-  await album.update({
-    imageCount: album.imageCount + 1
-  })
-  await album.save();
+  if (albumId === 0 ) {
+    const albums = await Album.findAll();
+    albums.forEach(album => {
+      if (album.imageCount === 0) {
+        album.destroy();
+      }
+    })
+  } else {
+    const album = await Album.findByPk(albumId);
+    await album.update ({
+      imageCount: album.imageCount + 1
+    })
+    await album.save();
 
-  return res.json(image);
+    const albums = await Album.findAll();
+    albums.forEach(album => {
+      if (album.imageCount === 0) {
+        album.destroy();
+      }
+    })
+    return res.json(image);
+  };
+
 }));
 
 router.get('/view/:id', asyncHandler(async (req, res) => {
@@ -110,6 +126,12 @@ router.get('/album/:id', asyncHandler(async (req, res) => {
       albumId: id
     }
   })
+
+  const album = await Album.findByPk(id)
+  album.update({
+    coverImg: images[0].imageUrl
+  })
+  album.save();
   return res.json(images)
 }))
 
@@ -127,9 +149,16 @@ router.put('/album/delete', asyncHandler(async (req, res) => {
   if (album.imageCount === 1) {
     await album.destroy()
   } else {
-    await album.update({
-      imageCount: album.imageCount -1
+    const images = await Image.findAll({
+      where: {
+        albumId: albumId
+      }
     })
+    await album.update({
+      imageCount: album.imageCount -1,
+      coverImg: images[0].imageUrl
+    })
+    
   };
 
   return res.json(image)

@@ -21,7 +21,7 @@ function AlbumForm({setShowModal, singlePhoto}) {
   const [errors, setErrors] = useState([]);
   const [createAlbumToggle, setCreateAlbumToggle] = useState(false);
   const [check, setCheck] = useState(false);
-  const [idOfAlbum, setIdOfAlbum] = useState(singlePhoto.albumId);
+  const [idOfAlbum, setIdOfAlbum] = useState(singlePhoto.albumId ? singlePhoto.albumId : 0);
   const singlePhotoId = singlePhoto.id;
   const coverImg = singlePhoto.imageUrl;
 
@@ -30,6 +30,8 @@ function AlbumForm({setShowModal, singlePhoto}) {
   }, [dispatch]);
 
   const addImageToAlbum =  async (e) => {
+    console.log(idOfAlbum)
+    console.log(singlePhotoId)
 
     if (idOfAlbum === singlePhoto.albumId) {
       await dispatch(getTheImage(singlePhotoId))
@@ -41,6 +43,7 @@ function AlbumForm({setShowModal, singlePhoto}) {
     };
 
     await dispatch(updateImageAlbum(updatedPhoto))
+    // await dispatch(getAllAlbums(userId))
     await dispatch(getTheImage(singlePhotoId))
     };
   };

@@ -5,6 +5,7 @@ import * as imageActions from "../../store/images";
 import { csrfFetch } from "../../store/csrf";
 import {BsFillCheckCircleFill} from 'react-icons/bs';
 import { getAllImages } from '../../store/images';
+import { getAllImagesFromUser } from '../../store/images';
 
 
 import "../../../src/index.css";
@@ -12,22 +13,35 @@ import "../../../src/index.css";
 const PhotoInputForm = () => {
 
   const sessionUser = useSelector(state => state.session.user);
-  const userId = sessionUser.id;
+  console.log(sessionUser)
+  const userId = sessionUser?.id;
+  console.log(userId)
   const imagesObject = useSelector((state) => state.image)
   const images = Object.values(imagesObject);
-  const sessionImages = images.filter((image) => image.userId === sessionUser.id)
+  console.log(images)
+  // const sessionImages = images.filter((image) => image.userId === sessionUser.id)
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
-  const numOfPhotos = sessionImages.length;
+  const numOfPhotos = images.length;
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const dispatch = useDispatch();
   const history = useHistory();
 
+  useEffect( () => {
+    dispatch(getAllImagesFromUser(userId));
+    // setIsLoaded(true)
+}, [dispatch, userId]);
+
   useEffect(() => {
-    dispatch(getAllImages());
-  }, [dispatch]);
+    const timer = setTimeout(() => {
+        setIsLoaded(true);
+    }, 300);
+    return () => clearTimeout(timer);
+});
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,11 +71,14 @@ const PhotoInputForm = () => {
   }
 
   return (
+    <>
+    {isLoaded && 
     <div className="upload-page">
     <div className='upload-container'>
+      {numOfPhotos < 16 ?
       <form onSubmit={handleSubmit}>
       {/* <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"} alt="signup background"/></div> */}
-        <p className="upload-text">You can upload {16 - numOfPhotos} more photos.</p>
+        <p className="upload-text">You can upload {16 - numOfPhotos} more photos.</p> 
         <div className="upload-verification">{image ? <BsFillCheckCircleFill/>: null}</div>
         <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -79,10 +96,16 @@ const PhotoInputForm = () => {
         </label> }
         <button id="upload-submit-button" type='submit'>Submit</button>
         <p className="upload-link-a">Not Ready?
-      <NavLink className="upload-link-b"to="/photos"> Back to Photostream.</NavLink></p>
-      </form>
+      <NavLink className="upload-link-b"to="/photos"> Back to photostream.</NavLink></p>
+      </form> :
+      <div>
+        <p className="upload-text">You can't upload any more photos!</p> 
+        <p className="upload-text-two">Please delete one or more of your photos and try again.</p>
+        <NavLink to="/photos"><button id="upload-submit-button">Back to photostream</button></NavLink>
+      </div>}
     </div>
-    </div>
+    </div>}
+    </>
   );
 };
 export default PhotoInputForm
