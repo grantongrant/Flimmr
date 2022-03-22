@@ -62,7 +62,7 @@ export const createImage = (newPhoto) => async (dispatch) => {
     formData.append("userId", userId);
     formData.append("image", image);
    
-    const response = await csrfFetch ("/api/images", {
+    const response = await csrfFetch ("/api/images/", {
       method: "POST",
       headers: {'Content-Type':'multipart/form-data'},
       body: formData,

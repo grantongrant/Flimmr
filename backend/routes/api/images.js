@@ -7,7 +7,7 @@ const { validateCreate, validateUpdate } = require('../../utils/validation');
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 
-router.get('', asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
   const images = await Image.findAll();
   return res.json(images);
 }));
@@ -26,7 +26,7 @@ router.get('/user/:id', asyncHandler(async (req, res) => {
   return res.json(images)
 }));
 
-router.post('', singleMulterUpload("image"), asyncHandler(async (req, res) => {
+router.post('/', singleMulterUpload("image"), asyncHandler(async (req, res) => {
   const { userId } = req.body;
   const imageUrl = await singlePublicFileUpload(req.file);
   const image = await Image.create({userId, imageUrl, views: 0});
