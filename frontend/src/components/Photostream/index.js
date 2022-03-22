@@ -15,7 +15,6 @@ const ImageList = () => {
     const imagesObject = useSelector((state) => state.image)
     const images = Object.values(imagesObject);
     const [isLoaded, setIsLoaded] = useState(false);
-    console.log(images)
     // const sessionImages = images.filter((image) => image?.userId === sessionUser.id)
 
     useEffect( () => {
@@ -53,7 +52,6 @@ const ImageList = () => {
             <div className="photo-stream-content">
                 {images?.map((image) => (
                     <>
-                    {console.log(image)}
                     <PhotoDetail key={image.id} id={image.id} imageUrl={image.imageUrl} description={image.description}/>
                     </>
                 ))}

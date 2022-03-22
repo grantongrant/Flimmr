@@ -13,12 +13,9 @@ import "../../../src/index.css";
 const PhotoInputForm = () => {
 
   const sessionUser = useSelector(state => state.session.user);
-  console.log(sessionUser)
   const userId = sessionUser?.id;
-  console.log(userId)
   const imagesObject = useSelector((state) => state.image)
   const images = Object.values(imagesObject);
-  console.log(images)
   // const sessionImages = images.filter((image) => image.userId === sessionUser.id)
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
