@@ -31,6 +31,7 @@ function AlbumForm({setShowModal, singlePhoto}) {
 
   const addImageToAlbum =  async (e) => {
 
+   
     if (idOfAlbum === singlePhoto.albumId) {
       await dispatch(getTheImage(singlePhotoId))
       await dispatch(getTheAlbum(idOfAlbum))
