@@ -224,12 +224,12 @@ const SinglePhoto = () => {
             <div className="photo-album-info">
               <p>This photo is currently not in any albums</p>
               {sessionUser.id === singlePhoto.userId ?
-              <div><AlbumFormModal singlePhoto={singlePhoto}/></div> : <div className="no-album"></div> }
+              <div><AlbumFormModal setRender={setRender} singlePhoto={singlePhoto}/></div> : <div className="no-album"></div> }
             </div> :
             <div className="photo-album-exists">
               <div className="photo-album-top">
                 <div className="photo-top-left">This photo is in an album</div>
-                <div><AlbumFormModal sessionUser={sessionUser} singlePhoto={singlePhoto}/></div>
+                <div><AlbumFormModal render={render} setRender={setRender} sessionUser={sessionUser} singlePhoto={singlePhoto}/></div>
               </div>
               <div className="photo-album-bottom" onMouseEnter={(e) => setRemovePhotoButton(true)} onMouseLeave={(e) => setRemovePhotoButton(false)}>
                 <div className="photo-bottom-left"><CgAlbum/></div>

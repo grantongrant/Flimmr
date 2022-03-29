@@ -9,7 +9,7 @@ import {CgAlbum} from 'react-icons/cg';
 import { getTheImage, updateImageAlbum } from "../../store/images";
 import {IoMdClose} from 'react-icons/io';
 
-function AlbumForm({setShowModal, singlePhoto}) {
+function AlbumForm({render, setRender, setShowModal, singlePhoto}) {
     
   const sessionUser = useSelector(state => state.session.user);
   const albumsObject = useSelector((state) => state.album)
@@ -106,7 +106,9 @@ function AlbumForm({setShowModal, singlePhoto}) {
       <form className="create-album-form" onSubmit={handleSubmit}>
         <div className="create-a-new-album">
           <div>Create a new album</div>
-          <div className="close-create-album" onClick={(e) => setShowModal(false)}><IoMdClose/></div>
+          <div className="close-create-album" onClick={(e) => {
+            setRender(!render)
+            setShowModal(false)}}><IoMdClose/></div>
           </div>
         <input
           type="text"

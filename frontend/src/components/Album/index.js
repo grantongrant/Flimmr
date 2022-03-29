@@ -4,7 +4,7 @@ import { Modal } from '../../context/Modal';
 import AlbumForm from './AlbumForm';
 import "../../index.css";
 
-function AlbumFormModal({singlePhoto}) {
+function AlbumFormModal({render, setRender, singlePhoto}) {
   const [showModal, setShowModal] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
 
@@ -16,8 +16,10 @@ function AlbumFormModal({singlePhoto}) {
       <button id="add-to-album-button" onClick={() => setShowModal(true)}>Add to Album</button> :
       <div className="photo-top-right"onClick={() => setShowModal(true)}><button>Change Album</button></div>}
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <AlbumForm setShowModal={setShowModal} singlePhoto={singlePhoto} sessionUserId={sessionUser.id}/>
+        <Modal onClose={(e) => {
+          setRender(!render)
+          setShowModal(false)}}>
+          <AlbumForm render={render} setRender={setRender} setShowModal={setShowModal} singlePhoto={singlePhoto} sessionUserId={sessionUser.id}/>
         </Modal>
       )}
       </> : null}
