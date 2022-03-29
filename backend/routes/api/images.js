@@ -70,6 +70,16 @@ router.put('/', asyncHandler(async (req, res) => {
   const id = parseInt(req.body.updatedPhoto.singlePhotoId, 10);
   const albumId = parseInt(req.body.updatedPhoto.idOfAlbum, 10);
   const image = await Image.findByPk(id);
+
+  if (image.albumId) {
+  const album = await Album.findByPk(image.albumId);
+  await album.update ({
+    imageCount: album.imageCount - 1
+  })
+  await album.save();
+  }
+
+
   await image.update ({
     albumId: req.body.updatedPhoto.idOfAlbum,
   });
