@@ -18,7 +18,7 @@ const SplashPage = () => {
                         <li>Redux</li>
                         <li>JavaScript</li>
                         <li>Node.js</li>
-                        <li>PostgresQL</li>
+                        <li>PostgreSQL</li>
                         <li>HTML5</li>
                         <li>CSS</li>
                         <li>JSON API</li>
