@@ -8,6 +8,7 @@ import SinglePhoto from "../SinglePhoto";
 import "../../../src/index.css";
 import Albums from '../Album/Albums';
 import { NavLink } from 'react-router-dom';
+import Footer from '../Footer';
 
 const ImageList = () => {
     const dispatch = useDispatch();
@@ -49,13 +50,16 @@ const ImageList = () => {
             </div>
             <div className="new-album-menu"></div>
             {isLoaded &&
+            <>
             <div className="photo-stream-content">
                 {images?.map((image) => (
                     <>
                     <PhotoDetail key={image.id} id={image.id} imageUrl={image.imageUrl} description={image.description}/>
                     </>
                 ))}
-            </div>}
+            </div>
+            <Footer/>
+            </>}
         </div>
         </>
     )

@@ -15,6 +15,7 @@ import AlbumFormModal from '../Album';
 import {CgAlbum} from 'react-icons/cg';
 import { getTheAlbum } from '../../store/albums';
 import {IoMdClose} from 'react-icons/io';
+import Footer from '../Footer';
 
 
 const SinglePhoto = () => {
@@ -247,6 +248,7 @@ const SinglePhoto = () => {
             </div> }
           </div>
         </div>
+        <Footer />
     </div>
   );
 };

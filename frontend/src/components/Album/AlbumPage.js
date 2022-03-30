@@ -7,6 +7,7 @@ import {BsArrowLeftShort} from 'react-icons/bs';
 import { getTheAlbum, updateAnAlbum } from '../../store/albums';
 import PhotoDetail from '../PhotoDetail';
 import {RiEditBoxLine} from 'react-icons/ri';
+import Footer from '../Footer';
 
 
 function AlbumPage() {
@@ -108,6 +109,7 @@ function AlbumPage() {
                 ))}
             </div>
         </div>
+        <Footer />
     </div>
     </>
   )

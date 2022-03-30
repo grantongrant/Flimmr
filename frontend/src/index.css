@@ -494,6 +494,7 @@ form h1 {
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 85px;
     /* background-color: purple; */
 }
 
@@ -509,6 +510,7 @@ form h1 {
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
     /* background-color: purple; */
 }
 
@@ -1913,4 +1915,41 @@ input.album-title {
     font-size: 13px;
     font-weight: 500;
     line-height: 20px;
+}
+
+.page-footer {
+    background-color: black;
+    color: hsla(0,0%,100%,.6);
+    bottom: 0;
+    left: 0;
+    line-height: 1.2em;
+    text-align: center;
+    padding-top: 10px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    font-size: 14px;
+    letter-spacing: .5px;
+    margin-top: 22px;
+}
+
+.page-about-footer {
+    background-color: black;
+    color: hsla(0,0%,100%,.6);
+    bottom: 0;
+    left: 0;
+    line-height: 1.2em;
+    text-align: left;
+    padding-top: 10px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    text-decoration: none;
+    justify-content: center;
 }

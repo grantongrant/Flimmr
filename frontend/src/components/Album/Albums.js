@@ -12,6 +12,7 @@ import {MdOutlineLibraryAdd} from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import { deleteAnAlbum } from '../../store/albums';
 import {BiTrash} from 'react-icons/bi';
+import Footer from '../Footer';
 
 
 function Albums() {
@@ -91,6 +92,7 @@ function Albums() {
         <div id="easily-organize">Easily organize all your photos into beautiful albums to share with friends, family, or even other Flimmr members.</div>
         <button id="go-to-photostream"><NavLink to="/photos">Go to Photostream</NavLink></button>
     </div> }
+    <Footer />
     </div>
   )
 }
