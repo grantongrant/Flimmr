@@ -74,8 +74,9 @@ const PhotoInputForm = () => {
     <div className='upload-container'>
       {numOfPhotos < 10 ?
       <form onSubmit={handleSubmit}>
-      {/* <div className="flimmr-signup-logo"><img src={"https://res.cloudinary.com/ddxtopm0l/image/upload/v1641936934/Flimmr/Flimmr-icon_krefkq.png"} alt="signup background"/></div> */}
-        <p className="upload-text">You can upload {10 - numOfPhotos} more photos.</p> 
+        {10 - numOfPhotos === 1 ? 
+        <p className="upload-text">You can upload 1 more photo.</p> :
+        <p className="upload-text">You can upload {10 - numOfPhotos} more photos.</p> }
         <div className="upload-verification">{image ? <BsFillCheckCircleFill/>: null}</div>
         <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
