@@ -1994,3 +1994,15 @@ input.album-title {
     background-color: #f3f5f6;
     min-height: 600px;
 }
+
+#error-container {
+    height: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-left: 0px;
+}
+
+#upload-error {
+    color: #c60c31;
+}

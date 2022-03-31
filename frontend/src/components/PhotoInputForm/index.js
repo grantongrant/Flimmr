@@ -41,24 +41,32 @@ const PhotoInputForm = () => {
 
 
   const handleSubmit = async (e) => {
+
+    if (image === null) {
+      e.preventDefault();
+      setErrors(["Please choose an image to upload."])
+    } else {
+
     e.preventDefault();
     setErrors([]);
     setLoading(true)
-
+    setTimeout(() => {
+      setLoading(false);
+  }, 1500);
 
     const newPhoto = {
       userId,
       image,
     };
-    
+
     await dispatch(imageActions.createImage(newPhoto))
-    .then(() => setLoading(false))
     .then(() => alert("Successfully added!"))
     .then(() => history.push("/photos"))
     .catch (async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors)
     })
+  }
 };
 
   const selectedFile = (e) => {
@@ -78,8 +86,8 @@ const PhotoInputForm = () => {
         <p className="upload-text">You can upload 1 more photo.</p> :
         <p className="upload-text">You can upload {10 - numOfPhotos} more photos.</p> }
         <div className="upload-verification">{image ? <BsFillCheckCircleFill/>: null}</div>
-        <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        <ul id="error-container">
+        {errors.map((error, idx) => <li id="upload-error" key={idx}>{error}</li>)}
         </ul>
         {image ? 
         <div className="upload-image-name">{image.name}</div> :
