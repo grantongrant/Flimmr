@@ -49,7 +49,7 @@ const ImageList = () => {
                 </div>
             </div>
             <div className="new-album-menu"></div>
-            {isLoaded &&
+            {isLoaded ?
             <>
             <div className="photo-stream-content">
                 {images?.map((image) => (
@@ -59,7 +59,7 @@ const ImageList = () => {
                 ))}
             </div>
             <Footer/>
-            </>}
+            </> : <div className="loading photo-loading"></div>}
         </div>
         </>
     )

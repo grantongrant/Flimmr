@@ -1989,3 +1989,8 @@ input.album-title {
     height: 30px;
     border: 10px solid transparent;
 }
+
+.photo-loading {
+    background-color: #f3f5f6;
+    min-height: 600px;
+}

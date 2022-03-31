@@ -23,14 +23,13 @@ const PhotoInputForm = () => {
   const [errors, setErrors] = useState([]);
   const numOfPhotos = images.length;
   const [isLoaded, setIsLoaded] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect( () => {
     dispatch(getAllImagesFromUser(userId));
-    // setIsLoaded(true)
 }, [dispatch, userId]);
 
   useEffect(() => {
@@ -51,14 +50,11 @@ const PhotoInputForm = () => {
       userId,
       image,
     };
-
-    // await dispatch(imageActions.createImage(newPhoto)).then(() => history.push("/photos"));
+    
     await dispatch(imageActions.createImage(newPhoto))
-      .then(() => {
-      setLoading(false)
-      alert("Successfully added!")
-      history.push("/photos")
-    })
+    .then(() => setLoading(false))
+    .then(() => alert("Successfully added!"))
+    .then(() => history.push("/photos"))
     .catch (async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors)
