@@ -777,6 +777,7 @@ background: rgb(44,44,44);
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-direction: column;
     padding-bottom: 4rem;
     padding: 2rem;
     width: 100%;
@@ -1952,4 +1953,39 @@ input.album-title {
     letter-spacing: .5px;
     text-decoration: none;
     justify-content: center;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+}
+
+.loading::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border: 10px solid white;
+    border-top-color: #c60c31;
+    border-bottom-color: #006dac;
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+    opacity: .6;
+}
+
+@keyframes loading {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.not-loading {
+    display: flex;
+    justify-content: center;
+}
+
+.not-loading::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border: 10px solid transparent;
 }

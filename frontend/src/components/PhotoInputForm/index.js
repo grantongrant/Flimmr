@@ -23,6 +23,7 @@ const PhotoInputForm = () => {
   const [errors, setErrors] = useState([]);
   const numOfPhotos = images.length;
   const [isLoaded, setIsLoaded] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -43,6 +44,7 @@ const PhotoInputForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    setLoading(true)
 
 
     const newPhoto = {
@@ -53,6 +55,7 @@ const PhotoInputForm = () => {
     // await dispatch(imageActions.createImage(newPhoto)).then(() => history.push("/photos"));
     await dispatch(imageActions.createImage(newPhoto))
       .then(() => {
+      setLoading(false)
       alert("Successfully added!")
       history.push("/photos")
     })
@@ -72,6 +75,7 @@ const PhotoInputForm = () => {
     {isLoaded && 
     <div className="upload-page">
     <div className='upload-container'>
+      {loading ? <div className="loading"></div> : <div className="not-loading"></div> }
       {numOfPhotos < 10 ?
       <form onSubmit={handleSubmit}>
         {10 - numOfPhotos === 1 ? 
